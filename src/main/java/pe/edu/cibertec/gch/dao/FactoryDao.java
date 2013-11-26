@@ -1,5 +1,8 @@
 package pe.edu.cibertec.gch.dao;
 
+import pe.edu.cibertec.gch.dao.laboratorio.LaboratorioDao;
+import pe.edu.cibertec.gch.dao.laboratorio.LaboratorioDaoImpl;
+
 public class FactoryDao {
     
     private static FactoryDao instance;
@@ -17,4 +20,12 @@ public class FactoryDao {
     public ProfesorDao getProfesorDao() {
         return new ProfesorDaoImplMemoria();
     }
+    
+    
+    
+    
+     public LaboratorioDao getLaboratorioDao() {
+        return new LaboratorioDaoImpl();
+    }
+    
 }
