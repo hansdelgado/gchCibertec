@@ -19,6 +19,9 @@ import pe.edu.cibertec.gch.web.servlets.GchServletUtils;
 @WebServlet(name = "BusquedaLaboratorioServlet", urlPatterns = {"/buscarLaboratorios"})
 public class BusquedaLaboratorioServlet extends HttpServlet {
 
+    
+    
+    
     private GestorLaboratorio gestorLaboratorio = new GestorLaboratorio();
 
     @Override
