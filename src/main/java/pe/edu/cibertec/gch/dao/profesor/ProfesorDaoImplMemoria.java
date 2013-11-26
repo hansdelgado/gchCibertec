@@ -1,4 +1,4 @@
-package pe.edu.cibertec.gch.dao;
+package pe.edu.cibertec.gch.dao.profesor;
 
 import java.util.ArrayList;
 import java.util.List;

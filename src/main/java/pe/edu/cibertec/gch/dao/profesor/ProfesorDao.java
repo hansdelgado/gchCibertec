@@ -1,6 +1,7 @@
-package pe.edu.cibertec.gch.dao;
+package pe.edu.cibertec.gch.dao.profesor;
 
 import java.util.List;
+import pe.edu.cibertec.gch.dao.BaseDao;
 import pe.edu.cibertec.gch.modelo.Profesor;
 
 /**
