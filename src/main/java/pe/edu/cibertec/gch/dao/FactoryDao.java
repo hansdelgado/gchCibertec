@@ -1,5 +1,8 @@
 package pe.edu.cibertec.gch.dao;
 
+import pe.edu.cibertec.gch.dao.cursos.CursoDao;
+import pe.edu.cibertec.gch.dao.cursos.CursoDaoImpl;
+
 public class FactoryDao {
     
     private static FactoryDao instance;
@@ -16,5 +19,9 @@ public class FactoryDao {
     
     public ProfesorDao getProfesorDao() {
         return new ProfesorDaoImplMemoria();
+    }
+    
+    public CursoDao getCursoDao() {
+        return new CursoDaoImpl();
     }
 }
