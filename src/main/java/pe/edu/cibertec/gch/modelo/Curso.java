@@ -23,6 +23,8 @@ public class Curso {
         this.codigo = codigo;
     }
     
+    
+    
     public Curso conCodigo(String codigo) {
         setCodigo(codigo);
         return this;
