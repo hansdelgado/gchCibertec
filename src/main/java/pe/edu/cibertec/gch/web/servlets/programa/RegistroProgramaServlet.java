@@ -34,7 +34,7 @@ public class RegistroProgramaServlet extends HttpServlet {
                 objetivos = req.getParameter("objetivos"),
                 requisitos = req.getParameter("requisitos"),
                 precio = req.getParameter("precio");
-                //duracion = req.getParameter("duracion");
+        //duracion = req.getParameter("duracion");
 
         Programa nuevoPrograma = new Programa().conCodigo(codigo)
                 .conTitulo(titulo)
