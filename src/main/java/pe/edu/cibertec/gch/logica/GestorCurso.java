@@ -4,10 +4,12 @@
  */
 package pe.edu.cibertec.gch.logica;
 
+import java.util.LinkedList;
 import java.util.List;
 import pe.edu.cibertec.gch.dao.cursos.CursoDao;
 import pe.edu.cibertec.gch.dao.FactoryDao;
 import pe.edu.cibertec.gch.modelo.Curso;
+import pe.edu.cibertec.gch.modelo.TipoBusqueda;
 
 /**
  *
@@ -18,6 +20,28 @@ public class GestorCurso implements GestorBase<Curso> {
     //private static ArrayList<Curso> cursos = new ArrayList<Curso>();
     FactoryDao factoryDao = FactoryDao.getInstance();
     CursoDao cursodao = factoryDao.getCursoDao();
+    
+    public List<Curso> listarSegunCurso(String codigo,
+            String nombre, TipoBusqueda tipoBusqueda) {
+        List<Curso> encontrados = new LinkedList<>();
+        for (Curso curso : listarTodos()) {
+            switch (tipoBusqueda) {
+                case Completa:
+                    encontrados.add(curso);
+                    break;
+                case Parcial:
+                    if ((!codigo.isEmpty() && curso.getCodigo().contains(codigo))
+                            || (!nombre.isEmpty() && curso.getNombre().contains(nombre))) {
+                        encontrados.add(curso);
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+        return encontrados;
+    }
+    
     
     @Override
     public List<Curso> listarTodos() {
