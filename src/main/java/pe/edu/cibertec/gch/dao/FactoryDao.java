@@ -2,6 +2,8 @@ package pe.edu.cibertec.gch.dao;
 
 import pe.edu.cibertec.gch.dao.cursos.CursoDao;
 import pe.edu.cibertec.gch.dao.cursos.CursoDaoImpl;
+import pe.edu.cibertec.gch.dao.profesor.ProfesorDaoImplMemoria;
+import pe.edu.cibertec.gch.dao.profesor.ProfesorDao;
 
 public class FactoryDao {
     

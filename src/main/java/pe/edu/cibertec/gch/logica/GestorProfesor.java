@@ -13,7 +13,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import pe.edu.cibertec.gch.dao.FactoryDao;
-import pe.edu.cibertec.gch.dao.ProfesorDao;
+import pe.edu.cibertec.gch.dao.profesor.ProfesorDao;
 import pe.edu.cibertec.gch.modelo.EstadoProfesor;
 import pe.edu.cibertec.gch.modelo.Profesor;
 import pe.edu.cibertec.gch.modelo.TipoBusqueda;
