@@ -38,7 +38,7 @@ public class GestorPrograma   implements GestorBase<Programa>{
     }
     
    
-        public List<Programa> listarSegun(String titulo, String descripcion, String objetivo,TipoBusqueda tipoBusqueda) {
+        public List<Programa> listarSegun(String titulo, String descripcion,TipoBusqueda tipoBusqueda) {
        List<Programa> encontrados= new ArrayList<Programa>();
             
             switch(tipoBusqueda){
@@ -50,8 +50,7 @@ public class GestorPrograma   implements GestorBase<Programa>{
                       if((!titulo.isEmpty()
                               && prog.getTitulo().contains(titulo))
                               || (!descripcion.isEmpty() 
-                              && prog.getDescripcion().contains(descripcion))
-                              || (!objetivo.isEmpty() && prog.getObjetivos().contains(objetivo)))
+                              && prog.getDescripcion().contains(descripcion)))
                       {
                           encontrados.add(prog);
                       }

@@ -72,7 +72,7 @@
                         return false;
                     }
                 </script>
-            <c:forEach var="programa" items="${requestScope.programa}" >
+            <c:forEach var="programa" items="${requestScope.programas}" >
                 <li>
                     <span>${programa.codigo}</span>
                     <span>${programa.titulo}</span>
