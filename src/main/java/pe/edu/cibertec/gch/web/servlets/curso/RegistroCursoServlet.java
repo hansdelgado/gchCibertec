@@ -44,5 +44,6 @@ public class RegistroCursoServlet extends HttpServlet {
 
         gestorCurso.registrar(nuevoCurso);
         resp.sendRedirect("listarCursos");
+        
     }
 }
