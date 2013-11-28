@@ -23,6 +23,7 @@ public class GestorLaboratorio implements GestorBase<Laboratorio> {
 //        UnescapeUtil.unescapeInstance(profesor);
 //         UnescapeUtil.unescapeAudit(profesor);
 //        profesores.add(profesor);
+        dao.registrar(laboratorio);
     }
 
     

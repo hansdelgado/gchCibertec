@@ -2,9 +2,13 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="gch" uri="/WEB-INF/tlds/gch" %>
 <gch:base titulo="Listado de Laboratorios">
-    <div class="informacion">
-        <span>${mensaje}</span>
-    </div>
+    <div class="informacion" style="display: ${empty requestScope.errores ? 'none' : 'block'}">
+            <ul>
+                <c:forEach var="error" items="${requestScope.errores}">
+                    <li>${error.value}</li>
+                </c:forEach>
+            </ul>
+     </div> 
     <form action="buscarLaboratorios">
         <fieldset>
             <legend>Datos de B&uacute;squeda</legend>

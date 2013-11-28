@@ -11,6 +11,10 @@ public class ValidacionFactory {
         if(req.getServletPath().contains("Profesor")) {
             return new ValidacionProfesor();
         }
+        
+        if(req.getServletPath().contains("Laboratorios")||req.getServletPath().contains("Laboratorio") ) {
+            return new ValidacionLaboratorio();
+        }
         return null;
     }
 }
