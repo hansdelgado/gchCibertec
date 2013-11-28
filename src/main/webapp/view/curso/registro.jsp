@@ -11,16 +11,16 @@
                 <label for="codigo">
                     C&oacute;digo:
                 </label>
-                <input type="text" id="codigo" name="codigo" maxlength="8" required autofocus >
+                <input type="text" id="codigo" name="codigo" maxlength="8"  autofocus >
             </div>
 
             <div>
                 <label for="nombre">Nombres</label>
-                <input type="text" id="nombre" name="nombre" required maxlength="50" />
+                <input type="text" id="nombre" name="nombre"  maxlength="50" />
             </div>
             <div>
                 <label for="descripcion">Descripcion:</label>
-                <input type="text" id="descripcion" name="descripcion" required maxlength="50" />
+                <input type="text" id="descripcion" name="descripcion"  maxlength="50" />
             </div>
             <div>
                 <label for="objetivo">Objetivos:</label>
@@ -30,7 +30,7 @@
     
             <div>
                 <label for="requisito">Requisitos</label>
-                <input type="text" id="requisito" name="requisito" required maxlength="400" />
+                <input type="text" id="requisito" name="requisito"  maxlength="400" />
             </div>
             <div>
                 <label for="referencia">Referencia</label>
@@ -42,13 +42,13 @@
                 <label for="duracion">
                     Duracion:
                 </label>
-                <input type="2" name="duracion" id="duracion" required />
+                <input type="2" name="duracion" id="duracion"  />
             </div>
             <div>
                 <label for="estado">
                     Estado:
                 </label>
-                <input type="text" name="estado" id="estado" required />
+                <input type="text" name="estado" id="estado"  />
             </div>
 
         </fieldset>
