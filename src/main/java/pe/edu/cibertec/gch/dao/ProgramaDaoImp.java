@@ -21,13 +21,6 @@ private static ArrayList<Programa> programas = new ArrayList<Programa>();
             p.setTitulo("nombre");  
             p.setObjetivos("obj");
             
-//            Programa p2 = new Programa();
-//             p2.setCodigo("02");
-//            p2.setDescripcion("descripcion1");
-//            p2.setTitulo("nombre1");  
-//            p2.setObjetivos("obj1");
-//            
-//            programas.add(p2);  
             programas.add(p);  
     }
 
@@ -38,24 +31,17 @@ private static ArrayList<Programa> programas = new ArrayList<Programa>();
     }
 
     @Override
-    public void registrar(Programa obj) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void registrar(Programa programa) {
+        programas.add(programa);
     }
 
     @Override
     public void borrarTodos() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        
     }
 
     @Override
     public List<Programa> listarSegun(String titulo, String descripcion, String objetivo, TipoBusqueda tipoBusqueda) {
-        
-       
-        return null;
-        
-        
+       return null;
     }
-
-  
-    
 }

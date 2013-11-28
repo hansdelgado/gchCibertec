@@ -76,7 +76,7 @@ public class GestorPrograma   implements GestorBase<Programa>{
 
     @Override
     public void registrar(Programa entidad) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        dao.registrar(entidad);
     }
     
 }

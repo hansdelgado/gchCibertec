@@ -64,12 +64,22 @@ public class Programa {
         this.codigo = codigo;
     }
 
+    public Programa conCodigo(String codigo) {
+        setCodigo(codigo);
+        return this;
+    }
+
     public String getTitulo() {
         return titulo;
     }
 
     public void setTitulo(String titulo) {
         this.titulo = titulo;
+    }
+
+    public Programa conTitulo(String titulo) {
+        setTitulo(titulo);
+        return this;
     }
 
     public String getDescripcion() {
@@ -80,6 +90,11 @@ public class Programa {
         this.descripcion = descripcion;
     }
 
+    public Programa conDescripcion(String descripcion) {
+        setDescripcion(descripcion);
+        return this;
+    }
+
     public String getObjetivos() {
         return objetivos;
     }
@@ -88,12 +103,22 @@ public class Programa {
         this.objetivos = objetivos;
     }
 
+    public Programa conObjetivos(String objetivos) {
+        setObjetivos(objetivos);
+        return this;
+    }
+
     public String getRequisitos() {
         return requisitos;
     }
 
     public void setRequisitos(String requisitos) {
         this.requisitos = requisitos;
+    }
+
+    public Programa conRequisitos(String requisitos) {
+        setRequisitos(requisitos);
+        return this;
     }
 
     public Moneda getMoneda() {
@@ -122,12 +147,22 @@ public class Programa {
         this.precio = precio;
     }
 
+    public Programa conPrecio(double precio) {
+        setPrecio(precio);
+        return this;
+    }
+
     public EstadoActividad getEstado() {
         return estado;
     }
 
     public void setEstado(EstadoActividad estado) {
         this.estado = estado;
+    }
+
+    public Programa conEstado(EstadoActividad estado) {
+        setEstado(estado);
+        return this;
     }
 
     @Override
