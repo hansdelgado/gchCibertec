@@ -12,12 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet para reenviar al registro de profesor
  */
-@WebServlet(name = "ReenvioRegistroPrograma", urlPatterns = {"/irRegistroPrograma"})
+@WebServlet(name = "ReenvioRegistroProfesor", urlPatterns = {"/irRegistroProfesor"})
 public class ReenvioRegistroProgramaServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/view/programa/registro.jsp");
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/view/profesor/registro.jsp");
         requestDispatcher.forward(req, resp);
         // nuevo comentario
     }

@@ -1,6 +1,7 @@
 package pe.edu.cibertec.gch.validaciones;
 
 import javax.servlet.http.HttpServletRequest;
+import pe.edu.cibertec.gch.filters.ValidacionProgramaInputFilter;
 
 /**
  * Determina el objeto que va a efectuar la validacion
@@ -10,6 +11,13 @@ public class ValidacionFactory {
     public Validacion obtenerSegun(HttpServletRequest req) {
         if(req.getServletPath().contains("Profesor")) {
             return new ValidacionProfesor();
+        }
+        return null;
+    }
+    
+    public Validacion obtenerSegunPrograma(HttpServletRequest req) {
+        if(req.getServletPath().contains("Programa")) {
+            return new ValidacionPrograma();
         }
         return null;
     }
