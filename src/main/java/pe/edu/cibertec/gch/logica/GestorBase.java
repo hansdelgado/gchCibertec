@@ -4,7 +4,7 @@ import java.util.List;
 
 /**
  *
- * @author hans delgado
+ * @author hans delgado......
  */
 public interface GestorBase<T> {
     public List<T> listarTodos();

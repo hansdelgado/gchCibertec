@@ -7,6 +7,7 @@ public class Horario {
 
     private String codigo;
     private String descripcion;
+    
     /**
      * Momento de inicio del horario en minutos
      */
@@ -15,7 +16,7 @@ public class Horario {
      * Momento de fin del horario en minutos
      */
     private int momentoFin;
-    private EstadoActividad estado;
+    private EstadoHorario estado;
 
     public String getCodigo() {
         return codigo;
@@ -50,11 +51,11 @@ public class Horario {
         this.momentoFin = momentoFin;
     }
 
-    public EstadoActividad getEstado() {
+    public EstadoHorario getEstado() {
         return estado;
     }
 
-    public void setEstado(EstadoActividad estado) {
+    public void setEstado(EstadoHorario estado) {
         this.estado = estado;
     }
 }
