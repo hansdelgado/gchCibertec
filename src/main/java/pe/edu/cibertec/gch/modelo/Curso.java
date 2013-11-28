@@ -15,6 +15,7 @@ public class Curso {
     private String duracion;
     private EstadoActividad estado;
 
+    
     public String getCodigo() {
         return codigo;
     }
