@@ -33,23 +33,23 @@ public class GestorHorario {
     }
 
     public List<Horario> listarSegun(String nombres,
-            String apellidoPaterno, String apellidoMaterno, TipoBusqueda tipoBusqueda) {
+            String descripcion, String estado, TipoBusqueda tipoBusqueda) {
         List<Horario> encontrados = new LinkedList<>();
         for (Horario horario : listarTodos()) {
             switch (tipoBusqueda) {
                 case Completa:
-                    /*if (apellidoPaterno.equalsIgnoreCase(horario.getApellidoPaterno())
-                            || apellidoMaterno.equalsIgnoreCase(horario.getApellidoMaterno())
-                            || nombres.equalsIgnoreCase(horario.getNombres())) {
+                    if (descripcion.equalsIgnoreCase(horario.getDescripcion())
+                            || estado.equalsIgnoreCase(horario.getEstado().toString())
+                            ) {
                         encontrados.add(horario);
-                    }*/
+                    }
                     break;
                 case Parcial:
-                    /*if ((!apellidoPaterno.isEmpty() && horario.getApellidoPaterno().contains(apellidoPaterno))
-                            || (!apellidoMaterno.isEmpty() && horario.getApellidoMaterno().contains(apellidoMaterno))
-                            || (!nombres.isEmpty() && horario.getNombres().contains(nombres))) {
+                    if ((!descripcion.isEmpty() && horario.getDescripcion().contains(descripcion))
+                            || (!estado.isEmpty() && horario.getEstado().toString().contains(estado))
+                            ) {
                         encontrados.add(horario);
-                    }*/
+                    }
                     break;
                 default:
                     break;
