@@ -5,7 +5,6 @@ import java.util.Map;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 
-
 public class ValidacionPrograma extends Validacion {
 
     private static final Logger LOG = Logger.getLogger(ValidacionPrograma.class.getName());
@@ -29,8 +28,8 @@ public class ValidacionPrograma extends Validacion {
 
             // recuperar input de listado de profesores
             String textoBusquedaProgramaTitulo = req.getParameter("titulo"),
-                    textoBusquedaProgramaDescripcion = req.getParameter("descripcion"),
-                    textoBusquedaProfesorTipoBusqueda = req.getParameter("tipoBusqueda");
+                    textoBusquedaProgramaDescripcion = req.getParameter("descripcion");
+            //textoBusquedaProfesorTipoBusqueda = req.getParameter("tipoBusqueda");
 
             validarRegistro(textoBusquedaProgramaTitulo, errores, textoBusquedaProgramaDescripcion);
 
@@ -38,7 +37,7 @@ public class ValidacionPrograma extends Validacion {
         }
     }
 
-    private void validarBusqueda(String textoBusquedaProgramaTitulo, String textoBusquedaProgramaDescripcion, String textoBusquedaProfesorTipoBusqueda){
+    private void validarBusqueda(String textoBusquedaProgramaTitulo, String textoBusquedaProgramaDescripcion, String textoBusquedaProfesorTipoBusqueda) {
         // por cada parametro, validar
         if (textoBusquedaProgramaTitulo.length() > 20) {
             errores.put("titulo", "La longitud del programa no debe exceder los 20 caracteres");
@@ -51,8 +50,7 @@ public class ValidacionPrograma extends Validacion {
         }
     }
 
-            
-    private void validarRegistro(String textoBusquedaProgramaTitulo, Map<String, String> errores, String textoBusquedaProgramaDescripcion){
+    private void validarRegistro(String textoBusquedaProgramaTitulo, Map<String, String> errores, String textoBusquedaProgramaDescripcion) {
         // por cada parametro, validar
         if (textoBusquedaProgramaTitulo.isEmpty() || !textoBusquedaProgramaTitulo.matches("\\w{5,8}")) {
             errores.put("titulo", "El titulo es obligatorio y debe tener cinco o seis caracteres");
