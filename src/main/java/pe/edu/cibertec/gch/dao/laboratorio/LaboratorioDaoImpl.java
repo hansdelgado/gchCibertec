@@ -52,9 +52,21 @@ public class LaboratorioDaoImpl implements LaboratorioDao {
         // Al eliminar, el estado del profesor 
         // se cambia a inactivo
         Laboratorio laboratorio = consultarPorCodigo(codigo);
-        laboratorio.setEstado(EstadoLaboratorio.Implementado);
+        laboratorio.setEstado(EstadoLaboratorio.Deshabilitado);
     }
 
+    @Override
+    public void modificarPorCodigo(String codigo, String nombre,String descripcion,String local ) {
+//        String pabellon,String salon,int capacidad
+        Laboratorio laboratorio = consultarPorCodigo(codigo);
+        laboratorio.setNombre(nombre);
+        laboratorio.setDescripcion(descripcion);
+        laboratorio.setLocal(local);
+//        laboratorio.setPabellon(pabellon);
+//        laboratorio.setSalon(salon);
+//        laboratorio.setCapacidad(capacidad);
+    }
+    
     @Override
     public Laboratorio consultarPorCodigo(final String codigo) {
         Laboratorio laboratorio = new Laboratorio() {{setCodigo(codigo);}};
@@ -72,16 +84,10 @@ public class LaboratorioDaoImpl implements LaboratorioDao {
         
         switch (tipoBusqueda) {
                 case Completa :
-                    for(Laboratorio lab:laboratorios){
-                        if (nombre.equals(lab.getNombre()) && local.equals(lab.getLocal())){
-                            encontrados.add(lab);
-                        }
-                    }
+                    encontrados=listarTodos();
                     break;
                 case Parcial :
-                    for(Laboratorio lab:laboratorios){
-//                        if (())
-                        
+                    for(Laboratorio lab:laboratorios){                        
                         
                         if (nombre.equals(lab.getNombre()) ||local.equals(lab.getLocal())){
                             encontrados.add(lab);

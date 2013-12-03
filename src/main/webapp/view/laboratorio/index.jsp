@@ -60,10 +60,12 @@
                 <span>Nombre</span>
                 <span>Descripcion</span>
                 <span>Local</span>
+                <span>Modificar</span>
+                <span>Eliminar</span>
             </li>
             <c:forEach var="laboratorio" items="${requestScope.laboratorios}" >
                 <li>
-                    <span>${laboratorio.codigo}</span>
+                    <a href="#"><span>${laboratorio.codigo}</span></a>
                     <span>${laboratorio.nombre}</span>
                     <span>${laboratorio.descripcion}</span>
                     <span>${laboratorio.local}</span>
