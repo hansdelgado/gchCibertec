@@ -29,12 +29,14 @@ public class CursoDaoImpl implements CursoDao{
         //throw new UnsupportedOperationException("Not supported yet.");
         Curso curso = consultarPorCodigo(codigo);
         curso.setEstado(EstadoActividad.Obsoleto);
+        curso.setNombre("Jufer");
     }
 
     @Override
     public Curso consultarPorCodigo(final String codigo) {
         //throw new UnsupportedOperationException("Not supported yet.");
-        Curso curso = new Curso() {{setCodigo(codigo);}};
+        Curso curso = new Curso();
+        curso.setCodigo(codigo);
         return cursos.get(cursos.indexOf(curso));
     }
 

@@ -26,6 +26,7 @@ public class ValidacionCursoInputFilter implements Filter {
     
   private void doBeforeProcessing(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
+        System.out.println("en el metodo before processing");
         HttpServletRequest req = (HttpServletRequest) request;
         req.removeAttribute("errores");
         request.setCharacterEncoding("UTF-8");

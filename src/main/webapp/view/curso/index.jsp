@@ -40,6 +40,11 @@
                         Registrar nuevo curso
                     </a>
                 </li>
+                <li>
+                    <a href="irEliminarCurso">
+                        Eliminar curso
+                    </a>
+                </li>
             </ul>
         </nav>
     </div>

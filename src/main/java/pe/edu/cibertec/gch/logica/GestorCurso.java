@@ -9,6 +9,7 @@ import java.util.List;
 import pe.edu.cibertec.gch.dao.cursos.CursoDao;
 import pe.edu.cibertec.gch.dao.FactoryDao;
 import pe.edu.cibertec.gch.modelo.Curso;
+import pe.edu.cibertec.gch.modelo.EstadoActividad;
 import pe.edu.cibertec.gch.modelo.TipoBusqueda;
 
 /**
@@ -27,7 +28,10 @@ public class GestorCurso implements GestorBase<Curso> {
         for (Curso curso : listarTodos()) {
             switch (tipoBusqueda) {
                 case Completa:
-                    encontrados.add(curso);
+                    if ((curso.getEstado() == EstadoActividad.Valido )) {
+                        encontrados.add(curso);
+                    }
+//                    encontrados.add(curso);
                     break;
                 case Parcial:
                     if ((!codigo.isEmpty() && curso.getCodigo().contains(codigo))
