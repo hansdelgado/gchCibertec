@@ -1,9 +1,7 @@
 package pe.edu.cibertec.gch.filters;
 
 import java.io.IOException;
-import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.HashMap;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -12,60 +10,101 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
-import pe.edu.cibertec.gch.validaciones.Validacion;
-import pe.edu.cibertec.gch.validaciones.ValidacionFactory;
+import javax.servlet.http.HttpServletResponse;
+import pe.edu.cibertec.gch.web.servlets.GchServletUtils;
 
 /**
  * Intercepta los requests a los servlets de mi aplicacion y asegura que los
  * parametros sean validos para ser consumidos por los servlets.
  */
-@WebFilter(filterName = "ValidacionProgramaInputFilter", urlPatterns = {"/*"})
+@WebFilter(filterName = "ValidacionProgramaInputFilter", urlPatterns = {"/registrarPrograma"})
 public class ValidacionProgramaInputFilter implements Filter {
 
-  private static final Logger LOG = Logger.getLogger(ValidacionProgramaInputFilter.class.getName());
-    
-  private void doBeforeProcessing(ServletRequest request, ServletResponse response, FilterChain chain)
-            throws IOException, ServletException {
-        HttpServletRequest req = (HttpServletRequest) request;
-        req.removeAttribute("errores");
-        request.setCharacterEncoding("UTF-8");
-        response.setCharacterEncoding("UTF-8");
+    private FilterConfig filterConfig = null;
 
-        ValidacionFactory factory = new ValidacionFactory();
-        Validacion validacion = factory.obtenerSegunPrograma(req);
-        
-        if(validacion != null) {
-           validacion.validar(req);
-           hacerReenvioA(validacion.getErrores(), chain, request, response, req, validacion.getPaginaReenvio());
-        }
-    }        
+    public ValidacionProgramaInputFilter() {
+    }
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response,
             FilterChain chain)
             throws IOException, ServletException {
-        doBeforeProcessing(request, response, chain);
-        chain.doFilter(request, response);
-        //doAfterProcessing(request, response);
+
+        HashMap<String, String> errores = validarPrograma(request);
+
+        if (errores.size() > 0) {
+            // envimos de regreso los errores y los datos ingresados.
+            request.setAttribute("errores", errores.values());
+
+            for (String name : request.getParameterMap().keySet()) {
+                request.setAttribute(name, request.getParameter(name));
+            }
+            GchServletUtils.reenviarARegistro("programa", (HttpServletRequest) request, (HttpServletResponse) response);
+        } else {
+            // dejamos pasar los datos al servlet
+            chain.doFilter(request, response);
+        }
     }
 
-    @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
+    private HashMap<String, String> validarPrograma(ServletRequest request) {
 
+        HashMap<String, String> errores = new HashMap<>();
+
+        final String codigo = request.getParameter("codigo"),
+                titulo = request.getParameter("titulo"),
+                descripcion = request.getParameter("descripcion"),
+                objetivos = request.getParameter("objetivos"),
+                requisitos = request.getParameter("requisitos"),
+                precio = request.getParameter("precio");
+
+        // realizamos algunas validaciones 
+        try {
+            Integer.parseInt(codigo);
+        } catch (NumberFormatException nfe) {
+            errores.put("codigo", "el codigo debe contener solo numeros");
+        }
+        try {
+            if (Double.parseDouble(precio) > 5000) {
+                errores.put("precio", "el precio maximo es 5000 soles");
+            }
+        } catch (NumberFormatException nfe) {
+            errores.put("precio", "el precio debe contener solo numeros");
+        }
+
+        if (titulo.length() > 45) {
+            errores.put("titulo", "el titulo no debe ser mayor a 45 caracteres");
+        }
+        if (descripcion.length() > 45) {
+            errores.put("descripcion", "el descripcion no debe ser mayor a 45 caracteres");
+        }
+        if (objetivos.length() > 45) {
+            errores.put("objetivos", "objetivos puede tener hasta 45 caracteres");
+        }
+        if (requisitos.length() > 45) {
+            errores.put("requisitos", "requisitos puede tener hasta 45 caracteres");
+        }
+
+        if (titulo.isEmpty()) {
+            errores.put("titulo", "el titulo no debe estar vacio");
+        }
+        if (descripcion.isEmpty()) {
+            errores.put("descripcion", "descripcion no debe estar vacio");
+        }
+        if (objetivos.isEmpty()) {
+            errores.put("objetivos", "los objetivos no debe estar vacio");
+        }
+        if (requisitos.isEmpty()) {
+            errores.put("requisitos", "requisitos no debe estar vacio");
+        }
+
+
+        return errores;
     }
 
-    @Override
     public void destroy() {
     }
 
-    private static void hacerReenvioA(Map<String, String> errores, FilterChain chain, ServletRequest request, ServletResponse response, HttpServletRequest req, String paginaReenvio) throws IOException, ServletException {
-        // determinacion del lugar a donde debe ir el request
-        if (errores.isEmpty()) {
-            chain.doFilter(request, response);
-        } else {
-            req.setAttribute("errores", errores);
-            req.getRequestDispatcher(paginaReenvio).forward(request, response);
-            LOG.log(Level.SEVERE, "Errores en el registro" + errores.keySet().toString());
-        }
+    public void init(FilterConfig filterConfig) {
+        this.filterConfig = filterConfig;
     }
 }

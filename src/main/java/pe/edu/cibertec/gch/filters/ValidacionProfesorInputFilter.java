@@ -19,7 +19,7 @@ import pe.edu.cibertec.gch.validaciones.ValidacionFactory;
  * Intercepta los requests a los servlets de mi aplicacion y asegura que los
  * parametros sean validos para ser consumidos por los servlets.
  */
-@WebFilter(filterName = "ValidacionProfesorInputFilter", urlPatterns = {"/*"})
+@WebFilter(filterName = "ValidacionProfesorInputFilter", urlPatterns = {"/registrarProfesor"})
 public class ValidacionProfesorInputFilter implements Filter {
 
   private static final Logger LOG = Logger.getLogger(ValidacionProfesorInputFilter.class.getName());

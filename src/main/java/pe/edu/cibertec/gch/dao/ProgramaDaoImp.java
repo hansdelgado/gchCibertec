@@ -34,12 +34,21 @@ public class ProgramaDaoImp implements ProgramaDao {
         programas.add(programa);
     }
 
-    @Override
     public void borrarTodos() {
     }
 
     @Override
     public List<Programa> listarSegun(String titulo, String descripcion, String objetivo, TipoBusqueda tipoBusqueda) {
         return null;
+    }
+
+    @Override
+    public void eliminarPorCodigo(String codigo) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Programa consultarPorCodigo(String codigo) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
