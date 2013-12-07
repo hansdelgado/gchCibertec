@@ -44,7 +44,7 @@ public class ProgramaDaoImp implements ProgramaDao {
 
     @Override
     public void eliminarPorCodigo(String codigo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        programas.remove(new Programa(codigo));
     }
 
     @Override
