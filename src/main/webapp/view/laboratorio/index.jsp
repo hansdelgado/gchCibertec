@@ -60,15 +60,15 @@
                 <span>Nombre</span>
                 <span>Descripcion</span>
                 <span>Local</span>
-                <span>Modificar</span>
-                <span>Eliminar</span>
+                <span>Estado</span>
             </li>
             <c:forEach var="laboratorio" items="${requestScope.laboratorios}" >
                 <li>
-                    <a href="#"><span>${laboratorio.codigo}</span></a>
+                    <span><a href="${pageContext.request.contextPath}/GetLaboratorio?codigo=${laboratorio.codigo}">${laboratorio.codigo}</a></span>
                     <span>${laboratorio.nombre}</span>
                     <span>${laboratorio.descripcion}</span>
                     <span>${laboratorio.local}</span>
+                    <span>${laboratorio.estado}</span>
                 </li>
             </c:forEach>
         </ul>

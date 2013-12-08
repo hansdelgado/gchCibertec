@@ -58,9 +58,6 @@
         </fieldset>
 
         <button>Registrar</button>
-<!--        <button>Modificar</button>
-        <button>Eliminar</button>-->
-
     </form>
 </gch:base>
 

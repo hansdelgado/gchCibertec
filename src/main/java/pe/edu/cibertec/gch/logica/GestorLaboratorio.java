@@ -11,10 +11,7 @@ import pe.edu.cibertec.gch.modelo.TipoBusqueda;
  * Realiza operaciones relacionadas al profesor.
  */
 public class GestorLaboratorio implements GestorBase<Laboratorio> {
-
     
-            
-            
     private static ArrayList<Laboratorio> laboratorios = new ArrayList<Laboratorio>();
     LaboratorioDao dao = FactoryDao.getInstance().getLaboratorioDao();
  
@@ -24,6 +21,15 @@ public class GestorLaboratorio implements GestorBase<Laboratorio> {
 //         UnescapeUtil.unescapeAudit(profesor);
 //        profesores.add(profesor);
         dao.registrar(laboratorio);
+    }
+    
+    @Override
+
+    public void actualizar( String codigo,String nombre, String descripcion, String local) {
+//        UnescapeUtil.unescapeInstance(profesor);
+//         UnescapeUtil.unescapeAudit(profesor);
+//        profesores.add(profesor);
+        dao.actualizar(codigo,nombre,descripcion,local);
     }
 
     
@@ -45,17 +51,17 @@ public class GestorLaboratorio implements GestorBase<Laboratorio> {
     public void eliminarPorCodigo(final String codigo) {
         // Al eliminar, el estado del profesor 
         // se cambia a inactivo
-//        Profesor profesor = consultarPorCodigo(codigo);
-//        profesor.setEstado(EstadoProfesor.Inactivo);
+        dao.eliminarPorCodigo(codigo);
     }
 
     
     @Override
     public Laboratorio consultarPorCodigo(final String codigo) {
-     Laboratorio laboratorio = new Laboratorio() {{setCodigo(codigo);}};
-      return laboratorios.get(laboratorios.indexOf(laboratorio));
         
-        
+//     Laboratorio laboratorio = new Laboratorio() {{setCodigo(codigo);}};
+//      return laboratorios.get(laboratorios.indexOf(laboratorio));
+        return dao.consultarPorCodigo(codigo);
+                
     }
 
     protected void borrarTodos() {

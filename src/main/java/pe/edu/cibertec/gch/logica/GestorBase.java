@@ -1,6 +1,7 @@
 package pe.edu.cibertec.gch.logica;
 
 import java.util.List;
+import pe.edu.cibertec.gch.modelo.Laboratorio;
 
 /**
  *
@@ -11,4 +12,5 @@ public interface GestorBase<T> {
     void eliminarPorCodigo(final String codigo);
     T consultarPorCodigo(final String codigo);
     void registrar(T entidad);
+    void actualizar( final String codigo, String nombre, String descripcion, String local);
 }
