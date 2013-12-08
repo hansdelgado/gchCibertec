@@ -20,7 +20,7 @@ public class RegistroLaboratorioServlet extends HttpServlet {
     private GestorLaboratorio    gestorLaboratorio = new GestorLaboratorio();
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         final String codigo = req.getParameter("codigo"),
                 nombre = req.getParameter("nombre"),
                 descripcion = req.getParameter("descripcion"),
@@ -37,7 +37,7 @@ public class RegistroLaboratorioServlet extends HttpServlet {
          nuevoLaboratorio.setLocal(local);
          nuevoLaboratorio.setPabellon(pabellon);
          nuevoLaboratorio.setSalon(salon);
-         nuevoLaboratorio.setCapacidad(Integer.parseInt(capacidad));
+//         nuevoLaboratorio.setCapacidad(Integer.parseInt(capacidad));
 //         nuevoLaboratorio.setEstado(estado);
                  
         

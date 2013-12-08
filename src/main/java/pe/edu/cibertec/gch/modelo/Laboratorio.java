@@ -119,4 +119,23 @@ public class Laboratorio implements Serializable{
         this.estado = estado;
         return this;
     }
+    
+     public boolean tieneDatosObligatorios() {
+        boolean faltaCodigo = (null == getCodigo()),
+                faltaNombre = (null == getNombre()),
+                faltaDescripcion = (null == getDescripcion()),
+                faltaLocal = (null == getLocal());
+        // se puede devolver directamente el resultado de la condicion,
+        if (faltaCodigo
+                || faltaNombre
+                || faltaDescripcion
+                || faltaLocal) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+    
+    
+    
 }
