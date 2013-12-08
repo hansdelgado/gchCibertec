@@ -26,5 +26,20 @@ public enum EstadoLaboratorio {
     /**
      * El laboratorio tiene otros planes para el laboratorio.
      */
-    NoDisponible
+    NoDisponible;
+    
+     public static EstadoLaboratorio obtenerSegun(String estado) {
+        switch (estado) {
+            case "1":
+                return Implementado;
+            case "2":
+                return PendienteImplementacion;
+            case "3":
+                return ConProblemas;
+            case "4":
+                return Deshabilitado;
+            default:
+                return NoDisponible;
+        }
+    }
 }

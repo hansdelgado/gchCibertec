@@ -26,7 +26,7 @@
             </div>
             <div>
                 <label for="local">
-                    Lacal
+                    Local
                 </label>
                 <input type="search" name="local" id="local" maxlength="50" />
             </div>
@@ -54,12 +54,16 @@
         </nav>
     </div>
     <div>
+        <strong>Laboratorios registrados</strong>
         <ul id="resultadoConsulta">
             <li class="cabeceraConsulta">
                 <span>Codigo</span>
                 <span>Nombre</span>
                 <span>Descripcion</span>
                 <span>Local</span>
+                <span>Pabellon</span>
+                <span>Salon</span>
+                <span>Capacidad</span>
                 <span>Estado</span>
             </li>
             <c:forEach var="laboratorio" items="${requestScope.laboratorios}" >
@@ -68,6 +72,9 @@
                     <span>${laboratorio.nombre}</span>
                     <span>${laboratorio.descripcion}</span>
                     <span>${laboratorio.local}</span>
+                    <span>${laboratorio.pabellon}</span>
+                    <span>${laboratorio.salon}</span>
+                    <span>${laboratorio.capacidad}</span>
                     <span>${laboratorio.estado}</span>
                 </li>
             </c:forEach>

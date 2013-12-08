@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import pe.edu.cibertec.gch.logica.GestorLaboratorio;
+import pe.edu.cibertec.gch.modelo.EstadoLaboratorio;
 
 import pe.edu.cibertec.gch.modelo.Laboratorio;
 
@@ -30,17 +31,25 @@ public class RegistroLaboratorioServlet extends HttpServlet {
                 capacidad = req.getParameter("capacidad"),
                 estado = req.getParameter("estado");
        
-         Laboratorio nuevoLaboratorio = new Laboratorio();
-         nuevoLaboratorio.setCodigo(codigo);
-         nuevoLaboratorio.setNombre(nombre);
-         nuevoLaboratorio.setDescripcion(descripcion);
-         nuevoLaboratorio.setLocal(local);
-         nuevoLaboratorio.setPabellon(pabellon);
-         nuevoLaboratorio.setSalon(salon);
-         nuevoLaboratorio.setCapacidad(Integer.parseInt(capacidad));
-//         nuevoLaboratorio.setEstado(estado);
+//         Laboratorio nuevoLaboratorio = new Laboratorio();
+//         nuevoLaboratorio.setCodigo(codigo);
+//         nuevoLaboratorio.setNombre(nombre);
+//         nuevoLaboratorio.setDescripcion(descripcion);
+//         nuevoLaboratorio.setLocal(local);
+//         nuevoLaboratorio.setPabellon(pabellon);
+//         nuevoLaboratorio.setSalon(salon);
+//         nuevoLaboratorio.setCapacidad(Integer.parseInt(capacidad));
+//         nuevoLaboratorio.setEstado(EstadoLaboratorio.obtenerSegun(estado));
                  
-        
+         Laboratorio nuevoLaboratorio = new Laboratorio().conCodigo(codigo)
+                 .conNombre(nombre)
+                 .conDescripcion(descripcion)
+                 .conLocal(local)
+                 .conPabellon(pabellon)
+                 .conSalon(salon)
+                 .conCapacidad(Integer.parseInt(capacidad))
+                 .conEstado(EstadoLaboratorio.obtenerSegun(estado));
+                 
         gestorLaboratorio.registrar(nuevoLaboratorio);
         resp.sendRedirect("listarLaboratorios");
     }
