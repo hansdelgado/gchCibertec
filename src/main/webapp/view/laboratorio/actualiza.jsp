@@ -18,15 +18,15 @@
                 <label for="codigo">
                     C&oacute;digo
                 </label>
-                <output name="codigo" id="codigo" value="${laboratorio.codigo}" />
-                <!--<input type="text" name="codigo" maxlength="8" required autofocus  value="${laboratorio.codigo}" disabled="true">-->
+
+                <input type="text" name="codigo" maxlength="8" value="${laboratorio.codigo}" readonly="true" >
             </div>
         </fieldset>
         <fieldset>
             <legend>Datos del Laboratorio</legend>
             <div>
                 <label for="nombre">Nombres</label>
-                <input type="text" name="nombre" required maxlength="50" value="${laboratorio.nombre}" />
+                <input type="text" name="nombre" required maxlength="50" required autofocus  value="${laboratorio.nombre}" />
             </div>
             <div>
                 <label for="descripcion">Descripcion</label>
