@@ -49,10 +49,13 @@
             </div>
              <div>
                 <span>Estado</span>
-                <label for="estado">Activo</label>
-                <input type="radio" name="estado" id="activo"  default value="1" />
-                <label for="estado">Inactivo</label>
-                <input type="radio" name="estado" id="inactivo" value="0" />
+                <select name="estado">
+                    <option value="1">Implementado</option>
+                    <option value="2">Pendiente de Implementacion</option>
+                    <option value="3">Con Problemas</option>
+                    <option value="4">Deshabilitado</option>
+                    <option value="5">No Disponible</option>
+                </select>                
             </div>
 
         </fieldset>

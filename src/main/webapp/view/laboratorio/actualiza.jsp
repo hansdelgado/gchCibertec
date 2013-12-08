@@ -18,7 +18,8 @@
                 <label for="codigo">
                     C&oacute;digo
                 </label>
-                <input type="text" name="codigo" maxlength="8" required autofocus  value="${laboratorio.codigo}" >
+                <output name="codigo" id="codigo" value="${laboratorio.codigo}" />
+                <!--<input type="text" name="codigo" maxlength="8" required autofocus  value="${laboratorio.codigo}" disabled="true">-->
             </div>
         </fieldset>
         <fieldset>
@@ -35,8 +36,29 @@
                 <label for="local">Local</label>
                 <input type="text" name="local" required maxlength="50" value="${laboratorio.local}" />
             </div>
+            <div>
+                <label for="pabellon">Pabellon</label>
+                <input type="text" id="pabellon" name="pabellon" required maxlength="50" value="${laboratorio.pabellon}"/>
+            </div>
+            <div>
+                <label for="salon">Salon</label>
+                <input type="text" id="salon" name="salon" required maxlength="50" value="${laboratorio.salon}"/>
+            </div>
+            <div>
+                <label for="capacidad">Capacidad</label>
+                <input type="text" id="capacidad" name="capacidad" required maxlength="50" value="${laboratorio.capacidad}"/>
+            </div>
             
-
+            <div>
+                <span>Estado</span>
+                <select name="estado">
+                    <option value="1">Implementado</option>
+                    <option value="2">Pendiente de Implementacion</option>
+                    <option value="3">Con Problemas</option>
+                    <option value="4">Deshabilitado</option>
+                    <option value="5">No Disponible</option>
+                </select>                
+            </div>
         </fieldset>
 
                     <input type="Submit" name="operacion" value="Actualizar" />
