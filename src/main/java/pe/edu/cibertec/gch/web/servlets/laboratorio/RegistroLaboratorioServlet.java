@@ -31,17 +31,6 @@ public class RegistroLaboratorioServlet extends HttpServlet {
                 capacidad = req.getParameter("capacidad"),
                 estado = req.getParameter("estado");
        
-<<<<<<< HEAD
-         Laboratorio nuevoLaboratorio = new Laboratorio();
-         nuevoLaboratorio.setCodigo(codigo);
-         nuevoLaboratorio.setNombre(nombre);
-         nuevoLaboratorio.setDescripcion(descripcion);
-         nuevoLaboratorio.setLocal(local);
-         nuevoLaboratorio.setPabellon(pabellon);
-         nuevoLaboratorio.setSalon(salon);
-//         nuevoLaboratorio.setCapacidad(Integer.parseInt(capacidad));
-//         nuevoLaboratorio.setEstado(estado);
-=======
 //         Laboratorio nuevoLaboratorio = new Laboratorio();
 //         nuevoLaboratorio.setCodigo(codigo);
 //         nuevoLaboratorio.setNombre(nombre);
@@ -60,7 +49,6 @@ public class RegistroLaboratorioServlet extends HttpServlet {
                  .conSalon(salon)
                  .conCapacidad(Integer.parseInt(capacidad))
                  .conEstado(EstadoLaboratorio.obtenerSegun(estado));
->>>>>>> f509052c851ec08c499561cb5c08955e2777fe74
                  
         gestorLaboratorio.registrar(nuevoLaboratorio);
         resp.sendRedirect("listarLaboratorios");

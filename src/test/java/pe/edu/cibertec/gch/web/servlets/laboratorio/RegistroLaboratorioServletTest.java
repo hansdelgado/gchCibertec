@@ -39,10 +39,16 @@ public class RegistroLaboratorioServletTest {
     @Test
     public void registroDeLaboratorioValido() throws Exception {
         //ingreso de datos
+       
+        
         when(req.getParameter("codigo")).thenReturn("1005");
         when(req.getParameter("nombre")).thenReturn("Lab3");
         when(req.getParameter("descripcion")).thenReturn("Java");
         when(req.getParameter("local")).thenReturn("LOCAL1");
+        when(req.getParameter("pabellon")).thenReturn("F");
+        when(req.getParameter("salon")).thenReturn("c202");
+        when(req.getParameter("capacidad")).thenReturn("2");
+        when(req.getParameter("estado")).thenReturn("Implementado");
         registroLaboratorioServlet.doPost(req, resp);
         //verificacion
         verify(resp).sendRedirect("listarLaboratorios");
@@ -54,6 +60,10 @@ public class RegistroLaboratorioServletTest {
         when(req.getParameter("nombre")).thenReturn("Lab9");
         when(req.getParameter("descripcion")).thenReturn("Java");
         when(req.getParameter("local")).thenReturn("LOCAL1");
+        when(req.getParameter("pabellon")).thenReturn("F");
+        when(req.getParameter("salon")).thenReturn("c202");
+        when(req.getParameter("capacidad")).thenReturn("2");
+        when(req.getParameter("estado")).thenReturn("Implementado");
         registroLaboratorioServlet.doPost(req, resp);
         verify(req).setAttribute("mensaje", "Hay errores en los datos enviados");
       
