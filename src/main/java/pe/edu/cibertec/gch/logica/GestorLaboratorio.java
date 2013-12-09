@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import pe.edu.cibertec.gch.dao.FactoryDao;
 import pe.edu.cibertec.gch.dao.laboratorio.LaboratorioDao;
+import pe.edu.cibertec.gch.modelo.EstadoLaboratorio;
 import pe.edu.cibertec.gch.modelo.Laboratorio;
 import pe.edu.cibertec.gch.modelo.TipoBusqueda;
 
@@ -22,17 +23,7 @@ public class GestorLaboratorio implements GestorBase<Laboratorio> {
 //        profesores.add(profesor);
         dao.registrar(laboratorio);
     }
-    
-    @Override
-
-    public void actualizar( String codigo,String nombre, String descripcion, String local) {
-//        UnescapeUtil.unescapeInstance(profesor);
-//         UnescapeUtil.unescapeAudit(profesor);
-//        profesores.add(profesor);
-        dao.actualizar(codigo,nombre,descripcion,local);
-    }
-
-    
+      
     @Override
     public List<Laboratorio> listarTodos() {
 //        Laboratorio l = new Laboratorio();
@@ -67,4 +58,9 @@ public class GestorLaboratorio implements GestorBase<Laboratorio> {
     protected void borrarTodos() {
 //        profesores.clear();
     }
+
+    public void actualizar(String codigo, String nombre, String descripcion, String local, String pabellon, String salon, Integer capacidad, EstadoLaboratorio estado) {
+        dao.actualizar(codigo,nombre,descripcion,local,pabellon,salon,capacidad,estado);
+    }
+
 }
