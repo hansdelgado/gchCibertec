@@ -35,7 +35,6 @@ public class LaboratorioDaoImpl implements LaboratorioDao {
         lab.setPabellon("F");
         lab.setSalon("202");
         lab.setCapacidad(20);
-        
         lab.setEstado(EstadoLaboratorio.ConProblemas);
         laboratorios.add(lab);
         

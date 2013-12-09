@@ -1,13 +1,9 @@
 package pe.edu.cibertec.gch.validaciones;
 
-import java.util.Calendar;
-import java.util.Map;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 
 public class ValidacionLaboratorio extends Validacion {
-
-    private static final Logger LOG = Logger.getLogger(ValidacionLaboratorio.class.getName());
 
     @Override
     public void validar(HttpServletRequest req) {
@@ -37,7 +33,7 @@ public class ValidacionLaboratorio extends Validacion {
            
             validarRegistro(textoRegistroLaboratorioCodigo, textoRegistroLaboratorioNombre, 
                     textoRegistroLaboratorioDescripcion, textoRegistroLaboratorioLocal, textoRegistroLaboratorioPabellon, 
-                    textoRegistroLaboratorioSalon, textoRegistroLaboratorioCapacidad, textoRegistroLaboratorioEstado);
+                    textoRegistroLaboratorioSalon, Integer.parseInt(textoRegistroLaboratorioCapacidad), textoRegistroLaboratorioEstado);
 
             setPaginaReenvio("view/laboratorio/registro.jsp");          
         }
@@ -55,7 +51,7 @@ public class ValidacionLaboratorio extends Validacion {
 
     private void validarRegistro(String textoRegistroLaboratorioCodigo, String textoRegistroLaboratorioNombre, 
             String textoRegistroLaboratorioDescripcion, String textoRegistroLaboratorioLocal, String textoRegistroLaboratorioPabellon, 
-            String textoRegistroLaboratorioSalon, String textoRegistroLaboratorioCapacidad, String textoRegistroLaboratorioEstado) {
+            String textoRegistroLaboratorioSalon, Integer textoRegistroLaboratorioCapacidad, String textoRegistroLaboratorioEstado) {
         // por cada parametro, validar
         if (textoRegistroLaboratorioCodigo.isEmpty() || !textoRegistroLaboratorioCodigo.matches("\\w{5,6}")) {
             errores.put("codigo", "El codigo es obligatorio y debe tener cinco o seis caracteres");
@@ -64,7 +60,8 @@ public class ValidacionLaboratorio extends Validacion {
             errores.put("nombres", "El nombre es obligatorios y se permite hasta 10 caracteres");
         }
         if (textoRegistroLaboratorioLocal.isEmpty() || textoRegistroLaboratorioLocal.length() > 10) {
-            errores.put("apellidoPaterno", "El local es obligatorio y se permite hasta 10 caracteres");
+            errores.put("local", "El local es obligatorio y se permite hasta 10 caracteres");
         }
+   
     }
 }

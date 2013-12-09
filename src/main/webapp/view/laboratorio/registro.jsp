@@ -48,7 +48,7 @@
                 <input type="text" id="capacidad" name="capacidad" required maxlength="50" />
             </div>
              <div>
-                <span>Estado</span>
+                <label for="estado">Estado</label>
                 <select name="estado">
                     <option value="1">Implementado</option>
                     <option value="2">Pendiente de Implementacion</option>

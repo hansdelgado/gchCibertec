@@ -67,7 +67,6 @@ public class RegistroLaboratorioServletTest {
        registroLaboratorioServlet.doPost(req, resp);
        verify(req).setAttribute("mensaje", "Hay errores en los datos enviados");
       
-       
    }
      
     @After
