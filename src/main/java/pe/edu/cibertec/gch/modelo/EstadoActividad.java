@@ -15,5 +15,7 @@ public enum EstadoActividad {
      * principal del curso/programa ya no tiene sentido de seguir siendo dictado.
      * En el caso de horario, que ya no aplica este rango horario.
      */
-    Obsoleto
+    Obsoleto,
+    Activo,
+    Inactivo
 }

@@ -14,6 +14,8 @@ import pe.edu.cibertec.gch.modelo.Horario;
  */
 public interface HorarioDao extends BaseDao<Horario>  {
     void eliminarPorCodigo(final String codigo);
+    //creado por nosotros
+    public Horario Recuperar(final String codigo);
     Horario consultarPorCodigo(final String codigo);
     List<Horario> listarSegun(final String nombre, String apellidoPaterno, String apellidoMaterno);
     void actualizar(Horario horario);

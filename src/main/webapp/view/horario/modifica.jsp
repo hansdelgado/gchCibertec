@@ -1,24 +1,21 @@
+
+<%@page import="pe.edu.cibertec.gch.modelo.Horario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="gch" uri="/WEB-INF/tlds/gch" %>
-<gch:base titulo="Registro de Horarios">
+<gch:base titulo="Modificar Horario">
     <div class="informacion">
         <span>${mensaje}</span>
     </div>
+    
     <form action="registrarHorario" method="post">
-        <div class="informacion" style="display: ${empty requestScope.errores ? 'none' : 'block'}">
-            <ul>
-                <c:forEach var="error" items="${requestScope.errores}">
-                    <li>${error.value}</li>
-                </c:forEach>
-            </ul>
-        </div>
         <fieldset>
             <legend>Datos</legend>
+            <!--${requestScope.horarios}-->
             <div>
                 <label for="codigo">
                     C&oacute;digo
                 </label>
-                <input type="text" id="codigo" name="codigo" maxlength="8" required autofocus >
+                <input type="text" id="codigo" name="codigo" maxlength="8" value="${horario.codigo}" required autofocus >
             </div>
             <div>                           
                 <label for="descripcion">Descripci&oacute;n</label>

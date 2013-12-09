@@ -19,13 +19,15 @@ import pe.edu.cibertec.gch.validaciones.ValidacionFactory;
  * Intercepta los requests a los servlets de mi aplicacion y asegura que los
  * parametros sean validos para ser consumidos por los servlets.
  */
-@WebFilter(filterName = "ValidacionProfesorInputFilter", urlPatterns = {"/prof"})
+@WebFilter(filterName = "ValidacionProfesorInputFilter", urlPatterns = {"/registrarProfesor"})
+
 public class ValidacionProfesorInputFilter implements Filter {
 
   private static final Logger LOG = Logger.getLogger(ValidacionProfesorInputFilter.class.getName());
-    
+  
   private void doBeforeProcessing(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
+      System.out.println("BEFORE filtro profesor");
         HttpServletRequest req = (HttpServletRequest) request;
         req.removeAttribute("errores");
         request.setCharacterEncoding("UTF-8");
@@ -41,10 +43,10 @@ public class ValidacionProfesorInputFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response,
-            FilterChain chain)
+            FilterChain chain)         
             throws IOException, ServletException {
+        System.out.println("do filter");
         doBeforeProcessing(request, response, chain);
-        // REENVIO AL SERVLET
         chain.doFilter(request, response);
         //doAfterProcessing(request, response);
     }
@@ -62,10 +64,13 @@ public class ValidacionProfesorInputFilter implements Filter {
         // determinacion del lugar a donde debe ir el request
         if (errores.isEmpty()) {
             chain.doFilter(request, response);
+            System.out.println("reenvio del filter");
+            System.out.println(response);
         } else {
             req.setAttribute("errores", errores);
             req.getRequestDispatcher(paginaReenvio).forward(request, response);
             LOG.log(Level.SEVERE, "Errores en el registro" + errores.keySet().toString());
         }
     }
+
 }

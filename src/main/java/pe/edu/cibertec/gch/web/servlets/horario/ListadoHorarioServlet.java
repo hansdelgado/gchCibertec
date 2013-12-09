@@ -19,21 +19,19 @@ import pe.edu.cibertec.gch.web.servlets.GchServletUtils;
  *
  * @author LIBIO
  */
-
-    @WebServlet(name = "ListadoHorarioServlet", urlPatterns = {"/listarHorarios"})
-    
+@WebServlet(name = "ListadoHorarioServlet", urlPatterns = {"/listarHorarios"})
 public class ListadoHorarioServlet extends HttpServlet {
 
-    private GestorHorario gestorHorairo = new GestorHorario();
+    private GestorHorario gestorHorario = new GestorHorario();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // trae los profesores en la fuente de datos
-        List<Horario> horarios = gestorHorairo.listarTodos();
+        // trae los horarioes en la fuente de datos
+        List<Horario> horarios = gestorHorario.listarTodos();
         // almacena resultado en el request
         req.setAttribute("horarios", horarios);
         // pinta los datos en el listado
+        System.out.println("listado horario servlet -> reenviarmodulo");
         GchServletUtils.reenviarAModulo("horario", req, resp);
     }
 }
-

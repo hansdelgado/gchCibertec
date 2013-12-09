@@ -18,7 +18,7 @@ public final class GchServletUtils {
 
     public static void reenviarAModulo(String moduloDeseado, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String paginaRedireccion = String.format(BASE_MODULOS, moduloDeseado);
-        System.out.println(paginaRedireccion);
+        System.out.println(paginaRedireccion + "gch utils");
         req.getRequestDispatcher(paginaRedireccion).forward(req, resp);
     }
      public static void reenviarARegistro(String moduloDeseado, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

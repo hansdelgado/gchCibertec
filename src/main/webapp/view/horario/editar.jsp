@@ -1,17 +1,11 @@
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="gch" uri="/WEB-INF/tlds/gch" %>
 <gch:base titulo="Registro de Horarios">
     <div class="informacion">
         <span>${mensaje}</span>
     </div>
-    <form action="registrarHorario" method="post">
-        <div class="informacion" style="display: ${empty requestScope.errores ? 'none' : 'block'}">
-            <ul>
-                <c:forEach var="error" items="${requestScope.errores}">
-                    <li>${error.value}</li>
-                </c:forEach>
-            </ul>
-        </div>
+    <form action="editarHorario" method="post">
         <fieldset>
             <legend>Datos</legend>
             <div>
@@ -37,6 +31,6 @@
                 <input type="text" id="estado" name="estado" required maxlength="15" />
             </div>
         </fieldset>
-        <button>Registrar</button>
+        <button>Guardar Cambios</button>
     </form>
 </gch:base>

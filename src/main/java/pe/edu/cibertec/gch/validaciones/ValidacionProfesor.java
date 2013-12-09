@@ -21,7 +21,7 @@ public class ValidacionProfesor extends Validacion {
                     textoBusquedaProfesorApellidoMaterno = req.getParameter("apellidoMaterno"),
                     textoBusquedaProfesorTipoBusqueda = req.getParameter("tipoBusqueda");
             validarBusqueda(textoBusquedaProfesorNombres, textoBusquedaProfesorApellidoPaterno, textoBusquedaProfesorApellidoMaterno, textoBusquedaProfesorTipoBusqueda);
-
+            System.out.println("estamos en validacion profesor");
             setPaginaReenvio("view/profesor/index.jsp");
 
         } else if (req.getServletPath().startsWith("registrarProfesor", 1)) {

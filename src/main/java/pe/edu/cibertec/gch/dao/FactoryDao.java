@@ -21,6 +21,7 @@ public class FactoryDao {
         return new ProfesorDaoImplMemoria();
     }
     
+    //estamos agregando al factory el objeto a crear dao de horario
     public HorarioDao getHorarioDao() {
         return new HorarioDaoImplMemoria();
     }
