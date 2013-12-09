@@ -19,12 +19,6 @@
                 <input type="search" name="nombre" id="nombre" maxlength="50" />
             </div>
             <div>
-                <label for="descripcion">
-                    Descripcion
-                </label>
-                <input type="search" name="descripcion" id="descripcion" maxlength="50" />
-            </div>
-            <div>
                 <label for="local">
                     Local
                 </label>
