@@ -50,8 +50,8 @@
             </div>
             
             <div>
-                <span>Estado</span>
-                <select name="estado">
+                <label for="estado">Estado</label>
+                <select name="estado" value="${laboratorio.estado}">
                     <option value="1">Implementado</option>
                     <option value="2">Pendiente de Implementacion</option>
                     <option value="3">Con Problemas</option>

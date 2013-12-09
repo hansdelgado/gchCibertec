@@ -12,14 +12,7 @@ import pe.edu.cibertec.gch.modelo.TipoBusqueda;
 public class LaboratorioDaoImpl implements LaboratorioDao {
 
     private static ArrayList<Laboratorio> laboratorios = new ArrayList<Laboratorio>();
-    private String codigo;
-    private String nombre;
-    private String descripcion;
-    private String local;
-    private String pabellon;
-    private String salon;
-    private int capacidad;
-    private EstadoLaboratorio estado;
+  
     
     static {
         Laboratorio lab;
@@ -32,8 +25,6 @@ public class LaboratorioDaoImpl implements LaboratorioDao {
         lab.setSalon("202");
         lab.setCapacidad(33);
         lab.setEstado(EstadoLaboratorio.Implementado);
-        
-        lab.setEstado(EstadoLaboratorio.Implementado);
         laboratorios.add(lab);
         
         lab=new Laboratorio();
@@ -41,6 +32,9 @@ public class LaboratorioDaoImpl implements LaboratorioDao {
         lab.setNombre("Lab2");
         lab.setDescripcion("Java 2");
         lab.setLocal("LOCAL2");
+        lab.setPabellon("F");
+        lab.setSalon("202");
+        lab.setCapacidad(20);
         
         lab.setEstado(EstadoLaboratorio.ConProblemas);
         laboratorios.add(lab);
@@ -50,6 +44,9 @@ public class LaboratorioDaoImpl implements LaboratorioDao {
         lab.setNombre("Lab3");
         lab.setDescripcion("Java 3");
         lab.setLocal("LOCAL3");
+        lab.setPabellon("F");
+        lab.setSalon("205");
+        lab.setCapacidad(38);
         lab.setEstado(EstadoLaboratorio.Implementado);
         laboratorios.add(lab);
     }
@@ -79,13 +76,12 @@ public class LaboratorioDaoImpl implements LaboratorioDao {
            encontrados.add(lab);
            }
         }
-//        return laboratorios;
         return encontrados;
     }
 
     @Override
     public void eliminarPorCodigo(String codigo) {
-        // Al eliminar, el estado del profesor 
+        // Al eliminar, el estado del laboratorio
         // se cambia a inactivo
         Laboratorio laboratorio = consultarPorCodigo(codigo);
         laboratorio.setEstado(EstadoLaboratorio.Deshabilitado);
