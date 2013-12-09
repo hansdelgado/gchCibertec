@@ -17,7 +17,7 @@ import pe.edu.cibertec.gch.web.servlets.GchServletUtils;
  * Intercepta los requests a los servlets de mi aplicacion y asegura que los
  * parametros sean validos para ser consumidos por los servlets.
  */
-@WebFilter(filterName = "ValidacionProgramaInputFilter", urlPatterns = {"/registrarPrograma"})
+@WebFilter(filterName = "ValidacionProgramaInputFilter", urlPatterns = {"/registrarPrograma", "/actualizarPrograma"})
 public class ValidacionProgramaInputFilter implements Filter {
 
     private FilterConfig filterConfig = null;
@@ -39,6 +39,12 @@ public class ValidacionProgramaInputFilter implements Filter {
             for (String name : request.getParameterMap().keySet()) {
                 request.setAttribute(name, request.getParameter(name));
             }
+
+            String alias = ((HttpServletRequest) request).getServletPath();
+
+            if (alias.equals("/actualizarPrograma")) {
+                GchServletUtils.reenviarAModificar("programa", (HttpServletRequest) request, (HttpServletResponse) response);
+            }
             GchServletUtils.reenviarARegistro("programa", (HttpServletRequest) request, (HttpServletResponse) response);
         } else {
             // dejamos pasar los datos al servlet
@@ -55,6 +61,9 @@ public class ValidacionProgramaInputFilter implements Filter {
                 descripcion = request.getParameter("descripcion"),
                 objetivos = request.getParameter("objetivos"),
                 requisitos = request.getParameter("requisitos"),
+                moneda = request.getParameter("moneda"),
+                fecha = request.getParameter("fecha"),
+                duracion = request.getParameter("duracion"),
                 precio = request.getParameter("precio");
 
         // realizamos algunas validaciones 
@@ -63,6 +72,15 @@ public class ValidacionProgramaInputFilter implements Filter {
         } catch (NumberFormatException nfe) {
             errores.put("codigo", "el codigo debe contener solo numeros");
         }
+
+        try {
+            if (Integer.parseInt(duracion) > 140) {
+                errores.put("duracion", "la duracion maxima es de 140");
+            }
+        } catch (NumberFormatException nfe) {
+            errores.put("duracion", "la duracion debe contener solo numeros");
+        }
+
         try {
             if (Double.parseDouble(precio) > 5000) {
                 errores.put("precio", "el precio maximo es 5000 soles");
@@ -97,6 +115,13 @@ public class ValidacionProgramaInputFilter implements Filter {
             errores.put("requisitos", "requisitos no debe estar vacio");
         }
 
+        if (moneda.isEmpty()) {
+            errores.put("moneda", "debe seleccionar su tipo de moneda");
+        }
+
+        if (!fecha.matches("\\d{1,4}[/-]\\d{1,2}[/-]\\d{1,4}")) {
+            errores.put("requisitos", "la fecha ingresada no cumple con el formato. (ejemplo 12/05/2013) ");
+        }
 
         return errores;
     }
