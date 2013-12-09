@@ -19,6 +19,6 @@ public class ReenvioRegistroProgramaServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("/view/programa/registro.jsp");
         requestDispatcher.forward(req, resp);
-        // nuevo comentario
+
     }
 }

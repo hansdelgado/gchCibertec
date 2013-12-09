@@ -48,7 +48,14 @@ public class ProgramaDaoImp implements ProgramaDao {
     }
 
     @Override
-    public Programa consultarPorCodigo(String codigo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Programa consultarPorCodigo(final String codigo) {
+        Programa programa = new Programa();
+        programa.setCodigo(codigo);
+        return programas.get(programas.indexOf(programa));
+    }
+
+    @Override
+    public void modificarPorCodigo(Programa pro) {
+        programas.set(programas.indexOf(pro), pro);
     }
 }
