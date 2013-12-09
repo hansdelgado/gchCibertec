@@ -41,7 +41,14 @@
                 <label for="requisitos">Requisitos</label>
                 <input type="text" id="requisitos" name="requisitos" value="${requisitos}"  maxlength="400" class="ancho" />
             </div>
-    
+            <div>
+                <label for="moneda">Moneda</label>
+                <select name="moneda">
+                    <option value="" <c:if test="${moneda == ''}">selected</c:if> >----Seleccione----</option>
+                    <option value="NS" <c:if test="${moneda == 'NS'}">selected</c:if> >Nuevo Soles</option>
+                    <option value="D" <c:if test="${moneda == 'D'}">selected</c:if> >Dolares</option>
+                    </select>
+                </div>
                 <div>
                     <label for="precio">Precio</label>
                     <input type="text" id="precio" name="precio" value="${precio}" maxlength="400" />
