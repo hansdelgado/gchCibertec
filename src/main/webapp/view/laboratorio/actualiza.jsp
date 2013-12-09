@@ -48,21 +48,22 @@
                 <label for="capacidad">Capacidad</label>
                 <input type="text" id="capacidad" name="capacidad" required maxlength="50" value="${laboratorio.capacidad}"/>
             </div>
-            
-            <div>
+             <div>
                 <label for="estado">Estado</label>
-                <select name="estado" value="${laboratorio.estado}">
-                    <option value="1">Implementado</option>
-                    <option value="2">Pendiente de Implementacion</option>
-                    <option value="3">Con Problemas</option>
-                    <option value="4">Deshabilitado</option>
-                    <option value="5">No Disponible</option>
-                </select>                
-            </div>
+                <select name="estado">
+                    <option value="" <c:if test="${laboratorio.estado == ''}">selected</c:if> >----Seleccione----</option>
+                    <option value="1" <c:if test="${laboratorio.estado == 'Implementado'}">selected</c:if> >Implementado</option>
+                    <option value="2" <c:if test="${laboratorio.estado == 'PendientedeImplementacion'}">selected</c:if> >Pendiente de Implementacion</option>
+                    <option value="3" <c:if test="${laboratorio.estado == 'ConProblemas'}">selected</c:if> >Con Problemas</option>
+                    <option value="4" <c:if test="${laboratorio.estado == 'Deshabilitado'}">selected</c:if> >Deshabilitado</option>
+                    <option value="5" <c:if test="${laboratorio.estado == 'NoDisponible'}">selected</c:if> >No Disponible</option>
+                </select>
+                </div>
+            
         </fieldset>
 
-                    <input type="Submit" name="operacion" value="Actualizar" />
-                    <input type="Submit" name="operacion" value="Borrar" />
+                    <input type="Submit" name="operacion" value="Actualizar" /> <input type="Submit" name="operacion" value="Borrar" />
+
 
     </form>
 </gch:base>
