@@ -12,5 +12,4 @@ public interface GestorBase<T> {
     void eliminarPorCodigo(final String codigo);
     T consultarPorCodigo(final String codigo);
     void registrar(T entidad);
-    void actualizar( final String codigo, String nombre, String descripcion, String local);
 }
