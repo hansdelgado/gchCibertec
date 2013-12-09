@@ -8,8 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import pe.edu.cibertec.gch.dao.FactoryDao;
-import pe.edu.cibertec.gch.dao.ProgramaDao;
+import pe.edu.cibertec.gch.logica.GestorPrograma;
 import pe.edu.cibertec.gch.modelo.EstadoActividad;
 import pe.edu.cibertec.gch.modelo.Moneda;
 import pe.edu.cibertec.gch.modelo.Programa;
@@ -20,7 +19,8 @@ import pe.edu.cibertec.gch.modelo.Programa;
 @WebServlet(name = "ActualizaProgramaServlet", urlPatterns = {"/actualizarPrograma"})
 public class ActualizaProgramaServlet extends HttpServlet {
 
-    private ProgramaDao programaDao = FactoryDao.getInstance().getProgramaDao();
+    //private ProgramaDao programaDao = FactoryDao.getInstance().getProgramaDao();
+    private GestorPrograma gestorPrograma = new GestorPrograma();
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -39,7 +39,7 @@ public class ActualizaProgramaServlet extends HttpServlet {
         update.setFechaInicial(fechaToDate(req.getParameter("fecha")));
         update.setDuracion(Integer.parseInt(req.getParameter("duracion")));
 
-        programaDao.modificarPorCodigo(update);
+        gestorPrograma.modificarPorCodigo(update);
         req.setAttribute("mensaje", "Su programa fué modificado con éxito");
         ListadoProgramaServlet listadoProgramaServlet = new ListadoProgramaServlet();
         listadoProgramaServlet.doGet(req, resp);

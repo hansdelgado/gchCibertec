@@ -17,5 +17,6 @@ public interface ProgramaDao extends GestorBase<Programa> {
 
     public List<Programa> listarSegun(String titulo, String descripcion, String objetivo, TipoBusqueda tipoBusqueda);
 
+    @Override
     public void modificarPorCodigo(Programa pro);
 }

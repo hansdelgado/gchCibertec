@@ -49,16 +49,22 @@ public class GestorPrograma implements GestorBase<Programa> {
 
     @Override
     public void eliminarPorCodigo(String codigo) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        dao.eliminarPorCodigo(codigo);
     }
 
     @Override
     public Programa consultarPorCodigo(String codigo) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return dao.consultarPorCodigo(codigo);
+
     }
 
     @Override
     public void registrar(Programa entidad) {
         dao.registrar(entidad);
+    }
+
+    @Override
+    public void modificarPorCodigo(Programa pro) {
+        dao.modificarPorCodigo(pro);
     }
 }

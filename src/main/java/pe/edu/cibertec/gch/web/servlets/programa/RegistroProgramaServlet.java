@@ -8,8 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import pe.edu.cibertec.gch.dao.FactoryDao;
-import pe.edu.cibertec.gch.dao.ProgramaDao;
+import pe.edu.cibertec.gch.logica.GestorPrograma;
 import pe.edu.cibertec.gch.modelo.EstadoActividad;
 import pe.edu.cibertec.gch.modelo.Moneda;
 import pe.edu.cibertec.gch.modelo.Programa;
@@ -21,8 +20,8 @@ import pe.edu.cibertec.gch.modelo.Programa;
 @WebServlet(name = "RegistroProgramaServlet", urlPatterns = {"/registrarPrograma"})
 public class RegistroProgramaServlet extends HttpServlet {
 
-    //private GestorPrograma gestorPrograma = new GestorPrograma();
-    private ProgramaDao programaDao = FactoryDao.getInstance().getProgramaDao();
+    private GestorPrograma gestorPrograma = new GestorPrograma();
+    //private ProgramaDao programaDao = FactoryDao.getInstance().getProgramaDao();
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -62,7 +61,7 @@ public class RegistroProgramaServlet extends HttpServlet {
          */
 
         //Registro los campos de programa
-        programaDao.registrar(nuevoPrograma);
+        gestorPrograma.registrar(nuevoPrograma);
         //Muestro un mensaje de confirmacion del registro de programas
         req.setAttribute("mensaje", "Su nuevo programa '" + nuevoPrograma.getTitulo() + "' fué agregado con éxito");
         //instancio a mi objeto listadoprogservlet para enviar los resultados

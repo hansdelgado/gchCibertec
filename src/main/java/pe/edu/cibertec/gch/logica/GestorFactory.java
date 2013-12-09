@@ -5,7 +5,8 @@
 package pe.edu.cibertec.gch.logica;
 
 public class GestorFactory {
-    public static GestorProfesor getGestorLaboratorio(){
+
+    public static GestorProfesor getGestorLaboratorio() {
         return new GestorProfesor();
     }
 }

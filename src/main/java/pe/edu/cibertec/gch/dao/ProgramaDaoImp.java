@@ -27,7 +27,7 @@ public class ProgramaDaoImp implements ProgramaDao {
         p.setMoneda(Moneda.DolaresUS);
         p.setPrecio(700);
         p.setEstado(EstadoActividad.Valido);
-        p.setDuracion(150);
+        p.setDuracion(120);
         try {
             p.setFechaInicial(fecha.parse("2013-06-11"));
         } catch (ParseException ex) {
