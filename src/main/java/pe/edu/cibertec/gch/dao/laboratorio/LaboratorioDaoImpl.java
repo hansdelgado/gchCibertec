@@ -61,11 +61,14 @@ public class LaboratorioDaoImpl implements LaboratorioDao {
     }
     
     @Override
-    public void actualizar(String codigo, String nombre, String descripcion, String local) {
+    public void actualizar(String codigo, String nombre, String descripcion, String local,String pabellon,String salon, Integer capacidad,EstadoLaboratorio estado) {
         Laboratorio laboratorio = consultarPorCodigo(codigo);
-        laboratorio.conNombre(nombre);
-        laboratorio.conDescripcion(descripcion);
-        laboratorio.conLocal(local);
+        laboratorio.setNombre(nombre);
+        laboratorio.setDescripcion(descripcion);
+        laboratorio.setLocal(local);
+        laboratorio.setSalon(salon);
+        laboratorio.setCapacidad(capacidad);
+        laboratorio.setEstado(estado);
     }
     
     @Override
