@@ -51,20 +51,14 @@
              <div>
                 <label for="estado">Estado</label>
                 <select name="estado">
-<<<<<<< HEAD
-                    <option value="1" <c:if test="${laboratorio.estado == Implementado}">selected</c:if> >Implementado</option>
-                    <option value="2" <c:if test="${laboratorio.estado == PendientedeImplementacion}">selected</c:if> >Pendiente de Implementacion</option>
-                    <option value="3" <c:if test="${laboratorio.estado == ConProblemas}">selected</c:if> >Con Problemas</option>
-                    <option value="4" <c:if test="${laboratorio.estado == Deshabilitado}">selected</c:if> >Deshabilitado</option>
-                    <option value="5" <c:if test="${laboratorio.estado == NoDisponible}">selected</c:if> >No Disponible</option>
-=======
+
                     <option value="" <c:if test="${laboratorio.estado == ''}">selected</c:if> >----Seleccione----</option>
                     <option value="1" <c:if test="${laboratorio.estado == 'Implementado'}">selected</c:if> >Implementado</option>
                     <option value="2" <c:if test="${laboratorio.estado == 'PendienteImplementacion'}">selected</c:if> >Pendiente de Implementacion</option>
                     <option value="3" <c:if test="${laboratorio.estado == 'ConProblemas'}">selected</c:if> >Con Problemas</option>
                     <option value="4" <c:if test="${laboratorio.estado == 'Deshabilitado'}">selected</c:if> >Deshabilitado</option>
                     <option value="5" <c:if test="${laboratorio.estado == 'NoDisponible'}">selected</c:if> >No Disponible</option>
->>>>>>> c5b0c186de33a073baa9731155d24c16cd89abcb
+
                 </select>
                 </div>
             
