@@ -57,7 +57,13 @@ public class ProgramaDaoImp implements ProgramaDao {
     
     @Override
     public void eliminarPorCodigo(String codigo) {
-        programas.remove(new Programa(codigo));
+        //programas.remove(new Programa(codigo));
+        Programa remover = null;
+        for(Programa programa : programas) {
+            if (programa.getCodigo().equals(codigo))
+                remover = programa;
+        }
+        programas.remove(remover);
     }
     
     @Override

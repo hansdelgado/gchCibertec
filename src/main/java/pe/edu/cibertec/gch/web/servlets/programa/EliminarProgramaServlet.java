@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import pe.edu.cibertec.gch.dao.FactoryDao;
 import pe.edu.cibertec.gch.dao.ProgramaDao;
+import pe.edu.cibertec.gch.web.servlets.GchServletUtils;
 
 /**
  *
@@ -26,7 +27,9 @@ public class EliminarProgramaServlet extends HttpServlet {
         programaDao.eliminarPorCodigo(codigo);
         
         req.setAttribute("mensaje", "Su programa fué eliminado con éxito");
-        ListadoProgramaServlet listadoProgramaServlet = new ListadoProgramaServlet();
-        listadoProgramaServlet.doGet(req, response);
+        //ListadoProgramaServlet listadoProgramaServlet = new ListadoProgramaServlet();
+        //listadoProgramaServlet.doGet(req, response);
+        req.setAttribute("programas", programaDao.listarTodos());
+        GchServletUtils.reenviarAModulo("programa", req, response);
     }
 }
