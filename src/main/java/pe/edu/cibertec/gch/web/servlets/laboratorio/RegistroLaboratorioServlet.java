@@ -1,6 +1,7 @@
 package pe.edu.cibertec.gch.web.servlets.laboratorio;
 
 import java.io.IOException;
+import javax.servlet.RequestDispatcher;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -31,17 +32,8 @@ public class RegistroLaboratorioServlet extends HttpServlet {
                 capacidad = req.getParameter("capacidad"),
                 estado = req.getParameter("estado");
        
-//         Laboratorio nuevoLaboratorio = new Laboratorio();
-//         nuevoLaboratorio.setCodigo(codigo);
-//         nuevoLaboratorio.setNombre(nombre);
-//         nuevoLaboratorio.setDescripcion(descripcion);
-//         nuevoLaboratorio.setLocal(local);
-//         nuevoLaboratorio.setPabellon(pabellon);
-//         nuevoLaboratorio.setSalon(salon);
-//         nuevoLaboratorio.setCapacidad(Integer.parseInt(capacidad));
-//         nuevoLaboratorio.setEstado(EstadoLaboratorio.obtenerSegun(estado));
-                 
-         Laboratorio nuevoLaboratorio = new Laboratorio().conCodigo(codigo)
+        if (sonDatosValidos(codigo, nombre, descripcion, local, pabellon, salon, capacidad, estado)) {
+            Laboratorio nuevoLaboratorio = new Laboratorio().conCodigo(codigo)
                  .conNombre(nombre)
                  .conDescripcion(descripcion)
                  .conLocal(local)
@@ -52,5 +44,39 @@ public class RegistroLaboratorioServlet extends HttpServlet {
                  
         gestorLaboratorio.registrar(nuevoLaboratorio);
         resp.sendRedirect("listarLaboratorios");
+        } else {
+            // si hay algunos campos invalidos, se retorna
+            req.setAttribute("mensaje", "Hay errores en los datos enviados");
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher("view/laboratorio/registro.jsp");
+            requestDispatcher.forward(req, resp);
+        }
+               
     }
+    
+     private boolean sonDatosValidos(String codigo, String nombre, String descripcion, String local, String pabellon, String salon, String capacidad, String estado) {
+        boolean esValido = true;
+        // TODO solo se valida que no sean vacios, sin embargo la logica de 
+        // validacion deberia incluir otros aspectos
+        if (codigo == null || codigo.isEmpty()) {
+            esValido = false;
+        } else if (nombre == null || nombre.isEmpty()) {
+            esValido = false;
+        } else if (descripcion == null || descripcion.isEmpty()) {
+            esValido = false;
+        } else if (local == null || local.isEmpty()) {
+            esValido = false;
+        } else if (pabellon == null || pabellon.isEmpty()) {
+            esValido = false;
+        } else if (salon == null || salon.isEmpty()) {
+            esValido = false;
+        }else if (capacidad == null || capacidad.isEmpty()) {
+            esValido = false;
+        }else if (estado == null || estado.isEmpty()) {
+            esValido = false;
+        }
+        
+        return esValido;
+    }
+
 }
+

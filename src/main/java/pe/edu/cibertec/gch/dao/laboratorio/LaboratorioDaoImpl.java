@@ -12,7 +12,15 @@ import pe.edu.cibertec.gch.modelo.TipoBusqueda;
 public class LaboratorioDaoImpl implements LaboratorioDao {
 
     private static ArrayList<Laboratorio> laboratorios = new ArrayList<Laboratorio>();
-   
+    private String codigo;
+    private String nombre;
+    private String descripcion;
+    private String local;
+    private String pabellon;
+    private String salon;
+    private int capacidad;
+    private EstadoLaboratorio estado;
+    
     static {
         Laboratorio lab;
         lab=new Laboratorio();
@@ -20,6 +28,11 @@ public class LaboratorioDaoImpl implements LaboratorioDao {
         lab.setNombre("Lab1");
         lab.setDescripcion("Java");
         lab.setLocal("LOCAL1");
+        lab.setPabellon("F");
+        lab.setSalon("202");
+        lab.setCapacidad(33);
+        lab.setEstado(EstadoLaboratorio.Implementado);
+        
         lab.setEstado(EstadoLaboratorio.Implementado);
         laboratorios.add(lab);
         
@@ -28,6 +41,7 @@ public class LaboratorioDaoImpl implements LaboratorioDao {
         lab.setNombre("Lab2");
         lab.setDescripcion("Java 2");
         lab.setLocal("LOCAL2");
+        
         lab.setEstado(EstadoLaboratorio.ConProblemas);
         laboratorios.add(lab);
         
