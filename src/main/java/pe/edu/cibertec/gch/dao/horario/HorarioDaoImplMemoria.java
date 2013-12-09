@@ -37,9 +37,14 @@ public class HorarioDaoImplMemoria implements HorarioDao{
     }
     @Override
     public void eliminarPorCodigo(String codigo) {
-        //throw new UnsupportedOperationException("Not supported yet.");
+        Horario eliminado = null;
+        for(Horario horarioEliminado : horarios) {
+            if (horarioEliminado.getCodigo().equals(codigo))
+                eliminado = horarioEliminado;
+        }
+        horarios.remove(eliminado);
     }
-
+    
     @Override
     public Horario consultarPorCodigo(String codigo) {
         throw new UnsupportedOperationException("Not supported yet.");
@@ -52,7 +57,13 @@ public class HorarioDaoImplMemoria implements HorarioDao{
         
     @Override
     public void actualizar(Horario horario) {
-        //throw new UnsupportedOperationException("Not supported yet.");
+        Horario actualizado = null;
+        for(Horario horarioActualizado : horarios) {
+            if (horarioActualizado.getCodigo().equals(horario.getCodigo()))
+                actualizado = horarioActualizado;
+        }
+        horarios.remove(actualizado);
+        horarios.add(horario);
     }
 
     @Override

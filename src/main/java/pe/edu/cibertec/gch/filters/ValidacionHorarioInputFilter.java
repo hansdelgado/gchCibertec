@@ -57,8 +57,6 @@ public class ValidacionHorarioInputFilter implements Filter {
             throws IOException, ServletException {
         System.out.println("do filter horario");
         doBeforeProcessing(request, response, chain);
-        chain.doFilter(request, response);
-        //doAfterProcessing(request, response);
     }
 
     @Override

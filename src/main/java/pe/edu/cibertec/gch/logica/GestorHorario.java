@@ -51,11 +51,7 @@ public class GestorHorario {
         for (Horario horario : listarTodos()) {
             switch (tipoBusqueda) {
                 case Completa:
-                    if( (descripcion.equalsIgnoreCase(horario.getDescripcion()))
-                            || estado.equalsIgnoreCase(horario.getEstado().toString())  )
-                    {
                         encontrados.add(horario);
-                    }
                     break;
                 case Parcial:
                     if ((!descripcion.isEmpty() && horario.getDescripcion().contains(descripcion))

@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import pe.edu.cibertec.gch.logica.GestorHorario;
 import pe.edu.cibertec.gch.modelo.EstadoActividad;
 import pe.edu.cibertec.gch.modelo.Horario;
+import pe.edu.cibertec.gch.web.servlets.GchServletUtils;
 
 /**
  *
@@ -34,13 +35,20 @@ private GestorHorario gestorHorario = new GestorHorario();
      */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        final String codigo = "3546";//req.getParameter("codigo");
+        final String codigo = req.getParameter("codigo"),
+                descripcion = req.getParameter("descripcion"),
+                estado = req.getParameter("estado");
+                int momentoInicio = Integer.parseInt(req.getParameter("momentoInicio")),
+                momentoFin= Integer.parseInt(req.getParameter("momentoFin"));
+                
         
-
         Horario horario = gestorHorario.Recuperar(codigo);
-        req.setAttribute("horario", horario);
-        req.getRequestDispatcher("modifica.jsp").forward(req, resp);
+        horario.setDescripcion(descripcion);
+        horario.setMomentoFin(momentoFin);
+        horario.setMomentoInicio(momentoInicio);
         
-        //resp.sendRedirect("irEditarHorario");
+        gestorHorario.actualizar(horario);
+        req.setAttribute("horarios", gestorHorario.listarTodos());
+        GchServletUtils.reenviarAModulo("horario", req, resp);
     }
 }

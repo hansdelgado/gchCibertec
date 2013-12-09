@@ -82,8 +82,9 @@
                 </span>
 
                 <span>
+                    
                 <a onclick="return confirm('Desea elimar Registro: ??')"
-                   href="PartidaServlet?accion=eliminar&codigo=%>">
+                   href="eliminarHorario?codigo=${horario.codigo}">
                     <img src="images/file_delete.png" alt="Eliminar partida" width="12" height="12" border="0">
                 </a>
                 </span>
