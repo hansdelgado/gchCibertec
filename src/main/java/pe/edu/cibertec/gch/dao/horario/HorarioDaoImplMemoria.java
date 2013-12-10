@@ -13,10 +13,10 @@ import pe.edu.cibertec.gch.modelo.Horario;
  *
  * @author LIBIO
  */
-public class HorarioDaoImplMemoria implements HorarioDao{
+public class HorarioDaoImplMemoria implements HorarioDao {
 
     private static ArrayList<Horario> horarios = new ArrayList<Horario>();
-    
+
     static {
 
         Horario horariodemuestra = new Horario();
@@ -26,7 +26,7 @@ public class HorarioDaoImplMemoria implements HorarioDao{
         horariodemuestra.setMomentoInicio(1);
         horariodemuestra.setEstado(EstadoActividad.Activo);
         horarios.add(horariodemuestra);
-        
+
         Horario horariodemuestra2 = new Horario();
         horariodemuestra2.setCodigo("4546");
         horariodemuestra2.setDescripcion("java");
@@ -35,32 +35,48 @@ public class HorarioDaoImplMemoria implements HorarioDao{
         horariodemuestra2.setMomentoInicio(1);
         horarios.add(horariodemuestra2);
     }
+
     @Override
     public void eliminarPorCodigo(String codigo) {
-        Horario eliminado = null;
-        for(Horario horarioEliminado : horarios) {
-            if (horarioEliminado.getCodigo().equals(codigo))
-                eliminado = horarioEliminado;
+        int indexEliminar;
+        indexEliminar = 999999;
+        for (Horario i : horarios) {
+            if (i.getCodigo().equalsIgnoreCase(codigo));
+            indexEliminar = horarios.indexOf(i);
         }
-        horarios.remove(eliminado);
+
+        horarios.remove(horarios.get(indexEliminar));
+        System.out.println("eliminando horario");
     }
-    
+
     @Override
     public Horario consultarPorCodigo(String codigo) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        //throw new UnsupportedOperationException("Not supported yet.");
+        Horario h = new Horario();
+        return h;
     }
 
     @Override
     public List<Horario> listarSegun(String nombre, String apellidoPaterno, String apellidoMaterno) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
-        
+
     @Override
     public void actualizar(Horario horario) {
+
+//        int indexActualizar = 9999;
+//        System.out.println("entramos al bucle");
+//        for (Horario i : horarios) {
+//            if (i.getCodigo().equalsIgnoreCase(horario.getCodigo())) {
+//                System.out.println(i.getCodigo());
+//                indexActualizar = horarios.indexOf(i);
+//            }
+//            horarios.set(indexActualizar, horario);
+//        }
         Horario actualizado = null;
-        for(Horario horarioActualizado : horarios) {
+        for (Horario horarioActualizado: horarios){
             if (horarioActualizado.getCodigo().equals(horario.getCodigo()))
-                actualizado = horarioActualizado;
+                actualizado=horarioActualizado;
         }
         horarios.remove(actualizado);
         horarios.add(horario);
@@ -86,5 +102,4 @@ public class HorarioDaoImplMemoria implements HorarioDao{
     public Horario Recuperar(String codigo) {
         return horarios.get(horarios.indexOf(codigo));
     }
-    
 }

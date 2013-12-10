@@ -21,7 +21,7 @@ import pe.edu.cibertec.gch.modelo.Horario;
 @WebServlet(name = "RegistroHorarioServlet", urlPatterns = {"/registrarHorario"})
 public class RegistroHorarioServlet extends HttpServlet {
 
-    private GestorHorario gestorHorario = new GestorHorario();
+    private GestorHorario gestorHorario = new GestorHorario(); 
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -53,7 +53,7 @@ public class RegistroHorarioServlet extends HttpServlet {
                         }
                     
                     
-                    System.out.println("agrrege los datos a la lista");
+                    System.out.println("agregare los datos a la lista");
 //        if (!fechaNacimiento.isEmpty()) {
 //            int dia = Integer.parseInt(fechaNacimiento.substring(8)),
 //                    mes = Integer.parseInt(fechaNacimiento.substring(5, 7)),
@@ -64,7 +64,12 @@ public class RegistroHorarioServlet extends HttpServlet {
 //            cal.set(ano, mes - 1, dia);
 //            nuevoProfesor = nuevoProfesor.conFechaNacimiento(cal.getTime());
 //        }
+                    
         gestorHorario.registrar(nuevoHorario);
+                    
+        System.out.println("ya agregue los datos y voy a listar");
         resp.sendRedirect("listarHorarios");
+        
+        
     }
 }

@@ -36,12 +36,21 @@ private GestorHorario gestorHorario = new GestorHorario();
 
 @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        final String codigo = req.getParameter("codigo");
-        
-        Horario horario = gestorHorario.Recuperar(codigo);
-        req.setAttribute("horario", horario);
-        
-        GchServletUtils.reenviarAModificar("horario", req, resp);
+        // trae los horarioes en la fuente de datos
+        //List<Horario> horarios = gestorHorario.listarTodos();
+        // almacena resultado en el request
+        //recuperando el codigo
+        System.out.println(req.getAttribute("codigo"));
+    
+        String codigo=req.getAttribute("codigo").toString();
+        Horario horario=gestorHorario.Recuperar(codigo);
+        System.out.println(horario.getCodigo());
+        System.out.println(horario.getDescripcion());
+        req.setAttribute("horarios", horario);
+        // pinta los datos en el listado
+        req.getRequestDispatcher("view/horario/modifica.jsp").forward(req, resp);
+        //resp.sendRedirect("view/horario/modifica.jsp");
+        //GchServletUtils.reenviarAModificar("horario", req, resp);
     }
    
 }

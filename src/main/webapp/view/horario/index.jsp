@@ -76,13 +76,12 @@
                 <span>${horario.estado}</span>
                 <span align="center">
                     <!--?codigo=${horario.codigo}">-->
-                    <a href="editarHorarios?codigo=${horario.codigo}">
+                    <a href="irHorarioEditar?codigo=${horario.codigo}">
                     <img src="images/file_edit.png" alt="Editar partida" width="12" height="12" border="0">
                 </a>
                 </span>
 
                 <span>
-                    
                 <a onclick="return confirm('Desea elimar Registro: ??')"
                    href="eliminarHorario?codigo=${horario.codigo}">
                     <img src="images/file_delete.png" alt="Eliminar partida" width="12" height="12" border="0">

@@ -56,7 +56,7 @@
             <div>
                 <span>Sexo</span>
                 <label for="masculino">Masculino</label>
-                <input type="radio" name="sexo" id="masculino"  default value="m" />
+                <input type="radio" name="sexo" id="masculino" value="m" />
                 <label for="femenino">Femenino</label>
                 <input type="radio" name="sexo" id="femenino" value="f" />
             </div>

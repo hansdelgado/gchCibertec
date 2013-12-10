@@ -6,21 +6,19 @@ package pe.edu.cibertec.gch.web.servlets.horario;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import pe.edu.cibertec.gch.logica.GestorHorario;
-import pe.edu.cibertec.gch.modelo.Horario;
 
 /**
  *
  * @author LIBIO
  */
-@WebServlet(name = "ReenvioEditarHorarioServlet", urlPatterns = {"/irHorarioEditar"})
-public class ReenvioEditarHorarioServlet extends HttpServlet {
+@WebServlet(name = "EliminarHorarioServlet", urlPatterns = {"/eliminarHorario"})
+public class EliminarHorarioServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP
@@ -36,19 +34,15 @@ public class ReenvioEditarHorarioServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        
         PrintWriter out = response.getWriter();
         try {
             /* TODO output your page here. You may use following sample code. */
-             String codigo=request.getParameter("codigo");
+            String codigo=request.getParameter("codigo");
             System.out.println(codigo);
-            Horario horario=gestorHorario.Recuperar(codigo);
-            request.setAttribute("horario", horario);
+            gestorHorario.eliminarSegun(codigo);
             System.out.println("reenviando");
-            
-            RequestDispatcher rd =null;
-            rd=request.getRequestDispatcher("view/horario/editar.jsp");
-            rd.forward(request,response);
-            //response.sendRedirect("view/horario/editar.jsp");
+            response.sendRedirect("listarHorarios");
         } finally {            
             out.close();
         }

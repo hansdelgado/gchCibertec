@@ -51,7 +51,11 @@ public class GestorHorario {
         for (Horario horario : listarTodos()) {
             switch (tipoBusqueda) {
                 case Completa:
+                    if( (descripcion.equalsIgnoreCase(horario.getDescripcion()))
+                            || estado.equalsIgnoreCase(horario.getEstado().toString())  )
+                    {
                         encontrados.add(horario);
+                    }
                     break;
                 case Parcial:
                     if ((!descripcion.isEmpty() && horario.getDescripcion().contains(descripcion))
@@ -77,8 +81,10 @@ public class GestorHorario {
     }
 
     public void eliminarSegun(String codigo) {
-        Horario horarioAEliminar = consultarSegun(codigo);
-        horarioAEliminar.setEstado(EstadoActividad.Valido);
+//        Horario horarioAEliminar = consultarSegun(codigo);
+//        horarioAEliminar.setEstado(EstadoActividad.Valido);
+        System.out.println("eliminar por codigo ");
+        horarioDao.eliminarPorCodigo(codigo);
 
     }
 
