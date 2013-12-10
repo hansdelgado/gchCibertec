@@ -5,6 +5,7 @@
 package pe.edu.cibertec.gch.dao.cursos;
 import pe.edu.cibertec.gch.dao.BaseDao;
 import pe.edu.cibertec.gch.modelo.Curso;
+import pe.edu.cibertec.gch.modelo.Profesor;
 
 /**
  *
@@ -13,5 +14,5 @@ import pe.edu.cibertec.gch.modelo.Curso;
 public interface CursoDao extends BaseDao<Curso> {
     void eliminarPorCodigo(final String codigo);
     Curso consultarPorCodigo(final String codigo);
-    
+    void actualizar(Curso curso);
 }

@@ -21,6 +21,7 @@ public class CursoDaoImpl implements CursoDao{
         c.setCodigo("123456789");
         c.setNombre("Java Advanced");
         c.setDescripcion("Curso de Especialización");
+        c.setEstado(EstadoActividad.Valido);
         cursos.add(c);
     }
     
@@ -58,6 +59,11 @@ public class CursoDaoImpl implements CursoDao{
     public void borrarTodos() {
         //throw new UnsupportedOperationException("Not supported yet.");
         cursos.clear();
+    }
+    
+    @Override
+    public void actualizar(Curso curso) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

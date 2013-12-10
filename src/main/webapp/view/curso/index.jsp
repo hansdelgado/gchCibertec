@@ -40,11 +40,6 @@
                         Registrar nuevo curso
                     </a>
                 </li>
-                <li>
-                    <a href="irEliminarCurso">
-                        Eliminar curso
-                    </a>
-                </li>
             </ul>
         </nav>
     </div>
@@ -53,11 +48,15 @@
             <li class="cabeceraConsulta">
                 <span>Codigo</span>
                 <span>Nombre</span>
+                <span></span>
+                <span></span>
             </li>
             <c:forEach var="curso" items="${requestScope.cursos}" >
                 <li>
                     <span>${curso.codigo}</span>
                     <span>${curso.nombre}</span>
+                    <span><a href="eliminarCurso?codigo=${curso.codigo}">Eliminar</a></span>
+                    <span><a href="irModificaCurso?codigo=${curso.codigo}">Editar</a></span>
                 </li>
             </c:forEach>
         </ul>

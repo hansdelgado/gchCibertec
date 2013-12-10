@@ -4,6 +4,7 @@
  */
 package pe.edu.cibertec.gch.logica;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import pe.edu.cibertec.gch.dao.cursos.CursoDao;
@@ -47,15 +48,27 @@ public class GestorCurso implements GestorBase<Curso> {
     }
     
     
+//    @Override
+//    public List<Curso> listarTodos() {
+//        //throw new UnsupportedOperationException("Not supported yet.");
+////        Curso c = new Curso();
+////        c.setCodigo("12345");
+////        cursos.add(c);
+////        return cursos;
+//        return cursodao.listarTodos();
+//    }
+    
     @Override
     public List<Curso> listarTodos() {
-        //throw new UnsupportedOperationException("Not supported yet.");
-//        Curso c = new Curso();
-//        c.setCodigo("12345");
-//        cursos.add(c);
-//        return cursos;
-        return cursodao.listarTodos();
+        List<Curso> cursosActivos = new ArrayList();
+        for (Curso curso : cursodao.listarTodos()) {
+            if (curso.getEstado().equals(EstadoActividad.Valido)){
+                cursosActivos.add(curso);
+            }
+        }
+        return cursosActivos;
     }
+    
 
     @Override
     public void eliminarPorCodigo(String codigo) {
@@ -68,7 +81,7 @@ public class GestorCurso implements GestorBase<Curso> {
         //throw new UnsupportedOperationException("Not supported yet.");
         return cursodao.consultarPorCodigo(codigo);
     }
-
+    
     @Override
     public void registrar(Curso curso) {
         //throw new UnsupportedOperationException("Not supported yet.");
@@ -76,6 +89,11 @@ public class GestorCurso implements GestorBase<Curso> {
         
         cursodao.registrar(curso);
                 
+    }
+        
+    public void actualizar(Curso curso) {
+        //profesorDao.actualizar(profesor);
+        cursodao.actualizar(curso);
     }
     
 }
