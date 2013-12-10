@@ -11,7 +11,7 @@
                 <label for="codigo">
                     C&oacute;digo:
                 </label>
-                <input type="text" id="codigo" name="codigo" maxlength="8"  autofocus >
+                <input type="text" id="codigo" name="codigo" value="${codigo}" maxlength="8"  autofocus >
             </div>
 
             <div>

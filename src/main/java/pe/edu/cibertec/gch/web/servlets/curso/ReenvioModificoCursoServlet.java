@@ -21,7 +21,12 @@ public class ReenvioModificoCursoServlet extends HttpServlet {
                 
         final String codigo = req.getParameter("codigo");
         Curso curso = gestorCurso.consultarPorCodigo(codigo);
+        req.setAttribute("codigo", codigo);
         req.setAttribute("nombre", curso.getNombre());
+        req.setAttribute("descripcion", curso.getDescripcion());
+        req.setAttribute("objetivo", curso.getObjetivos());
+        req.setAttribute("requisito", curso.getRequisitos());
+        req.setAttribute("duracion", curso.getDuracion());
         req.getRequestDispatcher("view/curso/modifica.jsp").forward(req, resp);
     }
 }

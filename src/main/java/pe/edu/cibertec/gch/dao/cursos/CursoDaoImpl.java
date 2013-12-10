@@ -63,7 +63,11 @@ public class CursoDaoImpl implements CursoDao{
     
     @Override
     public void actualizar(Curso curso) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Curso curso2 = consultarPorCodigo(curso.getCodigo());
+        //curso2.setEstado(EstadoActividad.Obsoleto);
+        curso2.setNombre(curso.getNombre());
+        curso2.setDescripcion(curso.getDescripcion());
     }
     
 }

@@ -25,50 +25,42 @@ public class ModificoCursoServlet extends HttpServlet {
     
     private GestorCurso gestorCurso = new GestorCurso();
 
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        final String codigo = req.getParameter("codigo");
-        Curso curso = gestorCurso.consultarPorCodigo(codigo);
-        gestorCurso.actualizar(curso);
-        GchServletUtils.reenviarAModulo("curso", req, resp);
+//    @Override
+//    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//        final String codigo = req.getParameter("codigo");
+//        Curso curso = gestorCurso.consultarPorCodigo(codigo);
+//        gestorCurso.actualizar(curso);
+//        GchServletUtils.reenviarAModulo("curso", req, resp);
         //                   modificaPorCodigo(codigo);
         
-        //req.setParameter("nombre") = curso.getNombre();
-//        final String codigo = req.getParameter("codigo"),
-//                nombre = req.getParameter("nombre"),
-//                descripcion = req.getParameter("descripcion"),
-//                objetivos = req.getParameter("objetivos"),
-//                requisitos = req.getParameter("requisitos"),
-//                duracion = req.getParameter("duracion"),
-//                estado = req.getParameter("estado");
-        
-        //resp.sendRedirect("listarCursos");
-    }
+
+ //   }
     
-//    @Override
-//    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        final String codigo = req.getParameter("codigo"),
-//                nombre = req.getParameter("nombre"),
-//                descripcion = req.getParameter("descripcion"),
-//                objetivos = req.getParameter("objetivos"),
-//                requisitos = req.getParameter("requisitos"),
-//                duracion = req.getParameter("duracion"),
-//                estado = req.getParameter("estado");
-//        Curso nuevoCurso = new Curso()
-//                .conCodigo(codigo)
-//                .conNombre(nombre)
-//                .conDescripcion(descripcion)
-//                .conObjetivos(objetivos)
-//                .conRequisitos(requisitos)
-//                .conDuracion(duracion)
-//                .conEstado(EstadoActividad.Valido);
-//
-//        //gestorCurso.registrar(nuevoCurso);
-//        gestorCurso.actualizar(nuevoCurso);
-//        //gestorCurso
-//        resp.sendRedirect("listarCursos");
-//        
-//    }
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        final String codigo = req.getParameter("codigo"),
+                nombre = req.getParameter("nombre"),
+                descripcion = req.getParameter("descripcion"),
+                objetivos = req.getParameter("objetivos"),
+                requisitos = req.getParameter("requisitos"),
+                duracion = req.getParameter("duracion"),
+                estado = req.getParameter("estado");
+        Curso nuevoCurso = new Curso()
+                .conCodigo(codigo)
+                .conNombre(nombre)
+                .conDescripcion(descripcion)
+                .conObjetivos(objetivos)
+                .conRequisitos(requisitos)
+                .conDuracion(duracion)
+                .conEstado(EstadoActividad.Valido);
+
+        //gestorCurso.registrar(nuevoCurso);
+        gestorCurso.actualizar(nuevoCurso);
+        
+        //gestorCurso
+        resp.sendRedirect("listarCursos");
+        
+    }
     
     
     
