@@ -18,18 +18,11 @@ public class GestorLaboratorio implements GestorBase<Laboratorio> {
  
     @Override
     public void registrar(Laboratorio laboratorio) {
-//        UnescapeUtil.unescapeInstance(profesor);
-//         UnescapeUtil.unescapeAudit(profesor);
-//        profesores.add(profesor);
         dao.registrar(laboratorio);
     }
       
     @Override
     public List<Laboratorio> listarTodos() {
-//        Laboratorio l = new Laboratorio();
-//        l.setCodigo("43322");
-//        l.setNombre("Lab4");
-//        laboratorios.add(l);
         return dao.listarTodos();
     }
 
@@ -40,17 +33,12 @@ public class GestorLaboratorio implements GestorBase<Laboratorio> {
     
     @Override
     public void eliminarPorCodigo(final String codigo) {
-        // Al eliminar, el estado del profesor 
-        // se cambia a inactivo
         dao.eliminarPorCodigo(codigo);
     }
 
     
     @Override
     public Laboratorio consultarPorCodigo(final String codigo) {
-        
-//     Laboratorio laboratorio = new Laboratorio() {{setCodigo(codigo);}};
-//      return laboratorios.get(laboratorios.indexOf(laboratorio));
         return dao.consultarPorCodigo(codigo);
                 
     }
