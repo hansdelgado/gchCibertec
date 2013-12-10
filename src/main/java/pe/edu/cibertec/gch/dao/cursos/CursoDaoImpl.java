@@ -18,11 +18,27 @@ public class CursoDaoImpl implements CursoDao{
     
     static {
         Curso c = new Curso();
-        c.setCodigo("123456789");
-        c.setNombre("Java Advanced");
-        c.setDescripcion("Curso de Especialización");
+        c.setCodigo("1234");
+        c.setNombre("Java Basic");
+        c.setDescripcion("Curso de Capacitación");
         c.setEstado(EstadoActividad.Valido);
         cursos.add(c);
+        
+        Curso d = new Curso();
+        d.setCodigo("5678");
+        d.setNombre("Java Advanced");
+        d.setDescripcion("Curso de Especialización");
+        d.setEstado(EstadoActividad.Valido);
+        cursos.add(d);
+        
+        Curso e = new Curso();
+        e.setCodigo("9012");
+        e.setNombre("Java Framework");
+        e.setDescripcion("Curso de Postgrado");
+        e.setEstado(EstadoActividad.Valido);
+        cursos.add(e);
+        
+        
     }
     
     @Override
