@@ -42,7 +42,7 @@
             </div>
             <div>
                 <label for="salon">Salon</label>
-                <input type="text" id="salon" name="salon" required maxlength="50" value="${laboratorio.salon}"/>
+                <input type="text" id="salon" name="salon" required maxlength="50" value="${laboratorio.salon}"  readonly="true"/>
             </div>
             <div>
                 <label for="capacidad">Capacidad</label>

@@ -17,7 +17,7 @@ public class LaboratorioDaoImpl implements LaboratorioDao {
     static {
         Laboratorio lab;
         lab=new Laboratorio();
-        lab.setCodigo("1001");
+        lab.setCodigo("10001");
         lab.setNombre("Lab1");
         lab.setDescripcion("Java");
         lab.setLocal("LOCAL1");
@@ -28,7 +28,7 @@ public class LaboratorioDaoImpl implements LaboratorioDao {
         laboratorios.add(lab);
         
         lab=new Laboratorio();
-        lab.setCodigo("1002");
+        lab.setCodigo("10002");
         lab.setNombre("Lab2");
         lab.setDescripcion("Java 2");
         lab.setLocal("LOCAL2");
@@ -39,7 +39,7 @@ public class LaboratorioDaoImpl implements LaboratorioDao {
         laboratorios.add(lab);
         
         lab=new Laboratorio();
-        lab.setCodigo("1003");
+        lab.setCodigo("10003");
         lab.setNombre("Lab3");
         lab.setDescripcion("Java 3");
         lab.setLocal("LOCAL3");

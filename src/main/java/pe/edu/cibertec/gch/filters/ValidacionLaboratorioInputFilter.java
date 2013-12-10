@@ -12,6 +12,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
+import pe.edu.cibertec.gch.logica.GestorFactory;
 import pe.edu.cibertec.gch.validaciones.Validacion;
 import pe.edu.cibertec.gch.validaciones.ValidacionFactory;
 
@@ -19,7 +20,7 @@ import pe.edu.cibertec.gch.validaciones.ValidacionFactory;
  * Intercepta los requests a los servlets de mi aplicacion y asegura que los
  * parametros sean validos para ser consumidos por los servlets.
  */
-@WebFilter(filterName = "ValidacionLaboratorioInputFilter", urlPatterns = {"/registrarLaboratorio"})
+@WebFilter(filterName = "ValidacionLaboratorioInputFilter", urlPatterns = {"/actualizarLaboratorio"})
 public class ValidacionLaboratorioInputFilter implements Filter {
 
   private static final Logger LOG = Logger.getLogger(ValidacionLaboratorioInputFilter.class.getName());
