@@ -21,6 +21,7 @@ public class CursoDaoImpl implements CursoDao{
         c.setCodigo("123456789");
         c.setNombre("Java Advanced");
         c.setDescripcion("Curso de Especialización");
+        c.setEstado(EstadoActividad.Valido);
         cursos.add(c);
     }
     

@@ -1,57 +1,47 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="s" uri="/struts-tags" %>
 <%@taglib prefix="gch" uri="/WEB-INF/tlds/gch" %>
 <gch:base titulo="Listado de Profesores">
     <div class="informacion">
         <span>${mensaje}</span>
     </div>
-    <form action="buscarProfesores">
+    <s:form action="buscarProfesor">
         <div class="informacion" style="display: ${empty requestScope.errores ? 'none' : 'block'}">
             <ul>
-                <c:forEach var="error" items="${requestScope.errores}">
-                    <li>${error.value}</li>
-                </c:forEach>
+                <s:iterator value="errores">
+                    <li><s:property value="value" /></li>
+                </s:iterator>
             </ul>
         </div>
         <fieldset>
             <legend>Datos de B&uacute;squeda</legend>
             <div>
-                <label for="nombres">
-                    Nombres
-                </label>
-                <input type="search" name="nombres" id="nombres" maxlength="50" />
+                <s:label value="Nombres" for="nombres" />
+                <s:textfield type="search" name="nombres" maxlength="50" />
             </div>
             <div>
-                <label for="apellidoPaterno">
-                    Apellido Paterno
-                </label>
-                <input type="search" name="apellidoPaterno" id="apellidoPaterno" maxlength="50" />
+                <s:label value="Apellido Paterno" for="apellidoPaterno" />
+                <s:textfield type="search" name="apellidoPaterno" maxlength="50" />
             </div>
             <div>
-                <label for="apellidoMaterno">
-                    Apellido Materno
-                </label>
-                <input type="search" name="apellidoMaterno" id="apellidoMaterno" maxlength="50" />
+                <s:label value="Apellido Materno" for="apellidoMaterno" />
+                <s:textfield type="search" name="apellidoMaterno" maxlength="50" />
             </div>
             <div>
                 <label for="tipoBusqueda">
-                    Tipo Busqueda
+                    Tipo de busqueda
                 </label>
-                <select name="tipoBusqueda">
-                    <option value="0">Completa</option>
-                    <option value="1">Parcial</option>
-                </select>
-            </div>              
+                <s:select name="tipoBusqueda"  list="#{'1': 'Parcial', '0':'Completa'}" />
+            </div>
         </fieldset>
-        <button><span>Buscar</span></button>
-    </form>
+        <s:submit value="Buscar" />
+    </s:form>
     <div>
         <nav>
             <ul>
                 <li>
-                    <a href="irRegistroProfesor">
+                    <s:a action="irRegistroProfesor">
                         Registrar nuevo profesor
-                    </a>
+                    </s:a>
                 </li>
             </ul>
         </nav>
@@ -59,17 +49,31 @@
     <div>
         <ul id="resultadoConsulta">
             <li class="cabeceraConsulta">
+                <span>Eliminar</span>
+                <span>Editar</span>
                 <span>Codigo</span>
                 <span>Nombres</span>
                 <span>Genero</span>
             </li>
-            <c:forEach var="profesor" items="${requestScope.profesores}" >
-                <li>
-                    <span>${profesor.codigo}</span>
-                    <span>${profesor.nombres} ${profesor.apellidoPaterno} ${profesor.apellidoMaterno}</span>
-                    <span>${profesor.sexo}</span>
+            <s:iterator value="listaProfesores" status="statusItem">
+                <li class="${statusItem.odd ? 'impar' : 'par'}">
+                    <span>
+                        <s:url action="eliminarProfesor" var="eliminacion">
+                            <s:param name="codigo" value="codigo" />
+                        </s:url>
+                        <s:a href="%{eliminacion}">X</s:a>
+                    </span>
+                    <span>
+                        <s:url action="irEdicionProfesor" var="edicion">
+                            <s:param name="codigo" value="codigo" />
+                        </s:url>
+                        <s:a href="%{edicion}">X</s:a>
+                    </span>
+                    <span><s:property value="codigo" /></span>
+                    <span><s:property value="nombres + ' ' + apellidoPaterno" /></span>
+                    <span><s:property value="sexo" /></span>
                 </li>
-            </c:forEach>
+            </s:iterator>
         </ul>
     </div>
 </gch:base>

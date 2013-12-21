@@ -44,7 +44,9 @@ public class ProfesorDaoImplMemoria implements ProfesorDao {
 
     @Override
     public void actualizar(Profesor profesor) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Profesor profesorOld = profesores.get(profesores.indexOf(profesor));
+        profesores.remove(profesorOld);
+        profesores.add(profesor);
     }
     
 }

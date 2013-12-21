@@ -1,4 +1,5 @@
     <%@taglib prefix="gch" uri="/WEB-INF/tlds/gch" %>
+    <%@taglib prefix="s" uri="/struts-tags" %>
     <header>
         <!-- Bloque de cabecera de la pagina -->
         <hgroup>
@@ -8,19 +9,19 @@
         <nav>
             <ul>
                 <li>
-                    <a href="listarProfesores">Profesores</a>
+                    <s:a href="listaBaseProfesor">Profesores</s:a>
                 </li>
                 <li>
-                    <a href="listarLaboratorios">Laboratorios</a>
+                    <s:a href="listaBaseLaboratorio">Laboratorios</s:a>
                 </li>
                 <li>
-                    <a href="listarHorarios">Horarios</a>
+                    <s:a href="listaBaseHorario">Horarios</s:a>
                 </li>
                 <li>
-                    <a href="listarProgramas">Programas</a>
+                    <s:a href="listaBasePrograma">Programas</s:a>
                 </li>
                 <li>
-                    <a href="listarCursos">Cursos</a>
+                    <s:a href="listaBaseCurso">Cursos</s:a>
                 </li>
             </ul>
         </nav>
