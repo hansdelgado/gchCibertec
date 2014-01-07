@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <package name="profesores" extends="gch">
+        <action name="listaBaseProfesor" 
+                class="pe.edu.cibertec.gch.action.profesor.MostrarProfesorAction"
+                method="listar">
+            <result name="listaBase">/view/profesor/index.jsp</result>
+        </action>
+        <action name="buscarProfesor" 
+                class="pe.edu.cibertec.gch.action.profesor.MostrarProfesorAction"
+                method="buscar">
+            <result name="success">/view/profesor/index.jsp</result>
+        </action>
+        <action name="registrarProfesor" 
+                class="pe.edu.cibertec.gch.action.profesor.GestionProfesorAction"
+                method="registrar">
+            <result name="success">/view/profesor/index.jsp</result>
+            <result type="redirect">listaBaseProfesor</result>
+        </action>        
+        <action name="actualizarProfesor" 
+                class="pe.edu.cibertec.gch.action.profesor.GestionProfesorAction"
+                method="actualizar">
+            <result name="success">/view/profesor/index.jsp</result>
+            <result type="redirect">listaBaseProfesor</result>
+        </action>
+        <action name="eliminarProfesor" 
+                class="pe.edu.cibertec.gch.action.profesor.GestionProfesorAction"
+                method="eliminar">
+            <result name="success">/view/profesor/index.jsp</result>
+            <result type="redirect">listaBaseProfesor</result>
+        </action>                
+        <action name="irEdicionProfesor" 
+                class="pe.edu.cibertec.gch.action.profesor.EdicionProfesorAction">
+            <result>/view/profesor/edicion.jsp</result>
+            <result name="input" type="redirect">listarProfesor</result>
+        </action>
+        <action name="irRegistroProfesor">
+            <result>/view/profesor/registro.jsp</result>
+        </action>
+    </package>
+</struts>

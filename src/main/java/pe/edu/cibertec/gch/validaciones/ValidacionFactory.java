@@ -20,4 +20,11 @@ public class ValidacionFactory {
             
         return null;
     }
+    
+        public Validacion obtenerSegunCurso(HttpServletRequest req) {
+        if(req.getServletPath().contains("Curso")) {
+            return new ValidacionCurso();
+        }
+        return null;
+    }
 }
