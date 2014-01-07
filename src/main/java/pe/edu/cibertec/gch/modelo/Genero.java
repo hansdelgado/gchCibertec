@@ -4,7 +4,7 @@ package pe.edu.cibertec.gch.modelo;
  * Representa al genero de una persona
  */
 public enum Genero {
-    Masculino, Femenino, Indeterminado;
+    Masculino("m"), Femenino("f"), Indeterminado("i");
 
     public static Genero obtenerSegun(String sexo) {
         switch(sexo) {
@@ -16,4 +16,16 @@ public enum Genero {
                 return Indeterminado;
         }
     }
+    
+    private String generoCode;
+    
+    Genero(String genero) {
+        this.generoCode = genero;
+    }
+    
+    public String getGeneroCode() {
+        return this.generoCode;
+    }
+    
+    
 }

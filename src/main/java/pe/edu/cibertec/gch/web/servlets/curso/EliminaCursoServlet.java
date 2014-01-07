@@ -19,6 +19,7 @@ import pe.edu.cibertec.gch.modelo.EstadoActividad;
  *
  * @author JAVA-ADV-LM
  */
+
 //@WebServlet(name = "EliminaCursoServlet", urlPatterns = {"/eliminarCurso"})
 //public class EliminaCursoServlet extends HttpServlet {
 //    
@@ -49,6 +50,7 @@ import pe.edu.cibertec.gch.modelo.EstadoActividad;
 //        
 //    }
 //}
+
 
 @WebServlet(name = "EliminaCursoServlet", urlPatterns = {"/eliminarCurso"})
 public class EliminaCursoServlet extends HttpServlet {

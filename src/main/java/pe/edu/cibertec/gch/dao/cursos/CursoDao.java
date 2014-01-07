@@ -5,7 +5,6 @@
 package pe.edu.cibertec.gch.dao.cursos;
 import pe.edu.cibertec.gch.dao.BaseDao;
 import pe.edu.cibertec.gch.modelo.Curso;
-import pe.edu.cibertec.gch.modelo.Profesor;
 
 /**
  *

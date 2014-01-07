@@ -38,7 +38,7 @@ public class CursoDaoImpl implements CursoDao{
         e.setEstado(EstadoActividad.Valido);
         cursos.add(e);
         
-        
+      
     }
     
     @Override
@@ -47,6 +47,7 @@ public class CursoDaoImpl implements CursoDao{
         Curso curso = consultarPorCodigo(codigo);
         curso.setEstado(EstadoActividad.Obsoleto);
         curso.setNombre("Jufer");
+
     }
 
     @Override
@@ -86,4 +87,5 @@ public class CursoDaoImpl implements CursoDao{
         curso2.setDescripcion(curso.getDescripcion());
     }
     
+
 }

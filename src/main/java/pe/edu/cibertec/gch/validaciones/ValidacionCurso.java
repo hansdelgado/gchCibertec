@@ -57,8 +57,9 @@ public class ValidacionCurso extends Validacion {
             String  textoRegistroCursoRequisitos,
             String  textoRegistroCursoDuracion,
             String  textoRegistroCursoEstado ) {
+
         System.out.println("Dentro de Validar");
-        
+
         // por cada parametro, validar
         if (textoRegistroCursoCodigo.isEmpty() || !textoRegistroCursoCodigo.matches("\\w{5,8}")) {
             errores.put("codigo", "El codigo es obligatorio y debe tener cinco o seis caracteres");
