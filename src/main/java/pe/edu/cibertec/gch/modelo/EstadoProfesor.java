@@ -9,19 +9,19 @@ public enum EstadoProfesor {
      * El profesor se encuentra con disponibilidad para ser escogido en el
      * dictado de un curso, o se encuentra dictando.
      */
-    Activo,
+    Activo("1"),
     /**
      * El profesor no se encuentra en la institucion o esta suspendido.
      */
-    Inactivo,
+    Inactivo("2"),
     /**
      * No se sabe si puede dictar programas.
      */
-    NoDeterminado,
+    NoDeterminado("3"),
     /**
      * El profesor se encuentra de vacaciones por el momento.
      */
-    Vacaciones;
+    Vacaciones("4");
 
     public static EstadoProfesor obtenerSegun(String estado) {
         switch (estado) {
@@ -36,5 +36,15 @@ public enum EstadoProfesor {
             default:
                 return NoDeterminado;
         }
+    }
+    
+    private String estado;
+    
+    EstadoProfesor(String estado) {
+        this.estado = estado;
+    }
+    
+    public String getEstadoCode() {
+        return this.estado;
     }
 }

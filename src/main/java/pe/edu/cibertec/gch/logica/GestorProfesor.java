@@ -1,19 +1,10 @@
 package pe.edu.cibertec.gch.logica;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import javax.mail.Message.RecipientType;
-import javax.mail.MessagingException;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 import pe.edu.cibertec.gch.dao.FactoryDao;
-import pe.edu.cibertec.gch.dao.ProfesorDao;
+import pe.edu.cibertec.gch.dao.profesor.ProfesorDao;
+import pe.edu.cibertec.gch.exception.DatosInvalidosException;
 import pe.edu.cibertec.gch.modelo.EstadoProfesor;
 import pe.edu.cibertec.gch.modelo.Profesor;
 import pe.edu.cibertec.gch.modelo.TipoBusqueda;
@@ -24,7 +15,7 @@ import pe.edu.cibertec.gch.modelo.TipoBusqueda;
 public class GestorProfesor {
 
     private ProfesorDao profesorDao = FactoryDao.getInstance().getProfesorDao();
-            
+
     public void registrar(Profesor profesor) {
         profesorDao.registrar(profesor);
     }
@@ -71,7 +62,7 @@ public class GestorProfesor {
         profesorDao.borrarTodos();
     }
 
-    public void eliminarSegun(String codigo) {
+    public void eliminarSegun(String codigo) throws DatosInvalidosException {
         Profesor profesorAEliminar = consultarSegun(codigo);
         profesorAEliminar.setEstado(EstadoProfesor.Inactivo);
 

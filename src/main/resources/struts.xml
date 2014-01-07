@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <!-- Contenido publico y/o comun -->
+    <package name="gch" extends="struts-default" namespace="/">
+        <global-results>
+            <result name="login">view/login.jsp</result>
+            <result name="error">view/error.jsp</result>
+        </global-results>
+
+         <action name="landing">
+            <result>view/index.jsp</result>
+        </action>
+        <action name="">
+            <result>view/index.jsp</result>
+        </action>
+    </package>
+    <!-- Archivos a incluir en la configuracion de Struts -->
+    <include file="pe/edu/cibertec/gch/struts/config/struts-profesores.xml" />
+    <include file="pe/edu/cibertec/gch/struts/config/struts-laboratorios.xml" />
+    <include file="pe/edu/cibertec/gch/struts/config/struts-cursos.xml" />
+    <include file="pe/edu/cibertec/gch/struts/config/struts-programas.xml" />
+    <include file="pe/edu/cibertec/gch/struts/config/struts-horarios.xml" />
+    
+</struts>
