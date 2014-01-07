@@ -3,6 +3,9 @@ package pe.edu.cibertec.gch.dao;
 import pe.edu.cibertec.gch.dao.laboratorio.LaboratorioDao;
 import pe.edu.cibertec.gch.dao.laboratorio.LaboratorioDaoImpl;
 
+import pe.edu.cibertec.gch.dao.profesor.ProfesorDaoImplMemoria;
+import pe.edu.cibertec.gch.dao.profesor.ProfesorDao;
+
 public class FactoryDao {
     
     private static FactoryDao instance;

@@ -14,4 +14,6 @@ public interface BaseDao<T> {
     void registrar(T obj);
     List<T> listarTodos();
     void borrarTodos();
+    
+    
 }

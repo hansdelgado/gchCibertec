@@ -1,16 +1,16 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="s" uri="/struts-tags" %>
 <%@taglib prefix="gch" uri="/WEB-INF/tlds/gch" %>
-<gch:base titulo="Registro de Profesor">
+<gch:base titulo="Edici&oacute;n de Profesor">
     <div class="informacion">
-        <span>${mensaje}</span>
+        <span><s:property value="mensaje" /></span>
     </div>
-    <form action="registrarProfesor" method="post">
+    <s:form action="actualizarProfesor" method="post">
+        <s:push value="profesor">
         <div class="informacion" style="display: ${empty requestScope.errores ? 'none' : 'block'}">
             <ul>
-                <c:forEach var="error" items="${requestScope.errores}">
-                    <li>${error.value}</li>
-                </c:forEach>
+                <s:iterator value="errores">
+                    <li><s:property value="value" /></li>
+                </s:iterator>
             </ul>
         </div>
         <fieldset>
@@ -19,33 +19,33 @@
                 <label for="codigo">
                     C&oacute;digo
                 </label>
-                <input type="text" id="codigo" name="codigo" maxlength="8" required autofocus >
+                <s:textfield name="codigo" maxlength="8" readonly="true" />
             </div>
         </fieldset>
         <fieldset>
             <legend>Datos Personales</legend>
             <div>
                 <label for="nombres">Nombres</label>
-                <input type="text" id="nombres" name="nombres" required maxlength="50" />
+                <s:textfield name="nombres" required="true" maxlength="50" />
             </div>
             <div>
                 <label for="apellidoPaterno">Apellido Paterno</label>
-                <input type="text" id="apellidoPaterno" name="apellidoPaterno" required maxlength="50" />
+                <s:textfield name="apellidoPaterno" required="true" maxlength="50" />
             </div>
             <div>
                 <label for="apellidoMaterno">Apellido Materno</label>
-                <input type="text" id="apellidoMaterno" name="apellidoMaterno" maxlength="50" />
+                <s:textfield name="apellidoMaterno" maxlength="50" />
             </div>
         </fieldset>
         <fieldset>
             <legend>Direcci&oacute;n</legend>
             <div>
                 <label for="direccion">Direcci&oacute;n Completa</label>
-                <input type="text" id="direccion" name="direccion" required maxlength="400" />
+                <s:textarea name="direccion" maxlength="400" />
             </div>
             <div>
                 <label for="referencia">Referencia</label>
-                <input type="text" id="referencia" name="referencia" maxlength="400" />
+                <s:textarea name="referencia" maxlength="400" />
             </div>
         </fieldset>
         <fieldset>
@@ -54,16 +54,20 @@
                 <label for="fechaNacimiento">
                     Fecha de Nacimiento
                 </label>
-                <input type="date" name="fechaNacimiento" id="fechaNacimiento" required />
+                <s:textfield name="fechaNacimiento" required="true" />
             </div>
             <div class="multiopciones">
                 <span>Sexo</span>
-                <input type="radio" name="sexo" id="masculino" value="m" />
-                <label for="masculino">Masculino</label>
-                <input type="radio" name="sexo" id="femenino" value="f" />
-                <label for="femenino">Femenino</label>
+                <s:radio list="#{'m':'Masculino', 'f':'Femenimo'}" name="sexo"/>
+            </div>
+            <div>
+                <label for="estado">
+                    Estado del Profesor
+                </label>
+                <s:select name="estado" value="estadoCode" list="#{'1':'Activo','2':'Inactivo','3':'No Determinado','4':'Vacaciones'}" headerKey="-1" headerValue="Seleccione" />
             </div>
         </fieldset>
-        <button>Registrar</button>
-    </form>
+        <s:submit value="Actualizar" />
+        </s:push>
+    </s:form>
 </gch:base>
