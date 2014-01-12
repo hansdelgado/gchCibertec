@@ -10,7 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import pe.edu.cibertec.gch.logica.GestorCurso;
+//import pe.edu.cibertec.gch.logica.GestorCurso;
 import pe.edu.cibertec.gch.modelo.Curso;
 import pe.edu.cibertec.gch.modelo.EstadoActividad;
 //import pe.edu.cibertec.gch.modelo.EstadoProfesor;
@@ -22,7 +22,7 @@ import pe.edu.cibertec.gch.modelo.EstadoActividad;
 @WebServlet(name = "RegistroCursoServlet", urlPatterns = {"/registrarCurso"})
 public class RegistroCursoServlet extends HttpServlet {
     
-    private GestorCurso gestorCurso = new GestorCurso();
+    //private GestorCurso gestorCurso = new GestorCurso();
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -42,7 +42,7 @@ public class RegistroCursoServlet extends HttpServlet {
                 .conDuracion(duracion)
                 .conEstado(EstadoActividad.Valido);
 
-        gestorCurso.registrar(nuevoCurso);
+        //gestorCurso.registrar(nuevoCurso);
         resp.sendRedirect("listarCursos");
         
     }
