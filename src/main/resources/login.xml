@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <package name="login" namespace="/login" extends="gch">
+
+        <action name="bienvenido">
+            <interceptor-ref name="autenticador" />
+            <result type="tiles">gch.app.plantilla.base</result>
+        </action>
+         
+        <action name="nuevo" class="pe.edu.cibertec.gch.programa.action.LoginAction" method="nuevo" >
+            <result type="tiles">gch.login.nuevo</result>
+        </action>
+        
+        <action name="acceso" class="pe.edu.cibertec.gch.programa.action.LoginAction" method="acceso" >
+            <result type="tiles">gch.login.acceso</result>
+        </action>
+        
+        <action name="logout" class="pe.edu.cibertec.gch.programa.action.LoginAction" method="logout" >
+            <result type="redirectAction">acceso</result>
+        </action>
+        
+        <action name="ingresar" class="pe.edu.cibertec.gch.programa.action.LoginAction" method="ingresar">
+            <result type="redirectAction">bienvenido</result>           
+        </action>
+        
+        <action name="registrar" class="pe.edu.cibertec.gch.programa.action.LoginAction" method="registrar" >
+            <result name="success" type="redirectAction">
+                <param name="actionName">nuevo</param>
+                <param name="namespace">/login</param>
+                <param name="mensaje">${mensaje}</param>
+            </result>
+            <result name="input" type="tiles">gch.login.nuevo</result>
+        </action>
+    </package>
+</struts>
+

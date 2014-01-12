@@ -1,8 +1,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="gch" uri="/WEB-INF/tlds/gch" %>
-<gch:base titulo="Bienvenido">
+<gch:base titulo="Sesi&oacute;n de Administraci&oacute;n de GCH">
     <p>
-        Accede a cualquiera de las opciones en el men&uacute; para 
-        realizar las operaciones.
+        Estando autenticado podr&aacute;s realizar todas las operaciones del 
+        sistema GCH.
     </p>
 </gch:base>

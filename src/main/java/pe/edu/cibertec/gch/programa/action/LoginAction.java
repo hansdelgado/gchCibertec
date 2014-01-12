@@ -28,7 +28,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 
     public String ingresar() {
 
-        if (getUsuario().equals("danjoas") && getClave().equals("123")) {
+        if (getUsuario().equals("michaelmy") && getClave().equals("123")) {
             return SUCCESS;
         }
         addActionError("su usuario o clave es incorrecto");

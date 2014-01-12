@@ -4,25 +4,46 @@
     "http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
-    <!-- Contenido publico y/o comun -->
-    <package name="gch" extends="struts-default" namespace="/">
-        <global-results>
-            <result name="login">view/login.jsp</result>
-            <result name="error">view/error.jsp</result>
-        </global-results>
+    
+    <!-- Mensajes de depuracion visibles -->
+    <constant name="struts.devMode" value="true" />
+    <!-- Recarga de configuraciones ante modificaciones -->
+    <constant name="struts.configuration.xml.reload" value="value" />
+    <!--Cambiar la extension .action-->
+    <constant name="struts.action.extension" value="html" />
+    <!--establecer el recurso i18n global-->   
+    <constant name="struts.custom.i18n.resources" value="global-messages" /> 	
+    <!--retirando marcado de tablas de Struts 2-->
+    <constant name="struts.ui.theme" value="simple" />
+    <!-- Inclusion de paquetes -->
+    <include file="login.xml"  />
+    <include file="programa.xml"  />   
+    <!--Paquete GCH Reutilizable-->
+    <package name="gch" extends="struts-default">
+        <result-types>
+            <result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
+        </result-types>
+           
+        <interceptors>
+            <interceptor name="autenticador" class="pe.edu.cibertec.gch.programa.interceptor.AutenticadorInterceptor" />
+            
+            <interceptor-stack name="autenticadorStack">
+                <interceptor-ref name="autenticador" />
+                <interceptor-ref name="defaultStack" />
+            </interceptor-stack>
+        </interceptors>     
 
-         <action name="landing">
-            <result>view/index.jsp</result>
-        </action>
-        <action name="">
-            <result>view/index.jsp</result>
-        </action>
-    </package>
+        <global-results>
+            <result name="login"  type="redirectAction">
+                <param name="actionName">acceso</param>
+                <param name="namespace">/login</param>
+            </result>
+        </global-results>  
+    </package>   
     <!-- Archivos a incluir en la configuracion de Struts -->
     <include file="pe/edu/cibertec/gch/struts/config/struts-profesores.xml" />
     <include file="pe/edu/cibertec/gch/struts/config/struts-laboratorios.xml" />
     <include file="pe/edu/cibertec/gch/struts/config/struts-cursos.xml" />
-    <include file="pe/edu/cibertec/gch/struts/config/struts-programas.xml" />
     <include file="pe/edu/cibertec/gch/struts/config/struts-horarios.xml" />
     
 </struts>
