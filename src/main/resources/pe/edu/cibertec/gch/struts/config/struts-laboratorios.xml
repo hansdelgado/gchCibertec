@@ -5,6 +5,41 @@
 
 <struts>
     <package name="laboratorios" extends="gch">
-
+        <action name="listaBaseLaboratorio"
+                class="pe.edu.cibertec.gch.action.laboratorio.MostrarLaboratorioAction"
+                method="listar">
+            <result name="listaBase">/view/laboratorio/index.jsp</result>
+        </action>
+        <action name="buscarLaboratorio"
+                class="pe.edu.cibertec.gch.action.laboratorio.MostrarLaboratorioAction"
+                method="buscar">
+            <result name="success">/view/laboratorio/index.jsp</result>
+        </action>
+        <action name="registrarLaboratorio"
+                class="pe.edu.cibertec.gch.action.laboratorio.GestionLaboratorioAction"
+                method="registrar">
+            <result name="success">/view/laboratorio/index.jsp</result>
+            <result type="redirect">listaBaseLaboratorio</result>
+        </action>
+        <action name="actualizarLaboratorio"
+                class="pe.edu.cibertec.gch.action.laboratorio.GestionLaboratorioAction"
+                method="actualizar">
+            <result name="success">/view/laboratorio/index.jsp</result>
+            <result type="redirect">listaBaseLaboratorio</result>
+        </action>
+        <action name="eliminarLaboratorio"
+                class="pe.edu.cibertec.gch.action.laboratorio.GestionLaboratorioAction"
+                method="eliminar">
+            <result name="success">/view/laboratorio/index.jsp</result>
+            <result type="redirect">listaBaseLaboratorio</result>
+        </action>
+        <action name="irEdicionLaboratorio"
+                class="pe.edu.cibertec.gch.action.laboratorio.EdicionLaboratorioAction">
+            <result>/view/laboratorio/edicion.jsp</result>
+            <result name="input" type="redirect">listarLaboratorio</result>
+        </action>
+         <action name="irRegistroLaboratorio">
+            <result>/view/laboratorio/registro.jsp</result>
+        </action>
     </package>
 </struts>

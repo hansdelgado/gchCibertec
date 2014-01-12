@@ -120,7 +120,9 @@ public class LaboratorioDaoImpl implements LaboratorioDao {
                     break;
                 case Parcial :
                     for(Laboratorio lab:laboratorios){
-                        if ((nombre.equals(lab.getNombre()) ||local.equals(lab.getLocal()))&&(lab.getEstado()!= EstadoLaboratorio.Deshabilitado)){
+                        if(((!nombre.isEmpty()&&lab.getNombre().contains(nombre))
+                                ||(!local.isEmpty()&&lab.getLocal().contains(local)))
+                                &&(lab.getEstado()!= EstadoLaboratorio.Deshabilitado)){
                             encontrados.add(lab);
                         }
                     }
