@@ -1,13 +1,14 @@
 package pe.edu.cibertec.gch.programa.action;
 
+import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.List;
+import pe.edu.cibertec.gch.helper.GCH;
 import pe.edu.cibertec.gch.modelo.Programa;
 import pe.edu.cibertec.gch.logica.GestorPrograma;
 import pe.edu.cibertec.gch.modelo.Moneda;
 
 public class RegistrarAction extends ActionSupport {
-
     private GestorPrograma gestorPrograma = new GestorPrograma();
     private List<Programa> programas;
     private Programa programa;
@@ -17,6 +18,7 @@ public class RegistrarAction extends ActionSupport {
     @Override
     public String execute() throws Exception {
 
+        GCH.dump("programa", programa);
         gestorPrograma.registrar(programa);
         setMensaje(getText("gch.programa.exito.registrar"));
         return SUCCESS;
@@ -24,13 +26,14 @@ public class RegistrarAction extends ActionSupport {
 
     @Override
     public void validate() {
+        GCH.dump("codigo", programa.getCodigo());
         Programa p = gestorPrograma.consultarPorCodigo(programa.getCodigo());
-        if (p != null) { // si ya existe
-            addFieldError("programa.codigo", getText("gch.programa.error.codigo.duplicado"));
+        if(p != null){ // si ya existe
+            addFieldError("programa.codigo",getText("gch.programa.error.codigo.duplicado"));
         }
     }
-
-    public String inicializar() {
+    
+    public String inicializar(){
         return SUCCESS;
     }
 
@@ -66,4 +69,5 @@ public class RegistrarAction extends ActionSupport {
     public void setMonedas(Moneda[] monedas) {
         this.monedas = monedas;
     }
+
 }

@@ -1,9 +1,11 @@
 package pe.edu.cibertec.gch.programa.action;
 
+import static com.opensymphony.xwork2.Action.LOGIN;
 import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
+import pe.edu.cibertec.gch.helper.GCH;
 
 public class LoginAction extends ActionSupport implements SessionAware {
 
@@ -29,6 +31,8 @@ public class LoginAction extends ActionSupport implements SessionAware {
     public String ingresar() {
 
         if (getUsuario().equals("michaelmy") && getClave().equals("123")) {
+            session.put(GCH.SESION_USUARIO, getUsuario());
+            session.put(GCH.SESION_CLAVE, getClave());
             return SUCCESS;
         }
         addActionError("su usuario o clave es incorrecto");
@@ -36,6 +40,8 @@ public class LoginAction extends ActionSupport implements SessionAware {
     }
 
     public String logout() {
+        session.remove(GCH.SESION_USUARIO);
+        session.remove(GCH.SESION_CLAVE);
         return SUCCESS;
     }
 

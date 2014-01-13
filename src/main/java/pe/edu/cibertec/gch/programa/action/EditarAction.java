@@ -1,6 +1,8 @@
 package pe.edu.cibertec.gch.programa.action;
 
+import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionSupport;
+import pe.edu.cibertec.gch.helper.GCH;
 import pe.edu.cibertec.gch.modelo.Programa;
 import pe.edu.cibertec.gch.logica.GestorPrograma;
 import pe.edu.cibertec.gch.modelo.Moneda;
@@ -16,6 +18,7 @@ public class EditarAction extends ActionSupport {
     public String execute() throws Exception {
 
         gestorPrograma.modificarPorCodigo(getPrograma());
+        GCH.dump("listando programa", programa);
         setMensaje(getText("gch.programa.exito.editar"));
         return SUCCESS;
     }
@@ -26,6 +29,7 @@ public class EditarAction extends ActionSupport {
             setMensaje(getText("gch.programa.error.noexiste"));
             return "listado";
         }
+        GCH.dump("listando programa", programa);
         return SUCCESS;
     }
 
