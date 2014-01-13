@@ -1,21 +1,20 @@
 package pe.edu.cibertec.gch.modelo;
 
-import java.util.Objects;
+import java.io.Serializable;
 
 /**
  * Es el conjunto de temas agrupados para ser dictados dentro de un tiempo
  * acordado. Puede estar asociado a distintos programas en el tiempo.
  */
-public class Curso {
+public class Curso implements Serializable  {
 
     private String codigo;
     private String nombre;
     private String descripcion;
     private String objetivos;
     private String requisitos;
-    //private int duracion;
     private String duracion;
-    private EstadoActividad estado;
+    private EstadoCurso estado;
 
     
     public String getCodigo() {
@@ -24,9 +23,10 @@ public class Curso {
 
     public void setCodigo(String codigo) {
         this.codigo = codigo;
+//        if (codigo == null || codigo.matches("px[a-z]{6}\\d?")) {
+//            this.codigo = codigo;
+//        }
     }
-    
-    
     
     public Curso conCodigo(String codigo) {
         setCodigo(codigo);
@@ -98,23 +98,24 @@ public class Curso {
         return this;
     }
     
-    public EstadoActividad getEstado() {
+    public EstadoCurso getEstado() {
         return estado;
     }
 
-    public void setEstado(EstadoActividad estado) {
+    public void setEstado(EstadoCurso estado) {
         this.estado = estado;
     }
     
-    public Curso conEstado(EstadoActividad estado) {
+    public Curso conEstado(EstadoCurso estado) {
         setEstado(estado);
         return this;
     }   
-
+    
+    //ESTO ES LO ULTIMO QUE ADICIONE
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 37 * hash + Objects.hashCode(this.codigo);
+        hash = 67 * hash + (this.codigo != null ? this.codigo.hashCode() : 0);
         return hash;
     }
 
@@ -123,14 +124,14 @@ public class Curso {
         if (obj == null) {
             return false;
         }
-        if (getClass() != obj.getClass()) {
+        if (!(obj instanceof Curso)) {
             return false;
         }
         final Curso other = (Curso) obj;
-        if (!Objects.equals(this.codigo, other.codigo)) {
+        if ((this.codigo == null) ? (other.codigo != null) : !this.codigo.equals(other.codigo)) {
             return false;
         }
         return true;
     }
- 
+    
 }

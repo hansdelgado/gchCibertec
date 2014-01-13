@@ -5,6 +5,41 @@
 
 <struts>
     <package name="cursos" extends="gch">
-
+        <action name="listaBaseCurso" 
+                class="pe.edu.cibertec.gch.action.curso.MostrarCursoAction"
+                method="listar">
+            <result name="listaBase">/view/curso/index.jsp</result>
+        </action>
+        <action name="buscarCurso" 
+                class="pe.edu.cibertec.gch.action.curso.MostrarCursoAction"
+                method="buscar">
+            <result name="success">/view/curso/index.jsp</result>
+        </action>
+        <action name="registrarCurso" 
+                class="pe.edu.cibertec.gch.action.curso.GestionCursoAction"
+                method="registrar">
+            <result name="success">/view/curso/index.jsp</result>
+            <result type="redirect">listaBaseCurso</result>
+        </action>        
+        <action name="actualizarCurso" 
+                class="pe.edu.cibertec.gch.action.curso.GestionCursoAction"
+                method="actualizar">
+            <result name="success">/view/curso/index.jsp</result>
+            <result type="redirect">listaBaseCurso</result>
+        </action>
+        <action name="eliminarCurso" 
+                class="pe.edu.cibertec.gch.action.curso.GestionCursoAction"
+                method="eliminar">
+            <result name="success">/view/curso/index.jsp</result>
+            <result type="redirect">listaBaseCurso</result>
+        </action>                
+        <action name="irEdicionCurso" 
+                class="pe.edu.cibertec.gch.action.curso.EdicionCursoAction">
+            <result>/view/curso/modifica.jsp</result>
+            <result name="input" type="redirect">listarCurso</result>
+        </action>
+        <action name="irRegistroCurso">
+            <result>/view/curso/registro.jsp</result>
+        </action>
     </package>
 </struts>

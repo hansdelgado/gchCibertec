@@ -11,17 +11,14 @@ public class ValidacionFactory {
         if(req.getServletPath().contains("Profesor")) {
             return new ValidacionProfesor();
         }
-        if(req.getServletPath().contains("Curso")) {
-            return new ValidacionCurso();
-        }
         return null;
     }
-
     
-        public Validacion obtenerSegunCurso(HttpServletRequest req) {
-        if(req.getServletPath().contains("Curso")) {
+    public Validacion obtenerSegunCurso(HttpServletRequest req) {
+        if(req.getServletPath().contains("Curso")||req.getServletPath().contains("Cursos")) {
             return new ValidacionCurso();
         }
         return null;
+        
     }
 }

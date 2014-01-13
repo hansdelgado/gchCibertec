@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 public class ValidacionCurso extends Validacion {
 
-    private static final Logger LOG = Logger.getLogger(ValidacionCurso.class.getName());
+    //private static final Logger LOG = Logger.getLogger(ValidacionCurso.class.getName());
 
     @Override
     public void validar(HttpServletRequest req) {
@@ -17,8 +17,9 @@ public class ValidacionCurso extends Validacion {
 
             // recuperar input de listado de profesores
             String textoBusquedaCursoCodigo = req.getParameter("codigo"),
-                    textoBusquedaCursoNombre = req.getParameter("nombre");
-            validarBusqueda(textoBusquedaCursoCodigo, textoBusquedaCursoNombre);
+                    textoBusquedaCursoNombre = req.getParameter("nombre"),
+                    textoBusquedaCursoDescripcion = req.getParameter("descripcion");
+            validarBusqueda(textoBusquedaCursoCodigo, textoBusquedaCursoNombre, textoBusquedaCursoDescripcion);
 
             setPaginaReenvio("view/curso/index.jsp");
 
@@ -39,14 +40,18 @@ public class ValidacionCurso extends Validacion {
         }
     }
 
-    private void validarBusqueda(String textoBusquedaCursoCodigo, String textoBusquedaCursoNombre) {
+    private void validarBusqueda(String textoBusquedaCursoCodigo, String textoBusquedaCursoNombre, String textoBusquedaCursoDescripcion) {
         // por cada parametro, validar
-        if (textoBusquedaCursoCodigo.length() > 50) {
-            errores.put("nombres", "La longitud del nombre no debe exceder los 100 caracteres");
+        if (textoBusquedaCursoCodigo.length() > 10) {
+            errores.put("codigo", "La longitud del codigo de curso no debe exceder los 10 caracteres");
         }
         if (textoBusquedaCursoNombre.length() > 50) {
-            errores.put("apellidoPaterno", "La longitud del apellido paterno no debe exceder los 50 caracteres");
+            errores.put("nombre", "La longitud del nombre de curso no debe exceder los 50 caracteres");
         }
+        if (textoBusquedaCursoDescripcion.length() > 50) {
+            errores.put("descripcion", "La descripción de curso no debe exceder los 50 caracteres");
+        }
+        
     }
 
     private void validarRegistro(
@@ -57,9 +62,7 @@ public class ValidacionCurso extends Validacion {
             String  textoRegistroCursoRequisitos,
             String  textoRegistroCursoDuracion,
             String  textoRegistroCursoEstado ) {
-
-        System.out.println("Dentro de Validar");
-
+    
         // por cada parametro, validar
         if (textoRegistroCursoCodigo.isEmpty() || !textoRegistroCursoCodigo.matches("\\w{5,8}")) {
             errores.put("codigo", "El codigo es obligatorio y debe tener cinco o seis caracteres");
