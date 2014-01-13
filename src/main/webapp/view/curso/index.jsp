@@ -1,44 +1,56 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="s" uri="/struts-tags" %>
 <%@taglib prefix="gch" uri="/WEB-INF/tlds/gch" %>
 <gch:base titulo="Listado de Cursos">
     <div class="informacion">
         <span>${mensaje}</span>
     </div>
 <form action="buscarCurso">
+        <div class="informacion" style="display: ${empty requestScope.errores ? 'none' : 'block'}">
+            <ul>
+                <s:iterator value="errores">
+                    <li><s:property value="value" /></li>
+                </s:iterator>
+            </ul>
+        </div>
+    
         <fieldset>
             <legend>Datos de B&uacute;squeda</legend>
             <div>
                 <label for="codigo">
                     Codigo
                 </label>
-                <input type="search" name="codigo" id="codigo" maxlength="50" />
+                <s:textfield type="search" name="codigo" maxlength="50" />
             </div>
              <div>
                 <label for="nombre">
                     Nombre
                 </label>
-                <input type="search" name="nombre" id="nombre" maxlength="50" />
+                <s:textfield type="search" name="nombre" maxlength="50" />
             </div>
+             <div>
+                <label for="descripcion">
+                    Descripción
+                </label>
+                <s:textfield type="search" name="descripcion" maxlength="50" />
+            </div>
+            
             <div>
                 <label for="tipoBusqueda">
                     Tipo Busqueda
                 </label>
-                <select name="tipoBusqueda">
-                    <option value="0">Completa</option>
-                    <option value="1">Parcial</option>
-                </select>
+                <s:select name="tipoBusqueda"  list="#{'1': 'Parcial', '0':'Completa'}" />
             </div> 
         </fieldset>
-        <button><span>Buscar</span></button>
+        <s:submit value="Buscar" />    
     </form>
     <div>
         <nav>
             <ul>
                 <li>
-                    <a href="irRegistroCurso">
+                    <s:a action="irRegistroCurso">
                         Registrar nuevo curso
-                    </a>
+                    </s:a>
+                    
                 </li>
             </ul>
         </nav>
@@ -46,23 +58,34 @@
     <div>
         <ul id="resultadoConsulta">
             <li class="cabeceraConsulta">
+                <span>Eliminar</span>
+                <span>Editar</span>
                 <span>Codigo</span>
                 <span>Nombre</span>
-                <span></span>
-
-                <span></span>
-
+                <span>Descripcion</span>
             </li>
-            <c:forEach var="curso" items="${requestScope.cursos}" >
-                <li>
-                    <span>${curso.codigo}</span>
-                    <span>${curso.nombre}</span>
-                    <span><a href="eliminarCurso?codigo=${curso.codigo}">Eliminar</a></span>
-
-                    <span><a href="irModificaCurso?codigo=${curso.codigo}">Editar</a></span>
-
+            <s:iterator value="listaCursos" status="statusItem">
+                <li class="${statusItem.odd ? 'impar' : 'par'}">
+                    <span>
+                        <s:url action="eliminarCurso" var="eliminacion">
+                            <s:param name="codigo" value="codigo" />
+                        </s:url>
+                        <s:a href="%{eliminacion}">X</s:a>
+                    </span>
+                    <span>
+                        <s:url action="irEdicionCurso" var="edicion">
+                            <s:param name="codigo" value="codigo" />
+                        </s:url>
+                        <s:a href="%{edicion}">X</s:a>
+                    </span>
+                    <span><s:property value="codigo" /></span>
+                    <span><s:property value="nombre" /></span>
+                    <span><s:property value="descripcion" /></span>
                 </li>
-            </c:forEach>
+            </s:iterator>                
+                
+                
+                
         </ul>
     </div>
 </gch:base>

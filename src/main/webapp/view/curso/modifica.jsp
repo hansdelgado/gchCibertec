@@ -1,97 +1,63 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="s" uri="/struts-tags" %>
 <%@taglib prefix="gch" uri="/WEB-INF/tlds/gch" %>
-<<<<<<< HEAD
-<gch:base titulo="Modificar Curso">
-    <div class="informacion">
-        <span>${mensaje}</span>
-    </div>
-    <form action="modificarCurso" method="post">
-=======
 <gch:base titulo="Registro de Curso">
     <div class="informacion">
-        <span>${mensaje}</span>
+        <span><s:property value="mensaje" /></span>
     </div>
-    <form action="registrarCurso" method="post">
->>>>>>> origin/master
+    <form action="actualizarCurso" method="post">
+        <s:push value="curso">
+        <div class="informacion" style="display: ${empty requestScope.errores ? 'none' : 'block'}">
+            <ul>
+                <s:iterator value="errores">
+                    <li><s:property value="value" /></li>
+                </s:iterator>
+            </ul>
+        </div>
+            
         <fieldset>
 
             <div>
                 <label for="codigo">
-                    C&oacute;digo:
+                    C&oacute;digo
                 </label>
-<<<<<<< HEAD
-                <input type="text" id="codigo" name="codigo" value="${codigo}" maxlength="8"  autofocus >
-=======
-                <input type="text" id="codigo" name="codigo" maxlength="8"  autofocus >
->>>>>>> origin/master
+                <s:textfield name="codigo" maxlength="8" readonly="true" />
             </div>
 
             <div>
                 <label for="nombre">Nombres</label>
-<<<<<<< HEAD
-                <input type="text" id="nombre" name="nombre" value="${nombre}" maxlength="50" />
+                <s:textfield name="nombre" required="true" maxlength="50" />
             </div>
             <div>
                 <label for="descripcion">Descripcion:</label>
-                <input type="text" id="descripcion" name="descripcion" value="${descripcion}" maxlength="50" />
+                <s:textfield name="descripcion" required="true" maxlength="50" />
             </div>
             <div>
-                <label for="objetivo">Objetivos:</label>
-                <input type="text" id="objetivo" name="objetivo" value="${objetivos}" maxlength="50" />
-=======
-                <input type="text" id="nombre" name="nombre" value="${curso.nombre}" maxlength="50" />
+                <label for="objetivos">Objetivos:</label>
+                <s:textfield name="objetivos" maxlength="50" />
             </div>
+
+
             <div>
-                <label for="descripcion">Descripcion:</label>
-                <input type="text" id="descripcion" name="descripcion" value="${curso.descripcion}" maxlength="50" />
+                <label for="requisitos">Requisitos</label>
+                <s:textfield name="requisitos" maxlength="50" />
             </div>
-            <div>
-                <label for="objetivo">Objetivos:</label>
-                <input type="text" id="objetivo" name="objetivo" value="${curso.objetivos}" maxlength="50" />
->>>>>>> origin/master
-            </div>
-        
-    
-            <div>
-                <label for="requisito">Requisitos</label>
-<<<<<<< HEAD
-                <input type="text" id="requisito" name="requisito" value="${requisitos}"  maxlength="400" />
-            </div>
-            <div>
-                <label for="referencia">Referencia</label>
-                <input type="text" id="referencia" name="referencia" value="${referencia}" maxlength="400" />
-=======
-                <input type="text" id="requisito" name="requisito" value="${curso.requisitos}"  maxlength="400" />
-            </div>
-            <div>
-                <label for="referencia">Referencia</label>
-                <input type="text" id="referencia" name="referencia" value="${curso.referencia}" maxlength="400" />
->>>>>>> origin/master
-            </div>
-        
-            
+
             <div>
                 <label for="duracion">
                     Duracion:
                 </label>
-<<<<<<< HEAD
-                <input type="2" name="duracion" id="duracion" value="${duracion}" />
-=======
-                <input type="2" name="duracion" id="duracion" value="${curso.duracion}" />
->>>>>>> origin/master
+                <s:textfield name="duracion" maxlength="20" />
             </div>
             <div>
                 <label for="estado">
-                    Estado:
+                    Estado del Curso
                 </label>
-<<<<<<< HEAD
-                <input type="text" name="estado" id="estado" value="${estado}" />
-=======
-                <input type="text" name="estado" id="estado" value="${curso.estado}" />
->>>>>>> origin/master
+                <s:select name="estado" value="estadoCode" list="#{'1':'Activo','2':'Inactivo'}" headerKey="-1" headerValue="Seleccione" />
             </div>
 
         </fieldset>
         <button>Actualizar</button>
+        </s:push>    
     </form>
 </gch:base>
+
