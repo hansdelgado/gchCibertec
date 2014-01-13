@@ -1,48 +1,42 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="s" uri="/struts-tags" %>
 <%@taglib prefix="gch" uri="/WEB-INF/tlds/gch" %>
 <gch:base titulo="Listado de Laboratorios">
-    <div class="informacion" style="display: ${empty requestScope.errores ? 'none' : 'block'}">
+    <div class="informacion">
+        <span>${mensaje}</span>
+    </div>
+    <s:form action="buscarLaboratorio">
+        <div class="informacion" style="display: ${empty requestScope.errores ? 'none' : 'block'}">
             <ul>
-                <c:forEach var="error" items="${requestScope.errores}">
-                    <li>${error.value}</li>
-                </c:forEach>
+                <s:iterator value="errores">
+                    <li><s:property value="value"/></li>
+                </s:iterator>
             </ul>
-     </div> 
-    <form action="buscarLaboratorios">
+        </div> 
         <fieldset>
-            <legend>Datos de B&uacute;squeda</legend>
+                <legend>Datos de B&uacute;squeda</legend>
+            
             <div>
-                <label for="nombre">
-                    Nombre
-                </label>
-                <input type="search" name="nombre" id="nombre" maxlength="50" />
+                <s:label value="Nombre" for="nombre"/>
+                <s:textfield type="search" name="nombre" maxlength="50"/>
             </div>
             <div>
-                <label for="local">
-                    Local
-                </label>
-                <input type="search" name="local" id="local" maxlength="50" />
+                <s:label value="local" for="local"/>
+                <s:textfield type="search" name="local" maxLength="50"/>
             </div>
             <div>
-                <label for="tipoBusqueda">
-                    Tipo Busqueda
-                </label>
-                <select name="tipoBusqueda">
-                    <option value="0">Completa</option>
-                    <option value="1">Parcial</option>
-                </select>
-            </div>  
+                <label for="tipoBusqueda">Tipo de busqueda</label>
+                <s:select name="tipoBusqueda" list="#{'1':'Parcial','0':'Completa'}"/>
+            </div>
         </fieldset>
-        <button><span>Buscar</span></button>
-    </form>
+                <s:submit value="Buscar"/>
+    </s:form>
     <div>
         <nav>
             <ul>
                 <li>
-                    <a href="irRegistroLaboratorio">
+                    <s:a href="irRegistroLaboratorio">
                         Registrar nuevo laboratorio
-                    </a>
+                    </s:a>
                 </li>
             </ul>
         </nav>
@@ -51,6 +45,8 @@
         <strong>Laboratorios registrados</strong>
         <ul id="resultadoConsulta">
             <li class="cabeceraConsulta">
+                <span>Eliminar</span>
+                <span>Editar</span>
                 <span>Codigo</span>
                 <span>Nombre</span>
                 <span>Descripcion</span>
@@ -60,18 +56,29 @@
                 <span>Capacidad</span>
                 <span>Estado</span>
             </li>
-            <c:forEach var="laboratorio" items="${requestScope.laboratorios}" >
-                <li>
-                    <span><a href="${pageContext.request.contextPath}/GetLaboratorio?codigo=${laboratorio.codigo}">${laboratorio.codigo}</a></span>
-                    <span>${laboratorio.nombre}</span>
-                    <span>${laboratorio.descripcion}</span>
-                    <span>${laboratorio.local}</span>
-                    <span>${laboratorio.pabellon}</span>
-                    <span>${laboratorio.salon}</span>
-                    <span>${laboratorio.capacidad}</span>
-                    <span>${laboratorio.estado}</span>
+            <s:iterator value="listaLaboratorios" status="statusItem">
+                <li class="${statusItem.odd ? 'impar':'par'}">
+                    <span>
+                        <s:url action="eliminarLaboratorio" var="eliminacion">
+                            <s:param name="codigo" value="codigo"/>
+                        </s:url>
+                        <s:a href="%{eliminacion}">X</s:a>
+                    </span>
+                    <span>
+                    <s:url action="irEdicionLaboratorio" var="edicion">
+                        <s:param name="codigo" value="codigo"/>
+                    </s:url>
+                    <s:a href="%{edicion}">X</s:a>
+                    </span>
+                    <span><s:property value="nombre"/></span>
+                    <span><s:property value="descripcion"/></span>
+                    <span><s:property value="local"/></span>
+                    <span><s:property value="pabellon"/></span>
+                    <span><s:property value="salon"/></span>
+                    <span><s:property value="capacidad"/></span>
+                    <span><s:property value="estado"/></span>
                 </li>
-            </c:forEach>
+            </s:iterator>
         </ul>
     </div>
 </gch:base>

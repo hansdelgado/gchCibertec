@@ -2,7 +2,10 @@
 <%@taglib prefix="gch" uri="/WEB-INF/tlds/gch" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <gch:base titulo="Registro de Laboratorio">
-
+   <div class="informacion">
+        <span>${mensaje}</span>
+    </div>
+    
     <div class="informacion" style="display: ${empty requestScope.errores ? 'none' : 'block'}">
             <ul>
                 <c:forEach var="error" items="${requestScope.errores}">
