@@ -5,7 +5,7 @@
         <h2><s:text name="gch.app.sistema.gch"/></h2>
     </hgroup>
     <p>
-        <a href="#">Cibertec</a>&reg; 2012 - 2013
+        <a href="#">Cibertec</a>&reg; 2012 - 2014
     </p>
     <address>
         <span class="sede"><s:text name="gch.app.sede.central"/></span>
