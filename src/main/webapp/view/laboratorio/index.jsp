@@ -68,8 +68,9 @@
                     <s:url action="irEdicionLaboratorio" var="edicion">
                         <s:param name="codigo" value="codigo"/>
                     </s:url>
-                    <s:a href="%{edicion}">X</s:a>
-                    </span>
+                    <s:a href="%{edicion}">E</s:a>
+                    </span
+                    <span><s:property value="codigo" /></span>
                     <span><s:property value="nombre"/></span>
                     <span><s:property value="descripcion"/></span>
                     <span><s:property value="local"/></span>

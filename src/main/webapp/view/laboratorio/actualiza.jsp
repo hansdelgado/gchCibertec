@@ -1,26 +1,25 @@
 <%@taglib prefix="s" uri="/struts-tags" %>
 <%@taglib prefix="gch" uri="/WEB-INF/tlds/gch" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <gch:base titulo="Edicion Laboratorio">
     <div class="informacion">
         <span><s:property value="mensaje" /></span>
     </div>                
     <s:form action="actualizarLaboratorio" method="post"  >
         <s:push value="laboratorio">
-       <div class="informacion" style="display: ${empty requestScope.errores ? 'none' : 'block'}">
+        <div class="informacion" style="display: ${empty requestScope.errores ? 'none' : 'block'}">
             <ul>
                 <s:iterator value="errores">
-                    <li><s:property value="value"/></li>
+                    <li><s:property value="value" /></li>
                 </s:iterator>
             </ul>
-        </div> 
+        </div>
         <fieldset>
             <legend>Sistema</legend>
             <div>
                 <label for="codigo">
                     C&oacute;digo
                 </label>
-                <s:textfield name="codigo" maxlength="8" readonly="true" >
+                <s:textfield name="codigo" maxlength="8" readonly="true" />
             </div>
         </fieldset>
         <fieldset>
@@ -52,11 +51,11 @@
              <div>
                 <label for="estado">Estado</label>
                 <s:select name="estado" value="estadoCode"
-                          list="#{'1':"Implementado",'2':"Pendiente Implementacion",'3':'Con Problemas','4':'Deshabilitado','5':'No Disponible'}"
+                          list="#{'1':'Implementado','2':'Pendiente Implementacion','3':'Con Problemas','4':'Deshabilitado','5':'No Disponible'}"
                           headerKey="-1" headerValue="Seleccione"/>
                 </div>
         </fieldset>
-                <s:submit value="Actualizar"/>
+        <s:submit value="Actualizar"/>
         </s:push>
     </s:form>
 </gch:base>

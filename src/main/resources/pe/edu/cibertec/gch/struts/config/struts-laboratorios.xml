@@ -35,7 +35,7 @@
         </action>
         <action name="irEdicionLaboratorio"
                 class="pe.edu.cibertec.gch.action.laboratorio.EdicionLaboratorioAction">
-            <result>/view/laboratorio/edicion.jsp</result>
+            <result>/view/laboratorio/actualiza.jsp</result>
             <result name="input" type="redirect">listarLaboratorio</result>
         </action>
          <action name="irRegistroLaboratorio">

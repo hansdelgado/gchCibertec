@@ -17,7 +17,7 @@ import pe.edu.cibertec.gch.modelo.Laboratorio;
  *
  * @author YESSY
  */
-public class GestionProfesorAction extends LaboratorioBaseAction {
+public class GestionLaboratorioAction extends LaboratorioBaseAction {
     public String registrar(){
         Laboratorio nuevoLaboratorio = new Laboratorio().conCodigo(codigo)
                  .conNombre(nombre)
@@ -42,7 +42,7 @@ public class GestionProfesorAction extends LaboratorioBaseAction {
             gestor.eliminarPorCodigo(codigo);
             return Action.SUCCESS;
 //        } catch (DatosInvalidosException ex) {
-//            Logger.getLogger(pe.edu.cibertec.gch.action.profesor.GestionProfesorAction.class.getName()).log(Level.SEVERE, null, ex);
+//            Logger.getLogger(pe.edu.cibertec.gch.action.profesor.GestionLaboratorioAction.class.getName()).log(Level.SEVERE, null, ex);
 //            return Action.ERROR;
 //        }
     }
