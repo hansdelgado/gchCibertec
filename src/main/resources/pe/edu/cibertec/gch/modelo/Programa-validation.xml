@@ -1,0 +1,58 @@
+<!DOCTYPE validators PUBLIC
+  "-//Apache Struts//XWork Validator 1.0.3//EN" 
+  "http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+  
+<!--Validacion a nivel de Objeto de Dominio usando el interceptor Validation y visitor-->
+           
+<validators>
+    <field name="codigo">
+        <field-validator type="requiredstring">
+            <message key="gch.programa.error.codigo.vacio"></message>
+        </field-validator>
+    </field>
+    <field name="titulo">
+        <field-validator type="requiredstring">
+            <message key="gch.programa.error.titulo.vacio"></message>
+        </field-validator>
+    </field>
+    <field name="descripcion">
+        <field-validator type="requiredstring">
+            <message key="gch.programa.error.descripcion.vacio"></message>
+        </field-validator>
+    </field>
+    <field name="objetivos">
+        <field-validator type="requiredstring">
+            <message key="gch.programa.error.objetivos.vacio"></message>
+        </field-validator>
+    </field>
+    <field name="requisitos">
+        <field-validator type="requiredstring">
+            <message key="gch.programa.error.requisitos.vacio"></message>
+        </field-validator>
+    </field>
+    <field name="moneda">
+        <field-validator type="required">
+            <message key="gch.programa.error.moneda.vacio"></message>
+        </field-validator>
+    </field>
+    <field name="precio">
+        <field-validator type="double">
+            <param name="minInclusive">15</param>  
+            <param name="maxInclusive">4000</param>  
+            <message key="gch.programa.error.precio.rango"></message>
+        </field-validator>
+    </field>
+    <field name="duracion">
+        <field-validator type="int">
+            <param name="min">10</param>  
+            <param name="max">150</param>  
+            <message key="gch.programa.error.duracion.rango"></message>
+        </field-validator>
+    </field>
+    <field name="fechaInicial">
+        <field-validator type="required">
+            <message key="gch.programa.error.fechainicial.vacio"></message>
+        </field-validator>
+    </field>
+</validators>
+

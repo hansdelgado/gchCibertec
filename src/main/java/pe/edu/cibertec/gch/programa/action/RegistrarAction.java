@@ -9,6 +9,7 @@ import pe.edu.cibertec.gch.logica.GestorPrograma;
 import pe.edu.cibertec.gch.modelo.Moneda;
 
 public class RegistrarAction extends ActionSupport {
+
     private GestorPrograma gestorPrograma = new GestorPrograma();
     private List<Programa> programas;
     private Programa programa;
@@ -28,12 +29,15 @@ public class RegistrarAction extends ActionSupport {
     public void validate() {
         GCH.dump("codigo", programa.getCodigo());
         Programa p = gestorPrograma.consultarPorCodigo(programa.getCodigo());
-        if(p != null){ // si ya existe
-            addFieldError("programa.codigo",getText("gch.programa.error.codigo.duplicado"));
+        if (p != null) { // si ya existe
+            addFieldError("programa.codigo", getText("gch.programa.error.codigo.duplicado"));
         }
+//        if (programa.getDescripcion().length()==0) {
+//            addFieldError("programa.descripcion",getText("gch.programa.error.descripcion.vacio"));
+//        }
     }
-    
-    public String inicializar(){
+
+    public String inicializar() {
         return SUCCESS;
     }
 
@@ -69,5 +73,4 @@ public class RegistrarAction extends ActionSupport {
     public void setMonedas(Moneda[] monedas) {
         this.monedas = monedas;
     }
-
 }

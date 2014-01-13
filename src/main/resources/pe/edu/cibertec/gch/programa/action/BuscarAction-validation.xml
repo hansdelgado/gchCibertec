@@ -1,0 +1,29 @@
+<!DOCTYPE validators PUBLIC
+  "-//Apache Struts//XWork Validator 1.0.3//EN" 
+  "http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+  
+<!--Validacion a nivel de Accion usando el interceptor Validation -->
+        
+<!-- validationWorkflowStack
+    ...
+    <interceptor-ref name="params">            -| pertencen al 
+    <interceptor-ref name="conversionError"/>  -| basicStack
+    <interceptor-ref name="validation"/>
+    <interceptor-ref name="workflow"/>
+-->
+
+<validators>
+    <field name="titulo">
+        <field-validator type="stringlength">
+            <param name="maxLength">20</param>
+            <message>el titulo no debe ser mayor a %{maxLength} caracteres</message>
+        </field-validator>
+    </field>
+    <field name="descripcion">
+        <field-validator type="stringlength">
+            <param name="maxLength">20</param>
+            <message>la descripcion no debe ser mayor a %{maxLength} caracteres</message>
+        </field-validator>
+    </field>
+</validators>
+
