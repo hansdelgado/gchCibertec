@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import pe.edu.cibertec.gch.logica.GestorCurso;
 import pe.edu.cibertec.gch.modelo.Curso;
-import pe.edu.cibertec.gch.modelo.EstadoActividad;
+import pe.edu.cibertec.gch.modelo.EstadoCurso;
 //import pe.edu.cibertec.gch.modelo.EstadoProfesor;
 
 /**
@@ -40,7 +40,8 @@ public class RegistroCursoServlet extends HttpServlet {
                 .conObjetivos(objetivos)
                 .conRequisitos(requisitos)
                 .conDuracion(duracion)
-                .conEstado(EstadoActividad.Valido);
+                .conEstado(EstadoCurso.Activo);
+                //.conEstado(EstadoActividad.Valido);
 
         gestorCurso.registrar(nuevoCurso);
         resp.sendRedirect("listarCursos");

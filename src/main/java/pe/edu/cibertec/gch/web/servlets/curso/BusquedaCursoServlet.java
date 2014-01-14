@@ -25,11 +25,12 @@ public class BusquedaCursoServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String textoCodigo = req.getParameter("codigo"),
                 textoNombre = req.getParameter("nombre"),
+                textoDescripcion = req.getParameter("descripcion"),
                 textoTipoBusqueda = req.getParameter("tipoBusqueda");;
         // segun el tipo de codigo obtenemos el tipo de busqueda
         TipoBusqueda tipoBusqueda = TipoBusqueda.obtenerPorCodigo(Integer.parseInt(textoTipoBusqueda));
         // trae los profesores en la fuente de datos
-        List<Curso> cursos = gestorCurso.listarSegunCurso(textoCodigo,textoNombre, tipoBusqueda);
+        List<Curso> cursos = gestorCurso.listarSegunCurso(textoCodigo,textoNombre, textoDescripcion, tipoBusqueda);
         // almacena resultado en el request
         req.setAttribute("cursos", cursos);
         // pinta los datos en el listado
