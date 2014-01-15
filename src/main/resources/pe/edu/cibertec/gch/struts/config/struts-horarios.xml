@@ -5,6 +5,41 @@
 
 <struts>
     <package name="horarios" extends="gch">
-     
+        <action name="listaBaseHorario" 
+                class="pe.edu.cibertec.gch.action.horario.MostrarHorarioAction"
+                method="listar">
+            <result name="listaBase">/view/horario/index.jsp</result>
+        </action>
+        <action name="buscarHorario" 
+                class="pe.edu.cibertec.gch.action.horario.MostrarHorarioAction"
+                method="buscar">
+            <result name="success">/view/horario/index.jsp</result>
+        </action>
+        <action name="registrarHorario" 
+                class="pe.edu.cibertec.gch.action.horario.GestionHorarioAction"
+                method="registrar">
+            <result name="success">/view/horario/index.jsp</result>
+            <result type="redirect">listaBaseHorario</result>
+        </action>        
+        <action name="actualizarHorario" 
+                class="pe.edu.cibertec.gch.action.horario.GestionHorarioAction"
+                method="actualizar">
+            <result name="success">/view/horario/index.jsp</result>
+            <result type="redirect">listaBaseHorario</result>
+        </action>
+        <action name="eliminarHorario" 
+                class="pe.edu.cibertec.gch.action.horario.GestionHorarioAction"
+                method="eliminar">
+            <result name="success">/view/horario/index.jsp</result>
+            <result type="redirect">listaBaseHorario</result>
+        </action>                
+        <action name="irEdicionHorario" 
+                class="pe.edu.cibertec.gch.action.horario.EdicionHorarioAction">
+            <result>/view/horario/editar.jsp</result>
+            <result name="input" type="redirect">listarHorario</result>
+        </action>
+        <action name="irRegistroHorario">
+            <result>/view/horario/registro.jsp</result>
+        </action>
     </package>
 </struts>

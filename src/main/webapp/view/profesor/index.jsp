@@ -14,6 +14,7 @@
         </div>
         <fieldset>
             <legend>Datos de B&uacute;squeda</legend>
+            
             <div>
                 <s:label value="Nombres" for="nombres" />
                 <s:textfield type="search" name="nombres" maxlength="50" />

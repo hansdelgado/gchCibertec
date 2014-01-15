@@ -1,25 +1,24 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="gch" uri="/WEB-INF/tlds/gch" %>
+<%@taglib prefix="s" uri="/struts-tags" %>
 <gch:base titulo="Listado de Horarios">
     <div class="informacion">
         <span>${mensaje}</span>
     </div>
-    <form action="buscarHorarios">
+    <s:form action="buscarHorarios">
         <div class="informacion" style="display: ${empty requestScope.errores ? 'none' : 'block'}">
             <ul>
-                <c:forEach var="error" items="${requestScope.errores}">
-                    <li>${error.value}</li>
-                </c:forEach>
+                <s:iterator value="errores">
+                    <li><s:property value="value" /></li>
+                </s:iterator>
             </ul>
         </div>
         <fieldset>
             <legend>Datos de búsqueda</legend>
             <div>
-                <label for="codigo">
-                    Codigo
-                </label>
-                <input type="text" name="codigo" id="codigo" />
+                <s:label value="Descripcion" for="descripcion"/>
+                <s:textfield type="search" name="descripcion" maxlength="50" />                
             </div>
             <div>
                 <label for="descripcion">
@@ -47,14 +46,15 @@
         </fieldset>
 
         <button><span>Buscar</span></button>
-    </form>
+    </s:form>
     <div>
         <nav>
             <ul>
                 <li>
-                    <a href="irRegistroHorario">
+                    
+                    <s:a href="irRegistroHorario">
                         Registrar nuevo horario
-                    </a>
+                    </s:a>
                 </li>
             </ul>
         </nav>
