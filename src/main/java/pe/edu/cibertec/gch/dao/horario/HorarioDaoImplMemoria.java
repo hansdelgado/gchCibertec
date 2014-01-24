@@ -79,6 +79,7 @@ public class HorarioDaoImplMemoria implements HorarioDao {
                 actualizado=horarioActualizado;
         }
         horarios.remove(actualizado);
+        System.out.println("se borro el horario y se agrego el actualizado");
         horarios.add(horario);
     }
 

@@ -1,3 +1,4 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags" %>
 <%@taglib prefix="gch" uri="/WEB-INF/tlds/gch" %>
 <gch:base titulo="Edici&oacute;n de Profesor">

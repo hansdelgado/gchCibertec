@@ -17,35 +17,26 @@
         <fieldset>
             <legend>Datos de búsqueda</legend>
             <div>
-                <s:label value="Descripcion" for="descripcion"/>
-                <s:textfield type="search" name="descripcion" maxlength="50" />                
+                
+                <s:label value="Codigo" for="codigo" />
+                <s:textfield type="search" name="codigo" maxlength="8" />
             </div>
             <div>
-                <label for="descripcion">
-                    Descripción
-                </label>
-                <input type="text" name="descripcion" id="descripcion" />
+                <s:label value="Descripcion" for="descripcion" />
+                <s:textfield type="search" name="descripcion" maxlength="50" />
             </div>
             <div>
-                <label for="estado">
-                    Estado
-                </label>
-                <input type="text" name="estado" id="estado" />
+                <s:label value="Estado" for="estado" />
+                <s:textfield type="search" name="estado" maxlength="50" />
             </div>
-        </fieldset>
-        <fieldset>
             <div>
                 <label for="tipoBusqueda">
-                    Tipo Búsqueda
+                    Tipo de busqueda
                 </label>
-                <select name="tipoBusqueda" id="tipoBusqueda">
-                    <option value="0">Completa</option>
-                    <option value="1">Parcial</option>
-                </select>
+                <s:select name="tipoBusqueda"  list="#{'1': 'Parcial', '0':'Completa'}" />
             </div>
         </fieldset>
-
-        <button><span>Buscar</span></button>
+        <s:submit value="Buscar" />
     </s:form>
     <div>
         <nav>
@@ -62,33 +53,31 @@
     <div>
         <ul id="resultadoConsulta">
             <li class="cabeceraConsulta">
-            <span>Codigo</span>
-            <span>Descripcion</span>
-            <span>estado</span> 
-            <span>Editar</span>
             <span>Eliminar</span>
+            <span>Editar</span>
+            <span>Codigo</span> 
+            <span>Descripcion</span>
+            <span>Estado</span>
             </li>
-            <c:forEach var="horario" items="${requestScope.horarios}" >
-                <li>
-
-                <span>${horario.codigo}</span>
-                <span>${horario.descripcion}</span>
-                <span>${horario.estado}</span>
-                <span align="center">
-                    <!--?codigo=${horario.codigo}">-->
-                    <a href="irHorarioEditar?codigo=${horario.codigo}">
-                    <img src="images/file_edit.png" alt="Editar partida" width="12" height="12" border="0">
-                </a>
-                </span>
-
-                <span>
-                <a onclick="return confirm('Desea elimar Registro: ??')"
-                   href="eliminarHorario?codigo=${horario.codigo}">
-                    <img src="images/file_delete.png" alt="Eliminar partida" width="12" height="12" border="0">
-                </a>
-                </span>
+            <s:iterator value="listaHorarios" status="statusItem">
+                <li class="${statusItem.odd ? 'impar' : 'par'}">
+                    <span>
+                        <s:url action="eliminarHorario" var="eliminacion">
+                            <s:param name="codigo" value="codigo" />
+                        </s:url>
+                        <s:a href="%{eliminacion}">X</s:a>
+                    </span>
+                    <span>
+                        <s:url action="irEdicionHorario" var="edicion">                            
+                            <s:param name="codigo" value="codigo" />
+                        </s:url>
+                        <s:a href="%{edicion}">O</s:a>
+                    </span>
+                    <span><s:property value="codigo" /></span>
+                    <span><s:property value="descripcion" /></span>
+                    <span><s:property value="estado" /></span>
                 </li>
-            </c:forEach>
+            </s:iterator>
         </ul>
     </div>
 </gch:base>

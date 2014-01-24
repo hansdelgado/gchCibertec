@@ -1,6 +1,5 @@
 package pe.edu.cibertec.gch.modelo;
 
-import com.sun.xml.internal.ws.message.StringHeader;
 import java.io.Serializable;
 
 /**

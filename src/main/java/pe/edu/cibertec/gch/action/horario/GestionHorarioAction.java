@@ -9,7 +9,6 @@ import java.util.logging.Logger;
 import java.util.logging.Level;
 import pe.edu.cibertec.gch.exception.DatosInvalidosException;
 import pe.edu.cibertec.gch.modelo.EstadoActividad;
-import pe.edu.cibertec.gch.modelo.EstadoProfesor;
 import pe.edu.cibertec.gch.modelo.Horario;
 
 /**
@@ -30,13 +29,13 @@ public class GestionHorarioAction extends HorarioBaseAction{
         return Action.SUCCESS;
     }
     public String actualizar() {
-        
+        System.out.println("actualizando gestionh");
         Horario horario = new Horario().conCodigo(codigo)
                 .conDescripcion(descripcion)
                 .conMomentoInicio(horaInicio)
                 .conMomentoFin(horaFin)
-                .conEstado(EstadoActividad.Activo);
-
+                .conEstado(EstadoActividad.Inactivo);
+        System.out.println("enviamos a actualizad en gestion horario luego de tener los datos"+codigo);
         gestor.actualizar(horario);
         return Action.SUCCESS;
     }

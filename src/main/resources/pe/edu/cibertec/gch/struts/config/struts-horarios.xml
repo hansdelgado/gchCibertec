@@ -10,7 +10,7 @@
                 method="listar">
             <result name="listaBase">/view/horario/index.jsp</result>
         </action>
-        <action name="buscarHorario" 
+        <action name="buscarHorarios" 
                 class="pe.edu.cibertec.gch.action.horario.MostrarHorarioAction"
                 method="buscar">
             <result name="success">/view/horario/index.jsp</result>
