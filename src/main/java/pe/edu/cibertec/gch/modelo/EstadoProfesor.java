@@ -37,6 +37,21 @@ public enum EstadoProfesor {
                 return NoDeterminado;
         }
     }
+
+    public static String obtenerSegun(EstadoProfesor estadoStr) {
+        switch (estadoStr) {
+            case Activo:
+                return "1";
+            case Inactivo:
+                return "2";
+            case NoDeterminado:
+                return "3";
+            case Vacaciones:
+                return "4";
+            default:
+                return "3";
+        }
+    }
     
     private String estado;
     

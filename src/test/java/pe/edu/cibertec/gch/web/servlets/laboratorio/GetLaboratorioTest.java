@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import static org.mockito.Mockito.*;
 
@@ -36,7 +37,7 @@ public class GetLaboratorioTest {
         when(req.getRequestDispatcher(anyString())).thenReturn(requestDispatcherMock);
     }    
     
-    @Test
+    @Test @Ignore
     public void GetLaboratorioValido() throws Exception {
         //ingreso de datos
        

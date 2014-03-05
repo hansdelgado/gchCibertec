@@ -33,7 +33,15 @@ public class GestionLaboratorioAction extends LaboratorioBaseAction {
     }
     
     public String actualizar(){
-        gestor.actualizar(codigo, nombre, descripcion, local,pabellon,salon,Integer.parseInt(capacidad),EstadoLaboratorio.obtenerSegun(estado));
+        Laboratorio laboratorio = new Laboratorio().conCodigo(codigo)
+                 .conNombre(nombre)
+                 .conDescripcion(descripcion)
+                 .conLocal(local)
+                 .conPabellon(pabellon)
+                 .conSalon(salon)
+                 .conCapacidad(Integer.parseInt(capacidad))
+                 .conEstado(EstadoLaboratorio.obtenerSegun(estado));
+        gestor.actualizar(laboratorio);
         return Action.SUCCESS;
     }
     

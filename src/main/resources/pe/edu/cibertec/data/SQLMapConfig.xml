@@ -9,7 +9,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
     <properties resource="pe/edu/cibertec/data/configuration.properties"/>
 
     <typeAliases>
-        <typeAlias alias="Laboratorio" type="pe.edu.cibertec.gch.modelo.Laboratorio"/>
+        <typeAlias alias="Profesor" type="pe.edu.cibertec.gch.modelo.Profesor"/>
+         <typeAlias alias="Laboratorio" type="pe.edu.cibertec.gch.modelo.Laboratorio"/>
     </typeAliases>
     
     <environments default="jmad">
@@ -27,7 +28,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 
     
     <mappers>       
-        <mapper resource="pe/edu/cibertec/data/LaboratorioMapper.xml"/> 
+        <mapper resource="pe/edu/cibertec/data/ProfesorMapper.xml"/> 
+         <mapper resource="pe/edu/cibertec/data/LaboratorioMapper.xml"/> 
     </mappers>
 
 </configuration>

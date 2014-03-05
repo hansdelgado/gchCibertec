@@ -1,54 +1,92 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 package pe.edu.cibertec.gch.logica;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import pe.edu.cibertec.gch.dao.FactoryDao;
 import pe.edu.cibertec.gch.dao.laboratorio.LaboratorioDao;
-import pe.edu.cibertec.gch.modelo.EstadoLaboratorio;
+import pe.edu.cibertec.gch.exception.DatosInvalidosException;
 import pe.edu.cibertec.gch.modelo.Laboratorio;
 import pe.edu.cibertec.gch.modelo.TipoBusqueda;
 
 /**
- * Realiza operaciones relacionadas al profesor.
+ *
+ * @author Fernando
  */
-public class GestorLaboratorio implements GestorBase<Laboratorio> {
+public class GestorLaboratorio {
+     private LaboratorioDao laboratorioDao;
     
-    private static ArrayList<Laboratorio> laboratorios = new ArrayList<Laboratorio>();
-    LaboratorioDao dao = FactoryDao.getInstance().getLaboratorioDao();
- 
-    @Override
-    public void registrar(Laboratorio laboratorio) {
-        dao.registrar(laboratorio);
+    public GestorLaboratorio() {
+        laboratorioDao = FactoryDao
+                .getFactory(FactoryDao.MYBATIS)
+                .getLaboratorioDao();
     }
-      
-    @Override
+     public void registrar(Laboratorio laboratorio) {
+        laboratorioDao.registrar(laboratorio);
+    }
+
+    public void actualizar(Laboratorio laboratorio) {
+       laboratorioDao.actualizar(laboratorio);
+    }
+
+//    public void eliminar(Laboratorio laboratorio) {
+//        laboratorioDao.eliminarPorCodigo(laboratorio.getCodigo());
+//    }
+    
+    public void eliminar(String codigo) {
+        laboratorioDao.eliminarPorCodigo(codigo);
+    }
+
+    public List<Laboratorio> listarSegun(String nombre, String local, TipoBusqueda tipoBusqueda) {
+        List<Laboratorio> encontrados = new LinkedList<>();
+        for (Laboratorio laboratorio : listarTodos()) {
+        switch (tipoBusqueda) {
+                case Completa :
+                   
+                        if (nombre.equalsIgnoreCase(laboratorio.getNombre())
+                                ||local.equalsIgnoreCase(laboratorio.getLocal())){
+                            encontrados.add(laboratorio);
+                        }
+                    
+                    break;
+                case Parcial :
+                         if ((!nombre.isEmpty()&&laboratorio.getNombre().contains(nombre))
+                                ||!local.isEmpty()&&laboratorio.getLocal().contains(local)){
+                            encontrados.add(laboratorio);
+                        }
+                    }
+                  break;
+             //   default:
+            // break;
+            }
+        
+        return encontrados;
+    }
     public List<Laboratorio> listarTodos() {
-        return dao.listarTodos();
+        return laboratorioDao.listarTodos();
     }
 
-     public List<Laboratorio> listarSegun(String nombre, String local, TipoBusqueda tipoBusqueda) {
-        return dao.listarSegun(nombre, local, tipoBusqueda);
-    }
-    
-    
-    @Override
-    public void eliminarPorCodigo(final String codigo) {
-        dao.eliminarPorCodigo(codigo);
+    public void borrarTodos() {
+        laboratorioDao.borrarTodos();
     }
 
-    
-    @Override
-    public Laboratorio consultarPorCodigo(final String codigo) {
-        return dao.consultarPorCodigo(codigo);
-                
+    public void eliminarSegun(String codigo) throws DatosInvalidosException {
+//        Laboratorio profesorAEliminar = consultarSegun(codigo);
+//        profesorAEliminar.setEstado(EstadoProfesor.Inactivo);
+
     }
 
-    protected void borrarTodos() {
-//        profesores.clear();
+    public Laboratorio consultarSegun(final String codigo) {
+        return laboratorioDao.consultarPorCodigo(codigo);
     }
 
-    public void actualizar(String codigo, String nombre, String descripcion, String local, String pabellon, String salon, Integer capacidad, EstadoLaboratorio estado) {
-        dao.actualizar(codigo,nombre,descripcion,local,pabellon,salon,capacidad,estado);
+    public void eliminarPorCodigo(String codigo) {
+        laboratorioDao.eliminarPorCodigo(codigo);
     }
-
 }

@@ -33,8 +33,8 @@ public class GetLaboratorio extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String codigo = request.getParameter("codigo");       
-        Laboratorio laboratorio = gestorLaboratorio.consultarPorCodigo(codigo);
-        request.setAttribute("laboratorio", laboratorio);
+//        Laboratorio laboratorio = gestorLaboratorio.consultarPorCodigo(codigo);
+//        request.setAttribute("laboratorio", laboratorio);
         request.getRequestDispatcher("/view/laboratorio/actualiza.jsp").forward(request, response);
        //  GchServletUtils.reenviarAModulo("laboratorio", request, response);
     }

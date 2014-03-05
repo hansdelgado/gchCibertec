@@ -21,7 +21,7 @@ public class EdicionLaboratorioAction implements Action{
     
     @Override
     public String execute() throws Exception {
-        laboratorio = gestorLaboratorio.consultarPorCodigo(codigo);
+        laboratorio = gestorLaboratorio.consultarSegun(codigo);
         if (null == laboratorio) {
             return INPUT;
         }

@@ -7,46 +7,62 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="pe.edu.cibertec.gch.modelo.mapper.LaboratorioMapper">
     
-    <select id="obtenerLaboratorio" 
+   <select id="obtenerLaboratorios" 
             resultType="Laboratorio" >
         SELECT codigo,
-               nombres,
-               apellidoPaterno,
-               apellidoMaterno,
-               direccion,
-               referencia,
-               fechaNacimiento,
-               sexo as sexoString,
+               nombre,
+               descripcion,
+               local,
+               pabellon,
+               salon,
+               capacidad,
                estado as estadoString
-        FROM profesor
+        FROM laboratorio
     </select>
     
     <select id="obtenerLaboratorioXCodigo" 
-            resultType="Profesor" 
+            resultType="Laboratorio" 
             parameterType="string">
-        SELECT      IDENTIFIER AS codigo,
-                    FIRSTNAME as nombre,
-                    LASTNAME as apellido,
-                    POSTALCODE as codigoPostal
-        FROM        TAB_CLIENT
-        WHERE       CITY = #{ciudad.codigo}
+        SELECT codigo,
+               nombre,
+               descripcion,
+               local,
+               pabellon,
+               salon,
+               capacidad,
+               estado as estadoString
+        FROM laboratorio
+        WHERE codigo = #{codigo}
     </select>
     
-    <insert  id="insertar" 
-             parameterType="Laboratorio">
-        INSERT INTO ....
+    <insert  id="insertar" parameterType="Laboratorio">
+        INSERT INTO laboratorio
+        (codigo,nombre,descripcion,
+        local,pabellon,salon,
+        capacidad)
+        VALUES
+        (#{codigo},#{nombre},#{descripcion},#{local},#{pabellon},
+        #{salon},#{capacidad});
     </insert>
     
     <update  id="modificar"
              parameterType="Laboratorio">
-        UPDATE ...
+        UPDATE laboratorio
+        SET
+            nombre=#{nombre},
+            descripcion=#{descripcion},
+            local=#{local},
+            pabellon=#{pabellon},
+            salon=#{salon},
+            capacidad=#{capacidad}
+        WHERE codigo = #{codigo};
     </update>
     
     <delete  id="eliminar" 
-             parameterType="Laboratorio">
-        DELETE FROM ...
+             parameterType="string">
+        DELETE FROM laboratorio
+         WHERE codigo = #{codigo};
     </delete>
- 
 </mapper>
 
    

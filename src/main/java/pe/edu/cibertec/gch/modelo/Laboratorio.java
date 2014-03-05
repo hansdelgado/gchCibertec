@@ -120,6 +120,14 @@ public class Laboratorio implements Serializable{
         return this;
     }
     
+    public String getEstadoString() {
+        return EstadoLaboratorio.obtenerSegun(this.estado);
+    }
+    
+    public void setEstadoString(String estadoStr) {
+        setEstado(EstadoLaboratorio.obtenerSegun(estadoStr));
+    }
+    
      public boolean tieneDatosObligatorios() {
         boolean faltaCodigo = (null == getCodigo()),
                 faltaNombre = (null == getNombre()),
@@ -135,7 +143,4 @@ public class Laboratorio implements Serializable{
             return true;
         }
     }
-    
-    
-    
 }

@@ -33,10 +33,10 @@ public class ActualizaLaboratorioServlet extends HttpServlet {
                 operacion =req.getParameter("operacion");
         
         if (operacion.equalsIgnoreCase("Actualizar")) {
-            gestorLaboratorio.actualizar(codigo, nombre, descripcion, local,pabellon,salon,Integer.parseInt(capacidad),EstadoLaboratorio.obtenerSegun(estado));
+//            gestorLaboratorio.actualizar(codigo, nombre, descripcion, local,pabellon,salon,Integer.parseInt(capacidad),EstadoLaboratorio.obtenerSegun(estado));
             resp.sendRedirect("listarLaboratorios");   
         } else {
-            gestorLaboratorio.eliminarPorCodigo(codigo);
+//            gestorLaboratorio.eliminarPorCodigo(codigo);
             resp.sendRedirect("listarLaboratorios");   
             
         }  

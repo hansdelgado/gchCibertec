@@ -16,6 +16,18 @@ public enum Genero {
                 return Indeterminado;
         }
     }
+
+    public static String obtenerSegun(Genero sexo) {
+        switch(sexo) {
+            case Masculino:
+                return "m";
+            case Femenino:
+                return "f";
+            case Indeterminado:
+            default:
+                return null;
+        }
+    }
     
     private String generoCode;
     

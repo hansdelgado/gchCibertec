@@ -27,9 +27,9 @@ public class Profesor implements Serializable {
     }
 
     public void setCodigo(String codigo) {
-        if (codigo == null || codigo.matches("px[a-z]{6}\\d?")) {
+        //if (codigo == null || codigo.matches("px[a-z]{6}\\d?")) {
             this.codigo = codigo;
-        }
+        //}
     }
 
     public Profesor conCodigo(String codigo) {
@@ -134,6 +134,24 @@ public class Profesor implements Serializable {
     public void setEstado(EstadoProfesor estado) {
         this.estado = estado;
     }
+
+    // Agrego metodos de ayuda para trabajar con MyBatis
+    public String getEstadoString() {
+        return EstadoProfesor.obtenerSegun(this.estado);
+    }
+    
+    public void setEstadoString(String estadoStr) {
+        setEstado(EstadoProfesor.obtenerSegun(estadoStr));
+    }
+    
+    public String getSexoString() {
+        return Genero.obtenerSegun(this.sexo);
+    }
+    
+    public void setSexoString(String sexoStr) {
+        setSexo(Genero.obtenerSegun(sexoStr));
+    }
+    //
 
     public Profesor conEstado(EstadoProfesor estado) {
         this.estado = estado;

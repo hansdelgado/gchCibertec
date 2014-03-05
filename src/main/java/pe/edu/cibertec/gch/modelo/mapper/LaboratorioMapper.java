@@ -9,9 +9,9 @@ import pe.edu.cibertec.gch.modelo.Laboratorio;
 
 public interface LaboratorioMapper {
 
-    Laboratorio obtenerProfesorXCodigo(String codigo);
-    List<Laboratorio> obtenerProfesores();
-    void insertar(Laboratorio profesor);
-    void modificar(Laboratorio profesor);
-    void eliminar(Laboratorio profesor);
+    Laboratorio obtenerLaboratorioXCodigo(String codigo);
+    List<Laboratorio> obtenerLaboratorios();
+    void insertar(Laboratorio laboratorio);
+    void modificar(Laboratorio laboratorio);
+    void eliminar(String codigo);
 }

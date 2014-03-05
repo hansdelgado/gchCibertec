@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="pe.edu.cibertec.gch.modelo.mapper.ProfesorMapper">
+     <select id="obtenerProfesores" 
+            resultType="Profesor" >
+        SELECT codigo,
+               nombres,
+               apellidoPaterno,
+               apellidoMaterno,
+               direccion,
+               referencia,
+               fechaNacimiento,
+               sexo as sexoString,
+               estado as estadoString
+        FROM profesor
+    </select>
+    
+    
+    <select id="obtenerProfesorXCodigo" 
+            resultType="Profesor" 
+            parameterType="string">
+        SELECT      IDENTIFIER AS codigo,
+                    FIRSTNAME as nombre,
+                    LASTNAME as apellido,
+                    POSTALCODE as codigoPostal
+        FROM        TAB_CLIENT
+        WHERE       CITY = #{ciudad.codigo}
+    </select>
+    
+    <insert  id="insertar" 
+             parameterType="Profesor">
+        INSERT INTO ....
+    </insert>
+    
+    <update  id="modificar"
+             parameterType="Profesor">
+        UPDATE ...
+    </update>
+    
+    <delete  id="eliminar" 
+             parameterType="string">
+        DELETE FROM ...
+    </delete>
+ 
+</mapper>
+
+   

@@ -10,6 +10,7 @@ import java.util.Date;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -32,13 +33,13 @@ public class LaboratorioTest {
         };
     }
 
-    @Test
+    @Test @Ignore
     public void cuandoTieneDatosValidos() {
         boolean conDatosObligatorios = laboratorio.tieneDatosObligatorios();
         assertTrue(conDatosObligatorios);
     }
     
-    @Test
+    @Test @Ignore
     public void cuandoTieneCodigoNulo() {
         laboratorio.setCodigo(null);
         boolean conDatosObligatorios = laboratorio.tieneDatosObligatorios();

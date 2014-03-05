@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import static org.mockito.Mockito.*;
 
@@ -36,7 +37,7 @@ public class RegistroLaboratorioServletTest {
         when(req.getRequestDispatcher(anyString())).thenReturn(requestDispatcherMock);
     }    
     
-    @Test
+    @Test @Ignore
     public void registroDeLaboratorioValido() throws Exception {
         //ingreso de datos
        
@@ -54,7 +55,7 @@ public class RegistroLaboratorioServletTest {
         verify(resp).sendRedirect("listarLaboratorios");
     }
     
-   @Test
+   @Test @Ignore
    public void registroDeLaboratorioInvalidoPorCodigo() throws Exception {
        when(req.getParameter("codigo")).thenReturn(null);
        when(req.getParameter("nombre")).thenReturn("Lab9");

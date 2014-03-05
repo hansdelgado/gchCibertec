@@ -14,7 +14,13 @@ import pe.edu.cibertec.gch.modelo.TipoBusqueda;
  */
 public class GestorProfesor {
 
-    private ProfesorDao profesorDao = FactoryDao.getInstance().getProfesorDao();
+    private ProfesorDao profesorDao;
+    
+    public GestorProfesor() {
+        profesorDao = FactoryDao
+                .getFactory(FactoryDao.MYBATIS)
+                .getProfesorDao();
+    }
 
     public void registrar(Profesor profesor) {
         profesorDao.registrar(profesor);
