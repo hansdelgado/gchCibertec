@@ -20,11 +20,11 @@
                 <s:textfield type="search" name="nombre" maxlength="50"/>
             </div>
             <div>
-                <s:label value="local" for="local"/>
+                <s:label value="Local" for="local"/>
                 <s:textfield type="search" name="local" maxLength="50"/>
             </div>
             <div>
-                <label for="tipoBusqueda">Tipo de busqueda</label>
+                <label for="TipoBusqueda">Tipo de busqueda</label>
                 <s:select name="tipoBusqueda" list="#{'1':'Parcial','0':'Completa'}"/>
             </div>
         </fieldset>

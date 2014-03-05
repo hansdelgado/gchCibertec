@@ -48,7 +48,6 @@ public class GestorLaboratorio {
         for (Laboratorio laboratorio : listarTodos()) {
         switch (tipoBusqueda) {
                 case Completa :
-                   
                         if (nombre.equalsIgnoreCase(laboratorio.getNombre())
                                 ||local.equalsIgnoreCase(laboratorio.getLocal())){
                             encontrados.add(laboratorio);
@@ -62,8 +61,8 @@ public class GestorLaboratorio {
                         }
                     }
                   break;
-             //   default:
-            // break;
+               //default:
+          //   break;
             }
         
         return encontrados;
