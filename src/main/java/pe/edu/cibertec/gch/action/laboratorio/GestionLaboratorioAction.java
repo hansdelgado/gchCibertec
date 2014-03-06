@@ -26,7 +26,7 @@ public class GestionLaboratorioAction extends LaboratorioBaseAction {
                  .conPabellon(pabellon)
                  .conSalon(salon)
                  .conCapacidad(Integer.parseInt(capacidad))
-                 .conEstado(EstadoLaboratorio.Implementado);
+                 .conEstado(EstadoLaboratorio.obtenerSegun(estado));
                  
         gestor.registrar(nuevoLaboratorio);
         return Action.SUCCESS;

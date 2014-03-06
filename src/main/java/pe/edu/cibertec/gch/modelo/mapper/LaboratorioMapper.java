@@ -14,4 +14,5 @@ public interface LaboratorioMapper {
     void insertar(Laboratorio laboratorio);
     void modificar(Laboratorio laboratorio);
     void eliminar(String codigo);
+    public List<Laboratorio> obtenerLaboratoriosSegun(Laboratorio lab);
 }

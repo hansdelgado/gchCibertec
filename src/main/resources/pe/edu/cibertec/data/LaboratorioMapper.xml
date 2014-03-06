@@ -20,6 +20,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         FROM laboratorio
     </select>
     
+    <select id="obtenerLaboratoriosSegun" 
+            resultType="Laboratorio" 
+            parameterType="Laboratorio">
+        SELECT codigo,
+               nombre,
+               descripcion,
+               local,
+               pabellon,
+               salon,
+               capacidad,
+               estado as estadoString
+        FROM laboratorio
+        <where>
+            <if test="nombre != null">
+                AND upper(nombre) LIKE upper(#{nombre})
+            </if>
+            <if test="local != null ">
+                AND  UPPER(local) LIKE UPPER(#{local})
+            </if>
+        </where>
+    </select>
+    
     <select id="obtenerLaboratorioXCodigo" 
             resultType="Laboratorio" 
             parameterType="string">
@@ -39,10 +61,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         INSERT INTO laboratorio
         (codigo,nombre,descripcion,
         local,pabellon,salon,
-        capacidad)
+        capacidad,estado)
         VALUES
         (#{codigo},#{nombre},#{descripcion},#{local},#{pabellon},
-        #{salon},#{capacidad});
+        #{salon},#{capacidad},#{estadoString})
     </insert>
     
     <update  id="modificar"
@@ -54,7 +76,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             local=#{local},
             pabellon=#{pabellon},
             salon=#{salon},
-            capacidad=#{capacidad}
+            capacidad=#{capacidad},
+            estado=#{estadoString}
         WHERE codigo = #{codigo};
     </update>
     

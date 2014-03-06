@@ -48,7 +48,35 @@ public class LaboratorioDaoImplMyBatis
 
     @Override
     public List<Laboratorio> listarSegun(String nombre, String local, TipoBusqueda tipoBusqueda) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        SqlSessionFactory ssf = 
+                MyBatisUtil.getSqlSessionFactory();
+        SqlSession session = ssf.openSession();
+        
+        // Utilizando mappers con interfaces
+        LaboratorioMapper mapper = 
+                session.getMapper(LaboratorioMapper.class);
+        
+        List<Laboratorio> laboratorios=null;
+        
+        switch (tipoBusqueda) {
+            case Completa :
+                laboratorios = mapper.obtenerLaboratorios();
+                break;
+            case Parcial :
+                    Laboratorio lab=new Laboratorio();
+                    if(nombre != null && !nombre.equals("")){
+                        lab.setNombre(nombre);
+                    }
+                    if(local != null && !local.equals("")){
+                        lab.setLocal(local);
+                    }
+                    laboratorios = mapper.obtenerLaboratoriosSegun(lab);
+             break;
+        }
+        
+        session.close();
+        
+        return laboratorios;
     }
 
     @Override
