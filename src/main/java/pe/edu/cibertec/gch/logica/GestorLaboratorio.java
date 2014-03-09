@@ -24,7 +24,7 @@ public class GestorLaboratorio {
     
     public GestorLaboratorio() {
         laboratorioDao = FactoryDao
-                .getFactory(FactoryDao.MYBATIS)
+                .getFactory(FactoryDao.JPA)
                 .getLaboratorioDao();
     }
      public void registrar(Laboratorio laboratorio) {

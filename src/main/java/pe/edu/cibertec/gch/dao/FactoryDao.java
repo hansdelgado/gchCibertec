@@ -14,6 +14,7 @@ public abstract class FactoryDao {
     public static final int MEMORIA = 0;
     public static final int JDBC = 1;
     public static final int MYBATIS = 2;
+    public static final int JPA=3;
     
     public static FactoryDao getFactory(int repositorio) {
         if ( instance == null) {
@@ -23,6 +24,9 @@ public abstract class FactoryDao {
                     break;
                 case MYBATIS:
                     instance = new FactoryDaoMyBatis();
+                    break;                
+                case JPA:
+                    instance = new FactoryDaoJPA();
                     break;
             }
         }
