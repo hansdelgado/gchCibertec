@@ -1,20 +1,43 @@
 package pe.edu.cibertec.gch.modelo;
 
 import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * Ambiente que contiene equipos necesarios para dictar clases.
  */
+@Entity
+@Table(name="LABORATORIO")
 public class Laboratorio implements Serializable{
 
+    @Id
+    @Column(name="CODIGO")
     private String codigo;
+    
+    @Column(name="NOMBRE")
     private String nombre;
+    
+    @Column(name="DESCRIPCION")
     private String descripcion;
+    
+    @Column(name="LOCAL")
     private String local;
+    
+    @Column(name="PABELLON")
     private String pabellon;
+    
+    @Column(name="SALON")
     private String salon;
+    
+    @Column(name="CAPACIDAD")
     private int capacidad;
-    private EstadoLaboratorio estado;
+    
+    @Column(name="ESTADO")
+    private Integer estado;
+//    private EstadoLaboratorio estado;
 
     public String getCodigo() {
         return codigo;
@@ -107,25 +130,25 @@ public class Laboratorio implements Serializable{
         return this;
     }
 
-    public EstadoLaboratorio getEstado() {
+    public Integer getEstado() {
         return estado;
     }
 
-    public void setEstado(EstadoLaboratorio estado) {
+    public void setEstado(Integer estado) {
         this.estado = estado;
     }
     
-    public Laboratorio conEstado(EstadoLaboratorio estado) {
+    public Laboratorio conEstado(Integer estado) {
         this.estado = estado;
         return this;
     }
     
-    public String getEstadoString() {
-        return EstadoLaboratorio.obtenerSegun(this.estado);
+    public EstadoLaboratorio getEstadoString() {
+        return EstadoLaboratorio.obtenerSegun(Integer.toString(this.estado));
     }
     
-    public void setEstadoString(String estadoStr) {
-        setEstado(EstadoLaboratorio.obtenerSegun(estadoStr));
+    public void setEstadoString(EstadoLaboratorio estado) {
+        setEstado(Integer.parseInt(EstadoLaboratorio.obtenerSegun(estado)));
     }
     
      public boolean tieneDatosObligatorios() {

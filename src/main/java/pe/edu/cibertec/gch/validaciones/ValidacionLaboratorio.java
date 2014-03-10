@@ -61,8 +61,8 @@ public class ValidacionLaboratorio extends Validacion {
                     .conDescripcion(textoActualizaLaboratorioDescripcion)
                     .conLocal(textoActualizaLaboratorioLocal)
                     .conPabellon(textoActualizaLaboratorioPabellon)
-                    .conSalon(textoActualizaLaboratorioSalon)
-                    .conEstado(EstadoLaboratorio.obtenerSegun(textoActualizaLaboratorioEstado));
+                    .conSalon(textoActualizaLaboratorioSalon);
+//                    .conEstado(EstadoLaboratorio.obtenerSegun(textoActualizaLaboratorioEstado));
             req.setAttribute("laboratorio", laboratorio);
             
             setPaginaReenvio("view/laboratorio/actualiza.jsp");          

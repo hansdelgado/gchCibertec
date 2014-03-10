@@ -24,7 +24,7 @@ public class LaboratorioDaoImpl implements LaboratorioDao {
         lab.setPabellon("F");
         lab.setSalon("202");
         lab.setCapacidad(33);
-        lab.setEstado(EstadoLaboratorio.Implementado);
+        lab.setEstadoString(EstadoLaboratorio.Implementado);
         laboratorios.add(lab);
         
         lab=new Laboratorio();
@@ -35,7 +35,7 @@ public class LaboratorioDaoImpl implements LaboratorioDao {
         lab.setPabellon("F");
         lab.setSalon("202");
         lab.setCapacidad(20);
-        lab.setEstado(EstadoLaboratorio.ConProblemas);
+        lab.setEstadoString(EstadoLaboratorio.ConProblemas);
         laboratorios.add(lab);
         
         lab=new Laboratorio();
@@ -46,7 +46,7 @@ public class LaboratorioDaoImpl implements LaboratorioDao {
         lab.setPabellon("F");
         lab.setSalon("205");
         lab.setCapacidad(38);
-        lab.setEstado(EstadoLaboratorio.Implementado);
+        lab.setEstadoString(EstadoLaboratorio.Implementado);
         laboratorios.add(lab);
     }
     
@@ -68,7 +68,7 @@ public class LaboratorioDaoImpl implements LaboratorioDao {
     public List<Laboratorio> listarTodos() {
         List<Laboratorio> encontrados = new ArrayList<Laboratorio>();
         for(Laboratorio lab:laboratorios){
-           if (lab.getEstado()!= EstadoLaboratorio.Deshabilitado){
+           if (lab.getEstadoString()!= EstadoLaboratorio.Deshabilitado){
            encontrados.add(lab);
            }
         }
@@ -80,7 +80,7 @@ public class LaboratorioDaoImpl implements LaboratorioDao {
         // Al eliminar, el estado del laboratorio
         // se cambia a inactivo
         Laboratorio laboratorio = consultarPorCodigo(codigo);
-        laboratorio.setEstado(EstadoLaboratorio.Deshabilitado);
+        laboratorio.setEstadoString(EstadoLaboratorio.Deshabilitado);
     }
 
     @Override
@@ -119,7 +119,7 @@ public class LaboratorioDaoImpl implements LaboratorioDao {
                     for(Laboratorio lab:laboratorios){
                         if(((!nombre.isEmpty()&&lab.getNombre().contains(nombre))
                                 ||(!local.isEmpty()&&lab.getLocal().contains(local)))
-                                &&(lab.getEstado()!= EstadoLaboratorio.Deshabilitado)){
+                                &&(lab.getEstadoString()!= EstadoLaboratorio.Deshabilitado)){
                             encontrados.add(lab);
                         }
                     }

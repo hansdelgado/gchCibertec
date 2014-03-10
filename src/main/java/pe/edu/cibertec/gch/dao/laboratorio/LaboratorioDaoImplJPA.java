@@ -1,20 +1,13 @@
 package pe.edu.cibertec.gch.dao.laboratorio;
 
-import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
 import pe.edu.cibertec.gch.modelo.Laboratorio;
-import pe.edu.cibertec.gch.modelo.Profesor;
 import pe.edu.cibertec.gch.modelo.TipoBusqueda;
-import pe.edu.cibertec.gch.modelo.mapper.LaboratorioMapper;
 import pe.edu.cibertec.gch.util.JPAUtil;
-import pe.edu.cibertec.gch.util.MyBatisUtil;
-
 /**
  *
  * @author Java-ADV-LM
@@ -31,7 +24,6 @@ public class LaboratorioDaoImplJPA
     @Override
     public void eliminarPorCodigo(String codigo) {
         EntityManager em = emf.createEntityManager();
-
         em.getTransaction().begin();
             Laboratorio laboratorio = 
                     (Laboratorio) em.find(Laboratorio.class, codigo);
@@ -44,7 +36,6 @@ public class LaboratorioDaoImplJPA
     @Override
     public Laboratorio consultarPorCodigo(String codigo) {
         EntityManager em = emf.createEntityManager();
-
         Laboratorio laboratorio = 
                     (Laboratorio) em.find(Laboratorio.class, codigo);
 
@@ -55,70 +46,39 @@ public class LaboratorioDaoImplJPA
     }
 
     @Override
-    public List<Laboratorio> listarSegun(String nombre, String local, TipoBusqueda tipoBusqueda) {
-        SqlSessionFactory ssf = 
-                MyBatisUtil.getSqlSessionFactory();
-        SqlSession session = ssf.openSession();
-        
+    public List<Laboratorio> listarSegun(String nombre, String local, TipoBusqueda tipoBusqueda) {       
         EntityManager em=emf.createEntityManager();
-        String query="SELECT l FROM Laboratorio l ";
-        
-        TypedQuery<Profesor> typedQuery=em.createQuery(query,Profesor.class);
-        switch (tipoBusqueda) {
-                case Completa:
-                    break;
+        String query="SELECT l FROM Laboratorio l WHERE l.estado <> 4 ";
+         switch (tipoBusqueda) {
                 case Parcial:
-                    
                     if(nombre != null && !nombre.equals("")){
                         query=query + " AND l.nombre LIKE :labNombre";
                     }
                     if(local != null && !local.equals("")){
                         query = query + " AND l.local LIKE :labLocal";
-                    }
-                    typedQuery.setParameter("labNombre", nombre);
-                    typedQuery.setParameter("labLocal", local);
+                    }                    
                     break;
                 default:
                     break;
             }
-
-        System.out.println("query es: "+ typedQuery.toString());
-        
-        List<Profesor> profesores=typedQuery.getResultList();
-        em.close();
-        return profesores;
-        
-        
-        
-        
-        
-        
-        
-        // Utilizando mappers con interfaces
-        LaboratorioMapper mapper = 
-                session.getMapper(LaboratorioMapper.class);
-        
-        List<Laboratorio> laboratorios=null;
-        
+        TypedQuery<Laboratorio> typedQuery=em.createQuery(query,Laboratorio.class);
         switch (tipoBusqueda) {
-            case Completa :
-                laboratorios = mapper.obtenerLaboratorios();
-                break;
-            case Parcial :
-                    Laboratorio lab=new Laboratorio();
+                case Parcial:
                     if(nombre != null && !nombre.equals("")){
-                        lab.setNombre(nombre);
+                        typedQuery.setParameter("labNombre", "%"+nombre+"%");
                     }
                     if(local != null && !local.equals("")){
-                        lab.setLocal(local);
-                    }
-                    laboratorios = mapper.obtenerLaboratoriosSegun(lab);
-             break;
-        }
-        
-        session.close();
+                        typedQuery.setParameter("labLocal","%"+ local+"%");
+                    }                    
+                    break;
+                default:
+                    break;
+            }        
+        List<Laboratorio> laboratorios=typedQuery.getResultList();
+        em.close();
         
         return laboratorios;
+        
     }
 
     @Override

@@ -39,8 +39,8 @@ public class RegistroLaboratorioServlet extends HttpServlet {
                  .conLocal(local)
                  .conPabellon(pabellon)
                  .conSalon(salon)
-                 .conCapacidad(Integer.parseInt(capacidad))
-                 .conEstado(EstadoLaboratorio.obtenerSegun(estado));
+                 .conCapacidad(Integer.parseInt(capacidad));
+//                 .conEstado(EstadoLaboratorio.obtenerSegun(estado));
                  
         gestorLaboratorio.registrar(nuevoLaboratorio);
         resp.sendRedirect("listarLaboratorios");

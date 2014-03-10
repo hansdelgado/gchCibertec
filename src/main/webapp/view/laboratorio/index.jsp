@@ -77,7 +77,7 @@
                     <span><s:property value="pabellon"/></span>
                     <span><s:property value="salon"/></span>
                     <span><s:property value="capacidad"/></span>
-                    <span><s:property value="estado"/></span>
+                    <span><s:property value="estadoString"/></span>
                 </li>
             </s:iterator>
         </ul>

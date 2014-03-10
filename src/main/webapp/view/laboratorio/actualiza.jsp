@@ -50,7 +50,7 @@
             </div>
              <div>
                 <label for="estado">Estado</label>
-                <s:select name="estado" value="estadoString"
+                <s:select name="estado" value="estado"
                           list="#{'1':'Implementado','2':'Pendiente Implementacion','3':'Con Problemas','4':'Deshabilitado','5':'No Disponible'}"
                           headerKey="-1" headerValue="Seleccione"/>
                 </div>
