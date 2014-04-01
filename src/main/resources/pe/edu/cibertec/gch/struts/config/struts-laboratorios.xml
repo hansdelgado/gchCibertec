@@ -6,35 +6,35 @@
 <struts>
     <package name="laboratorios" extends="gch">
         <action name="listaBaseLaboratorio"
-                class="pe.edu.cibertec.gch.action.laboratorio.MostrarLaboratorioAction"
+                class="mostrarLaboratorioAction"
                 method="listar">
             <result name="listaBase">/view/laboratorio/index.jsp</result>
         </action>
         <action name="buscarLaboratorio"
-                class="pe.edu.cibertec.gch.action.laboratorio.MostrarLaboratorioAction"
+                class="mostrarLaboratorioAction"
                 method="buscar">
             <result name="success">/view/laboratorio/index.jsp</result>
         </action>
         <action name="registrarLaboratorio"
-                class="pe.edu.cibertec.gch.action.laboratorio.GestionLaboratorioAction"
+                class="gestionLaboratorioAction"
                 method="registrar">
             <result name="success">/view/laboratorio/index.jsp</result>
             <result type="redirect">listaBaseLaboratorio</result>
         </action>
         <action name="actualizarLaboratorio"
-                class="pe.edu.cibertec.gch.action.laboratorio.GestionLaboratorioAction"
+                class="gestionLaboratorioAction"
                 method="actualizar">
             <result name="success">/view/laboratorio/index.jsp</result>
             <result type="redirect">listaBaseLaboratorio</result>
         </action>
         <action name="eliminarLaboratorio"
-                class="pe.edu.cibertec.gch.action.laboratorio.GestionLaboratorioAction"
+                class="gestionLaboratorioAction"
                 method="eliminar">
             <result name="success">/view/laboratorio/index.jsp</result>
             <result type="redirect">listaBaseLaboratorio</result>
         </action>
         <action name="irEdicionLaboratorio"
-                class="pe.edu.cibertec.gch.action.laboratorio.EdicionLaboratorioAction">
+                class="edicionLaboratorioAction">
             <result>/view/laboratorio/actualiza.jsp</result>
             <result name="input" type="redirect">listarLaboratorio</result>
         </action>
