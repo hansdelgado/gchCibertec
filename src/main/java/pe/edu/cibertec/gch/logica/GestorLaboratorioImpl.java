@@ -22,9 +22,9 @@ import pe.edu.cibertec.gch.modelo.TipoBusqueda;
 public class GestorLaboratorioImpl implements GestorLaboratorio {
      private LaboratorioDao laboratorioDao;
     
-    public GestorLaboratorioImpl() {
+    public GestorLaboratorioImpl() {//factorymethods
         laboratorioDao = FactoryDao
-                .getFactory(FactoryDao.JPA)
+                .getFactory(FactoryDao.MYBATIS)
                 .getLaboratorioDao();
     }
     @Override
@@ -37,10 +37,6 @@ public class GestorLaboratorioImpl implements GestorLaboratorio {
        laboratorioDao.actualizar(laboratorio);
     }
 
-//    public void eliminar(Laboratorio laboratorio) {
-//        laboratorioDao.eliminarPorCodigo(laboratorio.getCodigo());
-//    }
-    
     @Override
     public void eliminar(String codigo) {
         laboratorioDao.eliminarPorCodigo(codigo);
