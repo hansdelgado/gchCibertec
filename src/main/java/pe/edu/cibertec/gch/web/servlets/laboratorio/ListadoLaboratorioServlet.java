@@ -7,7 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import pe.edu.cibertec.gch.logica.GestorLaboratorio;
+import pe.edu.cibertec.gch.logica.GestorLaboratorioImpl;
 import pe.edu.cibertec.gch.modelo.Laboratorio;
 import pe.edu.cibertec.gch.web.servlets.GchServletUtils;
 
@@ -17,7 +17,7 @@ import pe.edu.cibertec.gch.web.servlets.GchServletUtils;
 @WebServlet(name = "ListadoLaboratorioServlet", urlPatterns = {"/listarLaboratorios"})
 public class ListadoLaboratorioServlet extends HttpServlet {
 
-    private GestorLaboratorio gestorLaboratorios = new GestorLaboratorio();
+    private GestorLaboratorioImpl gestorLaboratorios = new GestorLaboratorioImpl();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

@@ -28,7 +28,7 @@ public class GestionLaboratorioAction extends LaboratorioBaseAction {
                  .conCapacidad(Integer.parseInt(capacidad))
                  .conEstado(Integer.parseInt(estado));
                  
-        gestor.registrar(nuevoLaboratorio);
+        gestorLaboratorio.registrar(nuevoLaboratorio);
         return Action.SUCCESS;
     }
     
@@ -41,13 +41,13 @@ public class GestionLaboratorioAction extends LaboratorioBaseAction {
                  .conSalon(salon)
                  .conCapacidad(Integer.parseInt(capacidad))
                  .conEstado(Integer.parseInt(estado));
-        gestor.actualizar(laboratorio);
+        gestorLaboratorio.actualizar(laboratorio);
         return Action.SUCCESS;
     }
     
     public String eliminar(){
 //         try {
-            gestor.eliminarPorCodigo(codigo);
+            gestorLaboratorio.eliminarPorCodigo(codigo);
             return Action.SUCCESS;
 //        } catch (DatosInvalidosException ex) {
 //            Logger.getLogger(pe.edu.cibertec.gch.action.profesor.GestionLaboratorioAction.class.getName()).log(Level.SEVERE, null, ex);

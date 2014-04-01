@@ -6,65 +6,33 @@
 
 package pe.edu.cibertec.gch.logica;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
-import pe.edu.cibertec.gch.dao.FactoryDao;
-import pe.edu.cibertec.gch.dao.laboratorio.LaboratorioDao;
 import pe.edu.cibertec.gch.exception.DatosInvalidosException;
 import pe.edu.cibertec.gch.modelo.Laboratorio;
 import pe.edu.cibertec.gch.modelo.TipoBusqueda;
 
 /**
  *
- * @author Fernando
+ * @author Java-ADV-LM
  */
-public class GestorLaboratorio {
-     private LaboratorioDao laboratorioDao;
+public interface GestorLaboratorio {
+
+    void actualizar(Laboratorio laboratorio);
+
+    void borrarTodos();
+
+    Laboratorio consultarSegun(final String codigo);
+
+    void eliminar(String codigo);
+
+    void eliminarPorCodigo(String codigo);
+
+    void eliminarSegun(String codigo) throws DatosInvalidosException;
+
+    List<Laboratorio> listarSegun(String nombre, String local, TipoBusqueda tipoBusqueda);
+
+    List<Laboratorio> listarTodos();
+
+    void registrar(Laboratorio laboratorio);
     
-    public GestorLaboratorio() {
-        laboratorioDao = FactoryDao
-                .getFactory(FactoryDao.JPA)
-                .getLaboratorioDao();
-    }
-     public void registrar(Laboratorio laboratorio) {
-        laboratorioDao.registrar(laboratorio);
-    }
-
-    public void actualizar(Laboratorio laboratorio) {
-       laboratorioDao.actualizar(laboratorio);
-    }
-
-//    public void eliminar(Laboratorio laboratorio) {
-//        laboratorioDao.eliminarPorCodigo(laboratorio.getCodigo());
-//    }
-    
-    public void eliminar(String codigo) {
-        laboratorioDao.eliminarPorCodigo(codigo);
-    }
-
-    public List<Laboratorio> listarSegun(String nombre, String local, TipoBusqueda tipoBusqueda) {        
-        return laboratorioDao.listarSegun(nombre, local, tipoBusqueda);
-    }
-    public List<Laboratorio> listarTodos() {
-        return laboratorioDao.listarTodos();
-    }
-
-    public void borrarTodos() {
-        laboratorioDao.borrarTodos();
-    }
-
-    public void eliminarSegun(String codigo) throws DatosInvalidosException {
-//        Laboratorio profesorAEliminar = consultarSegun(codigo);
-//        profesorAEliminar.setEstado(EstadoProfesor.Inactivo);
-
-    }
-
-    public Laboratorio consultarSegun(final String codigo) {
-        return laboratorioDao.consultarPorCodigo(codigo);
-    }
-
-    public void eliminarPorCodigo(String codigo) {
-        laboratorioDao.eliminarPorCodigo(codigo);
-    }
 }

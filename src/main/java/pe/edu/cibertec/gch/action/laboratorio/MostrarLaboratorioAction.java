@@ -17,7 +17,7 @@ import pe.edu.cibertec.gch.modelo.TipoBusqueda;
 public class MostrarLaboratorioAction extends LaboratorioBaseAction{
     public String listar(){
         try {
-            listaLaboratorios = gestor.listarTodos();
+            listaLaboratorios = gestorLaboratorio.listarTodos();
         } catch (Exception e) {
             return Action.ERROR;
         }
@@ -30,7 +30,7 @@ public class MostrarLaboratorioAction extends LaboratorioBaseAction{
             TipoBusqueda tipoBusquedaEnum = TipoBusqueda.obtenerPorCodigo(Integer.parseInt(tipoBusqueda));
 
             // trae los profesores en la fuente de datos y los expone en la lista
-            listaLaboratorios = gestor
+            listaLaboratorios = gestorLaboratorio
                     .listarSegun(nombre,local, tipoBusquedaEnum);
         } catch (NumberFormatException numberFormatException) {
             return Action.ERROR;

@@ -17,7 +17,8 @@ import pe.edu.cibertec.gch.modelo.Laboratorio;
 public class EdicionLaboratorioAction implements Action{
     private String codigo;
     private Laboratorio laboratorio;
-    private GestorLaboratorio gestorLaboratorio= new GestorLaboratorio();
+    //private GestorLaboratorioImpl gestorLaboratorio= new GestorLaboratorioImpl();
+    private GestorLaboratorio gestorLaboratorio;
     
     @Override
     public String execute() throws Exception {

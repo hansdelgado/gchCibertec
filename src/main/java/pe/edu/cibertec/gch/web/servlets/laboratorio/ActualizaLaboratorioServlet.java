@@ -7,7 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import pe.edu.cibertec.gch.logica.GestorLaboratorio;
+import pe.edu.cibertec.gch.logica.GestorLaboratorioImpl;
 import pe.edu.cibertec.gch.modelo.EstadoLaboratorio;
 
 import pe.edu.cibertec.gch.modelo.Laboratorio;
@@ -18,7 +18,7 @@ import pe.edu.cibertec.gch.modelo.Laboratorio;
 @WebServlet(name = "ActualizaLaboratorioServlet", urlPatterns = {"/actualizarLaboratorio"})
 public class ActualizaLaboratorioServlet extends HttpServlet {
 
-    private GestorLaboratorio    gestorLaboratorio = new GestorLaboratorio();
+    private GestorLaboratorioImpl    gestorLaboratorio = new GestorLaboratorioImpl();
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

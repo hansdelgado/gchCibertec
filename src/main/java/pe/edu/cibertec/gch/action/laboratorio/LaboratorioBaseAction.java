@@ -16,7 +16,8 @@ import pe.edu.cibertec.gch.modelo.Laboratorio;
  * @author YESSY
  */
 public class LaboratorioBaseAction extends ActionSupport{
-    protected GestorLaboratorio gestor= new GestorLaboratorio();
+    //protected GestorLaboratorioImpl gestorLaboratorio= new GestorLaboratorioImpl();
+    protected GestorLaboratorio gestorLaboratorio;
     protected List<Laboratorio> listaLaboratorios;
     
     String codigo;
@@ -31,14 +32,14 @@ public class LaboratorioBaseAction extends ActionSupport{
             
     protected static String LISTA_BASE = "listaBase";
 
-    public GestorLaboratorio getGestor() {
-        return gestor;
+    public GestorLaboratorio getGestorLaboratorio() {
+        return gestorLaboratorio;
     }
 
-    public void setGestor(GestorLaboratorio gestor) {
-        this.gestor = gestor;
+    public void setGestorLaboratorio(GestorLaboratorio gestorLaboratorio) {
+        this.gestorLaboratorio = gestorLaboratorio;
     }
-
+    
     public List<Laboratorio> getListaLaboratorios() {
         return listaLaboratorios;
     }
